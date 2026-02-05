@@ -1,10 +1,14 @@
 # RheaRouter
 
-**Personal OpenRouter** - Production-grade self-hosted inference server with OpenAI-compatible API.
+**Open Source Personal Inference Server** by [Rhea Impact](https://github.com/rhea-impact)
 
-Transform your machine into a smart inference gateway with automatic model selection, rate limiting, VRAM management, and full observability.
+Production-grade self-hosted inference gateway with OpenAI-compatible API, intelligent model routing, and comprehensive observability.
 
-[![Tests](https://img.shields.io/badge/tests-54%20passing-success)]() [![Python](https://img.shields.io/badge/python-3.12+-blue)]() [![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green)]()
+Transform your machine into a smart inference server with automatic model selection, rate limiting, VRAM management, and full analytics.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE) [![Tests](https://img.shields.io/badge/tests-87%20passing-success)]() [![Python](https://img.shields.io/badge/python-3.12+-blue)]() [![FastAPI](https://img.shields.io/badge/FastAPI-0.109+-green)]()
+
+> **Mission:** Democratize access to local AI inference with production-grade tooling. No cloud, no cost, no compromises on privacy.
 
 ---
 
@@ -26,7 +30,7 @@ Transform your machine into a smart inference gateway with automatic model selec
 - **📝 Structured Logging** - JSON logs for monitoring and debugging
 - **❌ Error Handling** - OpenAI-compatible error responses
 - **🏥 Health Checks** - Liveness and readiness probes
-- **✅ Tested** - 54 tests with 100% pass rate
+- **✅ Tested** - 87 tests with 100% pass rate
 
 ---
 
@@ -188,7 +192,7 @@ rhearouter/
 │   │   └── config.py            # Configuration management
 │   ├── observability/
 │   │   └── logging.py           # Structured JSON logging
-│   └── tests/                   # 54 tests (100% passing)
+│   └── tests/                   # 87 tests (100% passing)
 │       ├── api/                 # Integration tests
 │       ├── backend/             # Backend unit tests
 │       └── middleware/          # Middleware tests
@@ -217,8 +221,9 @@ pytest src/tests/backend/ -v       # Backend tests
 
 **Test Coverage:**
 - API integration: 9 tests
-- Middleware: 25 tests
-- Backend: 20 tests
+- Middleware: 20 tests
+- Backend: 27 tests
+- Core: 31 tests
 
 ---
 
@@ -295,45 +300,86 @@ pytest src/tests/backend/ -v       # Backend tests
 
 ## 🤝 Contributing
 
-This is a personal project, but improvements are welcome!
+We welcome contributions from the community! RheaRouter is an open source project by **Rhea Impact** aimed at democratizing access to local AI inference.
 
-1. Fork the repository
-2. Create a feature branch
+**How to Contribute:**
+
+1. Fork the repository at [github.com/rhea-impact/rhearouter](https://github.com/rhea-impact/rhearouter)
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Write tests for new features
-4. Ensure all tests pass (`pytest src/tests/`)
-5. Submit a pull request
+4. Ensure all tests pass (`pytest src/tests/ -v`)
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
 **Code Style:**
 - Follow PEP 8
-- Use type hints
+- Use type hints for all functions
 - Add docstrings to all public functions
 - Keep functions small and focused
+- Maintain test coverage above 90%
+
+**Priority Areas:**
+- Additional model routing strategies
+- Performance optimizations
+- New middleware components
+- Enhanced observability features
+- Documentation improvements
 
 ---
 
 ## 📜 License
 
-Private - Personal use
+MIT License - see [LICENSE](LICENSE) file for details.
+
+**Copyright (c) 2026 Rhea Impact**
+
+This project is open source and available under the MIT License. You are free to use, modify, and distribute this software for any purpose, including commercial use.
 
 ---
 
 ## 🙏 Acknowledgments
 
+- **Rhea Impact** - Non-profit organization supporting open source AI tooling
 - **FastAPI** - Modern Python web framework
-- **Ollama** - Local LLM runtime
-- **Pydantic** - Data validation
-- **Claude Code** - AI-assisted development
+- **Ollama** - Local LLM runtime that makes this possible
+- **Pydantic** - Type-safe configuration and validation
+- **Claude Code** - AI-assisted development tooling
+- **Open Source Community** - For feedback and contributions
 
 ---
 
 ## 📞 Support
 
-For issues or questions:
-1. Check [API.md](API.md) for endpoint documentation
-2. Check [ARCHITECTURE.md](ARCHITECTURE.md) for system design
-3. Review logs at `/logs/2026-02-04-session/`
-4. Run health check: `curl http://localhost:8000/health`
+**Community Support:**
+- GitHub Issues: [Report bugs or request features](https://github.com/rhea-impact/rhearouter/issues)
+- Discussions: [Ask questions and share ideas](https://github.com/rhea-impact/rhearouter/discussions)
+
+**Documentation:**
+1. [API.md](API.md) - Complete API reference
+2. [QUICKSTART.md](QUICKSTART.md) - 60-second setup guide
+3. [ARCHITECTURE.md](ARCHITECTURE.md) - System design and internals
+4. [examples/](examples/) - Sample code and use cases
+
+**Troubleshooting:**
+- Run health check: `curl http://localhost:8000/health`
+- Check logs: `tail -f logs/*.log`
+- View session logs: `/logs/2026-02-04-session/`
+- Run tests: `pytest src/tests/ -v`
 
 ---
 
-**Built with ❤️ using Claude Code - Your personal inference server is ready!**
+## 🌟 Project Status
+
+**Current Version:** 0.1.0 (Production-ready for personal use)
+
+- ✅ Phase 1: Core API (Complete)
+- ✅ Phase 2: Intelligent Routing & Analytics (Complete)
+- 🚧 Phase 3: Advanced Features (MoA, Speculative Decoding) - Planned
+- 🚧 Phase 4: Enhanced Observability (Prometheus, Grafana) - Planned
+
+**Maintained by [Rhea Impact](https://github.com/rhea-impact)** - A non-profit organization advancing open source AI infrastructure.
+
+---
+
+**Built with ❤️ by the open source community. Your privacy-first inference server is ready!**
