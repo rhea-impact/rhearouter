@@ -34,6 +34,18 @@ Transform your machine into a smart inference server with automatic model select
 
 ---
 
+## 🌐 Live Instance
+
+**Production instance available via Tailscale:**
+
+```
+https://dsthink.tail813f4e.ts.net
+```
+
+Stable HTTPS endpoint with automatic TLS encryption. See [DNS_SETUP.md](DNS_SETUP.md) for access details.
+
+---
+
 ## 🚀 Quick Start
 
 **Get running in 60 seconds:**
