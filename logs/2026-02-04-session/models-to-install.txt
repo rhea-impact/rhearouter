@@ -1,0 +1,116 @@
+# Models to Install for RheaRouter
+**Priority List - February 2026**
+
+## Vision Models (Keep Existing Benchmark Winners)
+
+### High Priority
+[ ] qwen2.5vl:7b - Best vision/OCR model (95% accuracy from benchmarks)
+  - VRAM: ~5.5 GB (Q4)
+  - Use: Primary for all vision tasks
+  - Status: TO INSTALL
+
+[ ] minicpm-v:8b - OCR specialist (your Nov 2025 benchmarks)
+  - VRAM: ~5.9 GB (Q4)
+  - Use: Ensemble OCR (opt-in)
+  - Status: TO RE-INSTALL
+
+[ ] llava:7b - Fast vision model
+  - VRAM: ~4.7 GB
+  - Use: Draft model for speculative decoding
+  - Status: TO RE-INSTALL
+
+## Text Models (2026 Additions)
+
+### Critical (Install First)
+[🔄] llama3.1:8b - General purpose
+  - VRAM: ~4.5 GB (Q4)
+  - Use: Default text completion
+  - Status: DOWNLOADING
+
+[🔄] qwen2.5:7b - Math/analytical
+  - VRAM: ~6-7 GB (Q4)
+  - Use: Math reasoning, analytical tasks
+  - Status: DOWNLOADING
+
+### High Priority (Install Next)
+[ ] deepseek-r1:8b - Reasoning specialist (Jan 2025 release)
+  - VRAM: ~6.2 GB (Q4)
+  - Use: Complex reasoning, logic problems
+  - Performance: 68.5 tokens/sec
+  - Status: TO INSTALL
+
+### Medium Priority (Install When Needed)
+[ ] nemotron-3-nano:30b-a3b-q4_K_M - MoE powerhouse (Dec 2025)
+  - VRAM: 6-8 GB (Q4 with MoE)
+  - Use: Complex tasks, MoA aggregator, coding
+  - Note: May not be available yet in Ollama
+  - Check: ollama search nemotron
+  - Status: TO VERIFY AVAILABILITY
+
+## Installation Commands
+
+### Immediate (Base Set)
+ollama pull qwen2.5vl:7b
+ollama pull llama3.1:8b        # DOWNLOADING
+ollama pull qwen2.5:7b         # DOWNLOADING
+ollama pull deepseek-r1:8b
+
+### When Needed (Ensemble/MoA)
+ollama pull minicpm-v:8b
+ollama pull llava:7b
+
+### Advanced (If Available)
+ollama search nemotron         # Check availability first
+ollama pull nemotron-3-nano:30b-a3b-q4_K_M  # If available
+
+## Storage Requirements
+- Base set (4 models): ~22-24 GB
+- Full set (7 models): ~40-45 GB
+- Available space: 81 GB (/home partition) ✅
+
+## Model Usage Strategy
+
+### Routing Logic
+```
+Vision request
+  → qwen2.5vl:7b (primary)
+  
+Text request (simple)
+  → llama3.1:8b (fast, efficient)
+
+Text request (reasoning)
+  → deepseek-r1:8b (specialist)
+
+Text request (math)
+  → qwen2.5:7b (analytical)
+
+Text request (coding)
+  → nemotron-3-nano:30b (if available)
+  → llama3.1:8b (fallback)
+
+High-complexity request
+  → MoA([deepseek-r1, qwen2.5, nemotron-3-nano])
+  → Debate + aggregation
+```
+
+## Performance Expectations
+
+| Model | Latency | Tokens/sec | VRAM | Use Case |
+|-------|---------|------------|------|----------|
+| qwen2.5vl:7b | 3-5s | N/A | 5.5GB | Vision |
+| llama3.1:8b | 1-2s | 60-80 | 4.5GB | General |
+| qwen2.5:7b | 2-3s | 50-70 | 6-7GB | Math |
+| deepseek-r1:8b | 2-3s | 68.5 | 6.2GB | Reasoning |
+| nemotron-3-nano:30b | 5-8s | TBD | 6-8GB | Complex/MoE |
+
+## VRAM Management
+- Load one model at a time (8GB constraint)
+- 5-second cooldown between swaps
+- Queue requests when swapping
+- Track loaded model in ModelManager
+
+## Notes
+- All models use Q4_K_M quantization for 8GB VRAM
+- Nemotron-3-Nano may use different quantization (MoE)
+- Can run larger models with CPU offloading (slower)
+- Monitor VRAM usage: nvidia-smi

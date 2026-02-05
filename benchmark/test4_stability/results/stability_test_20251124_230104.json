@@ -1,0 +1,248 @@
+{
+  "minicpm-v:8b": {
+    "analysis": {
+      "total_requests": 50,
+      "successful": 50,
+      "failed": 0,
+      "success_rate": 1.0,
+      "avg_time": 3.213194781280181,
+      "min_time": 1.3862495630019112,
+      "max_time": 12.184699251003622,
+      "first_10_avg": 3.256823707500007,
+      "last_10_avg": 3.1371643904014492,
+      "time_drift_pct": -3.674110969623533,
+      "temp_start": 57,
+      "temp_end": 68,
+      "temp_max": 68,
+      "temp_drift": 11,
+      "vram_start": 5945,
+      "vram_end": 5947,
+      "vram_max": 5947,
+      "vram_leak_mb": 2
+    },
+    "gpu_samples": [
+      {
+        "temperature_c": 57,
+        "utilization_pct": 1,
+        "vram_used_mb": 5945,
+        "vram_total_mb": 8192,
+        "power_w": 13.45,
+        "request_num": 0,
+        "elapsed_sec": 0.021911
+      },
+      {
+        "temperature_c": 67,
+        "utilization_pct": 95,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.77,
+        "request_num": 5,
+        "elapsed_sec": 19.952086
+      },
+      {
+        "temperature_c": 67,
+        "utilization_pct": 96,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.88,
+        "request_num": 10,
+        "elapsed_sec": 32.632876
+      },
+      {
+        "temperature_c": 67,
+        "utilization_pct": 94,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.84,
+        "request_num": 15,
+        "elapsed_sec": 47.203722
+      },
+      {
+        "temperature_c": 67,
+        "utilization_pct": 96,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.86,
+        "request_num": 20,
+        "elapsed_sec": 64.797266
+      },
+      {
+        "temperature_c": 67,
+        "utilization_pct": 94,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.92,
+        "request_num": 25,
+        "elapsed_sec": 80.080778
+      },
+      {
+        "temperature_c": 68,
+        "utilization_pct": 93,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.94,
+        "request_num": 30,
+        "elapsed_sec": 95.874301
+      },
+      {
+        "temperature_c": 68,
+        "utilization_pct": 94,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.71,
+        "request_num": 35,
+        "elapsed_sec": 117.736498
+      },
+      {
+        "temperature_c": 68,
+        "utilization_pct": 95,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 59.17,
+        "request_num": 40,
+        "elapsed_sec": 129.478711
+      },
+      {
+        "temperature_c": 68,
+        "utilization_pct": 96,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.91,
+        "request_num": 45,
+        "elapsed_sec": 143.18804
+      },
+      {
+        "temperature_c": 68,
+        "utilization_pct": 95,
+        "vram_used_mb": 5947,
+        "vram_total_mb": 8192,
+        "power_w": 58.95,
+        "request_num": 50,
+        "elapsed_sec": 160.891706
+      }
+    ]
+  },
+  "llava:7b": {
+    "analysis": {
+      "total_requests": 50,
+      "successful": 50,
+      "failed": 0,
+      "success_rate": 1.0,
+      "avg_time": 2.7161547331005567,
+      "min_time": 0.9364077000063844,
+      "max_time": 5.364662424995913,
+      "first_10_avg": 2.531354783300776,
+      "last_10_avg": 2.797235551799531,
+      "time_drift_pct": 10.50349679360465,
+      "temp_start": 60,
+      "temp_end": 70,
+      "temp_max": 70,
+      "temp_drift": 10,
+      "vram_start": 5723,
+      "vram_end": 5725,
+      "vram_max": 5725,
+      "vram_leak_mb": 2
+    },
+    "gpu_samples": [
+      {
+        "temperature_c": 60,
+        "utilization_pct": 2,
+        "vram_used_mb": 5723,
+        "vram_total_mb": 8192,
+        "power_w": 13.94,
+        "request_num": 0,
+        "elapsed_sec": 0.020428
+      },
+      {
+        "temperature_c": 69,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.94,
+        "request_num": 5,
+        "elapsed_sec": 14.264977
+      },
+      {
+        "temperature_c": 69,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.88,
+        "request_num": 10,
+        "elapsed_sec": 25.376361
+      },
+      {
+        "temperature_c": 69,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.93,
+        "request_num": 15,
+        "elapsed_sec": 39.509729
+      },
+      {
+        "temperature_c": 69,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.95,
+        "request_num": 20,
+        "elapsed_sec": 54.048963
+      },
+      {
+        "temperature_c": 69,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.7,
+        "request_num": 25,
+        "elapsed_sec": 66.280333
+      },
+      {
+        "temperature_c": 70,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.65,
+        "request_num": 30,
+        "elapsed_sec": 79.484958
+      },
+      {
+        "temperature_c": 70,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.85,
+        "request_num": 35,
+        "elapsed_sec": 93.985536
+      },
+      {
+        "temperature_c": 70,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.8,
+        "request_num": 40,
+        "elapsed_sec": 108.023991
+      },
+      {
+        "temperature_c": 70,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.6,
+        "request_num": 45,
+        "elapsed_sec": 124.160667
+      },
+      {
+        "temperature_c": 70,
+        "utilization_pct": 99,
+        "vram_used_mb": 5725,
+        "vram_total_mb": 8192,
+        "power_w": 59.8,
+        "request_num": 50,
+        "elapsed_sec": 136.037978
+      }
+    ]
+  }
+}

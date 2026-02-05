@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(find:*)",
+      "Bash(lsblk:*)",
+      "Bash(export SUDO_ASKPASS=/tmp/askpass.sh)",
+      "Bash(sudo -A apt autoremove:*)",
+      "Bash(snap list:*)",
+      "Bash(while read snapname revision)",
+      "Bash(do sudo -A snap remove \"$snapname\" --revision=\"$revision\")",
+      "Bash(done)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

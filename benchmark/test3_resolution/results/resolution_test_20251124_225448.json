@@ -1,0 +1,162 @@
+{
+  "minicpm-v:8b": [
+    {
+      "resolution": "128x128",
+      "label": "tiny",
+      "file_size_kb": 6.3515625,
+      "avg_time": 3.9949684963333616,
+      "min_time": 2.4675083229958545,
+      "max_time": 5.634189438002068,
+      "avg_quality": 0.3833333333333333,
+      "efficiency": 0.09595403159878783,
+      "vram_mb": 5945.0,
+      "sample_response": "The central focus of the image is a large, fluffy cat with striking green eyes. Its fur appears to be predominantly white and brown, creating an attractive contrast that draws attention. The feline's ",
+      "word_count": 145
+    },
+    {
+      "resolution": "256x256",
+      "label": "small",
+      "file_size_kb": 23.8798828125,
+      "avg_time": 2.890540958668377,
+      "min_time": 2.022919027003809,
+      "max_time": 3.392594895994989,
+      "avg_quality": 0.5,
+      "efficiency": 0.17297800209353945,
+      "vram_mb": 5947.0,
+      "sample_response": "The image prominently features a tabby cat with striking green eyes, resting comfortably and occupying most of the frame from top to bottom. The feline's fur displays various shades including white, b",
+      "word_count": 105
+    },
+    {
+      "resolution": "512x512",
+      "label": "medium",
+      "file_size_kb": 86.8544921875,
+      "avg_time": 3.2038947513356106,
+      "min_time": 2.1567996310041053,
+      "max_time": 4.727729862999695,
+      "avg_quality": 0.4666666666666666,
+      "efficiency": 0.1456560539237835,
+      "vram_mb": 5947.0,
+      "sample_response": "The image prominently features a cat sitting comfortably on the ground, surrounded by lush greenery and rocks. The feline has striking brown eyes and is sporting an elegant combination of white fur wi",
+      "word_count": 92
+    },
+    {
+      "resolution": "768x768",
+      "label": "large",
+      "file_size_kb": 162.5888671875,
+      "avg_time": 6.083301699002429,
+      "min_time": 5.721388543002831,
+      "max_time": 6.483921498002019,
+      "avg_quality": 0.5833333333333334,
+      "efficiency": 0.09589090960735867,
+      "vram_mb": 5947.0,
+      "sample_response": "The image features a charming domestic cat, sitting comfortably on what appears to be the ground covered with stones or rocks. The feline has striking green eyes that gleam vividly against its predomi",
+      "word_count": 143
+    },
+    {
+      "resolution": "1024x1024",
+      "label": "xlarge",
+      "file_size_kb": 241.3369140625,
+      "avg_time": 3.5198731563359615,
+      "min_time": 2.315499123003974,
+      "max_time": 4.521158989002288,
+      "avg_quality": 0.5333333333333333,
+      "efficiency": 0.15152061158036464,
+      "vram_mb": 5947.0,
+      "sample_response": "The image captures a close-up of a cat sitting on the ground amidst lush greenery. The feline is prominently featured, with its fur displaying various shades and patterns including brown, white, black",
+      "word_count": 157
+    },
+    {
+      "resolution": "1536x1536",
+      "label": "xxlarge",
+      "file_size_kb": 419.0615234375,
+      "avg_time": 5.468776855668693,
+      "min_time": 4.412666517004254,
+      "max_time": 7.032524829999602,
+      "avg_quality": 0.5,
+      "efficiency": 0.0914281224478417,
+      "vram_mb": 5947.0,
+      "sample_response": "The image features a stunning cat sitting comfortably on what appears to be a stone ledge or pathway, surrounded by lush greenery. The feline boasts beautiful fur with hues of white, brown, and black.",
+      "word_count": 150
+    }
+  ],
+  "llava:7b": [
+    {
+      "resolution": "128x128",
+      "label": "tiny",
+      "file_size_kb": 6.3515625,
+      "avg_time": 4.27214140266733,
+      "min_time": 3.3790715169961913,
+      "max_time": 5.85098673900211,
+      "avg_quality": 0.3833333333333333,
+      "efficiency": 0.08972861551211705,
+      "vram_mb": 5723.0,
+      "sample_response": " The image shows a tranquil scene of a cat, which is the focal point of the photo. The cat has a white and orange coat with distinctive stripes that resemble those of a tabby. It appears to be resting",
+      "word_count": 116
+    },
+    {
+      "resolution": "256x256",
+      "label": "small",
+      "file_size_kb": 23.8798828125,
+      "avg_time": 3.9742683443328133,
+      "min_time": 3.1374920700036455,
+      "max_time": 4.8119544699948165,
+      "avg_quality": 0.4166666666666667,
+      "efficiency": 0.10484110044074421,
+      "vram_mb": 5723.0,
+      "sample_response": " This image is a split-screen photo, showcasing two different views of the same cat. On the left side, the image captures the cat from a slightly elevated angle, displaying its white fur with darker m",
+      "word_count": 171
+    },
+    {
+      "resolution": "512x512",
+      "label": "medium",
+      "file_size_kb": 86.8544921875,
+      "avg_time": 5.088017388998803,
+      "min_time": 4.485011641998426,
+      "max_time": 5.915447699997458,
+      "avg_quality": 0.4166666666666667,
+      "efficiency": 0.0818917536656958,
+      "vram_mb": 5723.666666666667,
+      "sample_response": " In the center of the image, a long-haired cat with a white face and chest, grey ears, and a brown tabby pattern on its body is sitting on the ground. The cat's fur appears to be thick and fluffy, sug",
+      "word_count": 186
+    },
+    {
+      "resolution": "768x768",
+      "label": "large",
+      "file_size_kb": 162.5888671875,
+      "avg_time": 3.4036066306653083,
+      "min_time": 2.858419917996798,
+      "max_time": 3.708149730002333,
+      "avg_quality": 0.5333333333333333,
+      "efficiency": 0.15669652554093239,
+      "vram_mb": 5725.0,
+      "sample_response": " This is a color photograph of a domestic cat resting outdoors. The cat has a white and gray tabby coat with distinctive dark spots on its face and body, particularly around the eyes. Its fur appears ",
+      "word_count": 127
+    },
+    {
+      "resolution": "1024x1024",
+      "label": "xlarge",
+      "file_size_kb": 241.3369140625,
+      "avg_time": 4.747998424999726,
+      "min_time": 4.1929683910057065,
+      "max_time": 5.224291320999328,
+      "avg_quality": 0.4666666666666666,
+      "efficiency": 0.09828703063790371,
+      "vram_mb": 5725.0,
+      "sample_response": " In the image, a tabby cat is the main subject. The cat, with its light brown and white fur, is sitting on a stone bench. It has striking blue eyes that are looking directly at the camera. The bench i",
+      "word_count": 135
+    },
+    {
+      "resolution": "1536x1536",
+      "label": "xxlarge",
+      "file_size_kb": 419.0615234375,
+      "avg_time": 3.9920668626655242,
+      "min_time": 2.9085886259999825,
+      "max_time": 5.331994986998325,
+      "avg_quality": 0.4833333333333334,
+      "efficiency": 0.12107345642267353,
+      "vram_mb": 5725.0,
+      "sample_response": " The image is a photograph featuring a domestic cat lying down with its paws curled under its body. The cat has a white coat with black patches, particularly on the ears and tail. It appears to be a l",
+      "word_count": 175
+    }
+  ]
+}

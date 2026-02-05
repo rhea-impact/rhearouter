@@ -1,0 +1,92 @@
+# Disk Cleanup Log
+**Date:** February 4, 2026
+**System:** dsthink (Lenovo ThinkPad P16 Gen 1)
+
+## Initial State
+Partition: /dev/nvme0n1p5 (root /)
+Size: 47 GB
+Used: 44 GB
+Free: 1.2 GB
+Usage: 98% CRITICAL
+
+## Problem Analysis
+Largest directories on root partition:
+- /usr/share: 24 GB (including 23GB of Ollama models)
+- /usr: 33 GB total
+- /var: 9.7 GB
+  - /var/lib/snapd: 6.7 GB
+  - /var/lib/containerd: 1.4 GB
+  - /var/lib/docker: 1.3 GB
+
+Critical finding:
+- /usr/share/ollama/.ollama/models: 23 GB (duplicate models!)
+- Active models location: /home/djshanklin/ollama-models: 23 GB
+- Models were duplicated in two locations
+
+## Cleanup Actions
+
+### 1. APT Package Cache
+Command: sudo apt clean && sudo apt autoclean
+Result: ~50 MB freed
+
+### 2. Old Kernels & Packages
+Command: sudo apt autoremove --purge
+Result: 129 MB freed (libllvm19 removed)
+
+### 3. Old Snap Revisions Removed
+- brave (revision 569)
+- core20 (revision 2682)
+- core22 (revision 2163)
+- core24 (revision 1267)
+- firefox (revision 7355)
+- firmware-updater (revision 167)
+- gnome-42-2204 (revision 226)
+- snapd (revision 25577)
+- snapd-desktop-integration (revision 315)
+
+Result: Minimal space freed (snaps already deduplicated)
+
+### 4. Systemd Journal Cleanup
+Command: sudo journalctl --vacuum-size=500M
+Result: 0 B freed (already under limit)
+
+### 5. Duplicate Ollama Models (MAJOR)
+Command: sudo rm -rf /usr/share/ollama/.ollama
+Reason: Duplicate of /home/djshanklin/ollama-models
+Result: 23 GB freed ✅
+
+### 6. Ollama Permissions Fix
+Issue: Ollama couldn't access /home/djshanklin/ollama-models
+Actions:
+- chown -R ollama:ollama /home/djshanklin/ollama-models
+- chmod o+rx /home/djshanklin (allow traverse)
+Result: Ollama service running successfully
+
+## Final State
+Partition: /dev/nvme0n1p5 (root /)
+Size: 47 GB
+Used: 21 GB
+Free: 24 GB
+Usage: 48% ✅
+
+## Summary
+Total freed: 23.2 GB
+Primary source: Duplicate Ollama model blobs
+Time to recover: ~10 minutes
+Risk level: Low (removed only duplicates)
+Service impact: None (Ollama restarted successfully)
+
+## Verification
+- Ollama models intact: /home/djshanklin/ollama-models (23 GB)
+- Ollama service: Active and running
+- Model availability: Ready for new downloads
+- Disk headroom: 24 GB available for development
+
+## Recommendations
+1. Monitor root partition usage weekly
+2. Keep Ollama models in /home (larger partition)
+3. Set up disk usage alerts (>80% = warning)
+4. Consider expanding root partition from /home if needed in future
+   - Can shrink /home by 20-30 GB
+   - Expand root to 67-77 GB
+   - Requires live USB boot + GParted

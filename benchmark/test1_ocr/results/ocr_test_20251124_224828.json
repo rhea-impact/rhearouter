@@ -1,0 +1,122 @@
+[
+  {
+    "success": true,
+    "response": "**Header:**\n```\nACME GROCERY STORE \n123 Main Street\n```\n\n**Body Text (List of Items with Prices):**\n```\nMilk 2% .............................................. $3.99\nBread ..................................................... $2.49\nEggs (12) .......................................... $4.99\nCheese ............................................... $5.49\nApples .................................................. $3.29\n```\n\n**Subtotal Section:**\n```\nSUBTOTAL                                 $20.25\nTAX (8%)                              $1.62\n\nTOTAL                                   $21.87\n```\n\n**Footer Text:**\n```\nTHANK YOU!\n```",
+    "total_time": 3.667134536000958,
+    "eval_count": 151,
+    "model": "minicpm-v:8b",
+    "image": "01_receipt.png",
+    "description": "Receipt with prices",
+    "expected_text": "$21.87",
+    "accuracy_score": 1.0,
+    "timestamp": "2025-11-24T22:47:46.594258"
+  },
+  {
+    "success": true,
+    "response": "```python\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\n# Calculate first 10 numbers\nfor i in range(10):\n    print(f\"fib({i}) = {fibonacci(i)})\")\n\n```\n### Explanation:\n\nThe image contains a Python script for calculating Fibonacci numbers. Here is the transcription of the text as it appears in the image, with an explanation of what each part does:\n\n```python\ndef fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\n# Calculate first 10 numbers\nfor i in range(10):\n    print(f\"fib({i}) = {fibonacci(i)})\")\n\n```\n\n### Explanation:\n\n1. **Function Definition**: \n   - `def fibonacci(n):` Defines a function named \"fibonacci\" that takes one argument, `n`.\n   \n2. **Base Case**:\n   - `if n <= 1:` Checks if the value of `n` is less than or equal to 1.\n     - If true: Returns `n` itself.\n\n3. **Recursive Call**:\n   - Otherwise (`return fibonacci(n-1) + fibonacci(n-2)`): Recursively calculates and returns the Fibonacci number for that index by summing up the previous two numbers in the sequence (one calculated recursively, one from before).\n\n4. **Main Program Block**:\n\n5. `for i in range(10):` Iterates over a loop that will run 10 times.\n\n6. `print(f\"fib({i}) = {fibonacci(i)})\":` Prints each Fibonacci number along with its index using formatted string literals.\n```",
+    "total_time": 9.683710457000416,
+    "eval_count": 365,
+    "model": "minicpm-v:8b",
+    "image": "02_code.png",
+    "description": "Python code",
+    "expected_text": "fibonacci",
+    "accuracy_score": 1.0,
+    "timestamp": "2025-11-24T22:47:56.278152"
+  },
+  {
+    "success": true,
+    "response": "**Title:**\nMeeting Notes - Nov 24\n\n**Body Text:**\n- Call John at 555-1234\n- Review Q4 budget report\n- Send email to marketing\n- Book flight to NYC\n- Deadline: Friday 5pm",
+    "total_time": 2.2544783689954784,
+    "eval_count": 58,
+    "model": "minicpm-v:8b",
+    "image": "03_handwritten.png",
+    "description": "Handwritten note",
+    "expected_text": "555-1234",
+    "accuracy_score": 1.0,
+    "timestamp": "2025-11-24T22:47:58.532786"
+  },
+  {
+    "success": true,
+    "response": "**Title:**\nQUARTERLY SALES REPORT\n\n**Subtitle:**\nQ3 2025\n\n**Table:**\n\n| Region       | Sales   | Growth |\n|--------------|---------|--------|\n| North        | $1.2M   | +15%   |\n| South        | $890K   | +8%    |\n| East         | $1.5M   | +22%   |\n| West         | $2.1M   | +31%   |\n\n**Body Text:**\nTotal Revenue: $5.69M",
+    "total_time": 3.9344162460038206,
+    "eval_count": 126,
+    "model": "minicpm-v:8b",
+    "image": "04_document.png",
+    "description": "Sales report table",
+    "expected_text": "$5.69M",
+    "accuracy_score": 1.0,
+    "timestamp": "2025-11-24T22:48:02.467368"
+  },
+  {
+    "success": true,
+    "response": "**License Plate:**\n\nABC-1234\n\n(Note: The background is blue, the license plate has a white rectangle with black font.)",
+    "total_time": 1.0675336860003881,
+    "eval_count": 31,
+    "model": "minicpm-v:8b",
+    "image": "05_plate.png",
+    "description": "License plate",
+    "expected_text": "ABC-1234",
+    "accuracy_score": 1.0,
+    "timestamp": "2025-11-24T22:48:03.535051"
+  },
+  {
+    "success": true,
+    "response": " The image displays a receipt with the following text:\n\n```\nACME GROCERY STORE\n123 MAIN STREET\n\nItem                               Price\n-----------------------------------\nMilk 4%                           $1.79\nBread (Wheat)                            $2.50\nEggs (Doz.)                             $3.19\nApples                                   $0.69\nCheese (Cheddar)                          $3.98\nTotal                                       $12.46\nSubtotal                                      $12.46\nTax                                            $0.52\nTotal                                           $12.98\n\nThank you,\nAMERICA'S FINEST GROCERY STORE \n```\n\nPlease note that the text \"AMERICA'S FINEST GROCERY STORE\" is likely a part of the image that is meant to be humorous or satirical, implying that Acme Grocery Store is being humorously referred to as America's finest. ",
+    "total_time": 5.674597122000705,
+    "eval_count": 247,
+    "model": "llava:7b",
+    "image": "01_receipt.png",
+    "description": "Receipt with prices",
+    "expected_text": "$21.87",
+    "accuracy_score": 0.0,
+    "timestamp": "2025-11-24T22:48:14.820505"
+  },
+  {
+    "success": true,
+    "response": " The image shows a computer screen displaying a terminal or command line interface with text output that includes programming code and mathematical expressions. Here is the text I can see:\n\n```\ndef fibonacci(n):\n    if n < 1:\n        return -1\n    elif n == 1:\n        return 0\n    else:\n        return (fibonacci(n-1) + fibonacci(n-2))/2\n\nprint(fibonacci(9))\n```\n\nThis is a Python function definition for the Fibonacci sequence, followed by a call to calculate the 9th number in the sequence and print it. The output should be approximately 16.873015842, which is the mathematical result of the Fibonacci sequence with numbers rounded to seven decimal places.\n\nPlease note that due to the limitations of text-based image recognition, there might be minor inaccuracies or inconsistencies in the extracted text. ",
+    "total_time": 5.675028801000735,
+    "eval_count": 220,
+    "model": "llava:7b",
+    "image": "02_code.png",
+    "description": "Python code",
+    "expected_text": "fibonacci",
+    "accuracy_score": 1.0,
+    "timestamp": "2025-11-24T22:48:20.495704"
+  },
+  {
+    "success": true,
+    "response": " The text in the image is as follows:\n \"Meeting Notes:\nNovember 21, 2023\nJohn Doe\n555-1234\nReview Q4 budget report\nEmail to marketing@example.com\nBook flight to NYC\nSend John Smith a message\nDeadline: 5PM Fri\"\n\nThe text is on a yellow background with a purple border. The date \"November 21, 2023\" appears at the top of the text. There are two phone numbers listed: \"Call 555-1234\" and an email address \"[john@example.com](mailto:john@example.com)\". The meeting notes mention a review of the Q4 budget report, an email to be sent to marketing, the need to book a flight to NYC, and to send a message to John Smith with a deadline of 5PM Friday. ",
+    "total_time": 5.326831913997012,
+    "eval_count": 205,
+    "model": "llava:7b",
+    "image": "03_handwritten.png",
+    "description": "Handwritten note",
+    "expected_text": "555-1234",
+    "accuracy_score": 1.0,
+    "timestamp": "2025-11-24T22:48:25.822698"
+  },
+  {
+    "success": true,
+    "response": " I'm unable to read or transcribe the text within an image. However, if you provide more context or describe what the text says, I might be able to assist you further. ",
+    "total_time": 1.563004659001308,
+    "eval_count": 40,
+    "model": "llava:7b",
+    "image": "04_document.png",
+    "description": "Sales report table",
+    "expected_text": "$5.69M",
+    "accuracy_score": 0.0,
+    "timestamp": "2025-11-24T22:48:27.385866"
+  },
+  {
+    "success": true,
+    "response": " The image contains the following text:\n\n- ABC-1234\n- 123 123 123 ",
+    "total_time": 1.3758739850018173,
+    "eval_count": 32,
+    "model": "llava:7b",
+    "image": "05_plate.png",
+    "description": "License plate",
+    "expected_text": "ABC-1234",
+    "accuracy_score": 1.0,
+    "timestamp": "2025-11-24T22:48:28.761885"
+  }
+]

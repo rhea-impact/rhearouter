@@ -1,0 +1,620 @@
+{
+  "iterations": [
+    {
+      "timestamp": "2025-11-25 11:16:54",
+      "iteration": "baseline",
+      "method": "qwen_only",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Single model baseline"
+    },
+    {
+      "timestamp": "2025-11-25 11:16:54",
+      "iteration": "baseline",
+      "method": "weighted_voting",
+      "score": 0.1067378252168112,
+      "output_preview": " Serial: XZ**Title:**\nBSERIMAL: : XK7 9842\nBE:TA  C\nMC6ODEL: RTX04090RTi  A \nS/N: 8AR32F 2B1C9D0E  \nM80:50:59\nUUID: 500AC: 00:01:A8:2B4:3C:C001\n\nVGA: 1920x1080@60Hz\nHDMI: 1920x1080@60Hz or higher\nDP: ",
+      "notes": "Character-level voting"
+    },
+    {
+      "timestamp": "2025-11-25 11:16:55",
+      "iteration": "iteration_1",
+      "method": "normalized_voting",
+      "score": 0.12173913043478261,
+      "output_preview": "Serial:Title:\nSERI4AL: TXK7ODE9842TBETA  \n\nMOD9ELC: RTX840903Ti  \nS/ 1N: 8A3F2BT1EC 9D0E  \nMAC: C: 80:50:59\nUU00:01:A8:2B:3C:B4D:5D74FF5C001\n\nVGA: 1920x1080@60Hz\nHDMI: 1920x1080@60Hz or higher\nDP: 192",
+      "notes": "With markdown/meta stripping"
+    },
+    {
+      "timestamp": "2025-11-25 11:16:58",
+      "iteration": "iteration_2",
+      "method": "llm_consensus",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Qwen arbitrates other outputs"
+    },
+    {
+      "timestamp": "2025-11-25 11:18:24",
+      "iteration": "baseline",
+      "method": "qwen_only",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Single model baseline"
+    },
+    {
+      "timestamp": "2025-11-25 11:18:24",
+      "iteration": "baseline",
+      "method": "weighted_voting",
+      "score": 0.13027916964924838,
+      "output_preview": " S**SERIAX6L:**4 XK7et984TI2850BETA el \n**XMODE\nL:: *AB* RTC\nXe4090 Ti  \n*00*\n\nS/N:in** 8pA:3SF2B1C9D0E  \nct*re*MAC:ll** 00:01: A8:2Processor Type: Intel(R) Core(TM) i99880H\nProcessor Speed: 3.0 GHz\nP",
+      "notes": "Character-level voting"
+    },
+    {
+      "timestamp": "2025-11-25 11:18:24",
+      "iteration": "iteration_1",
+      "method": "normalized_voting",
+      "score": 0.1363962670495334,
+      "output_preview": "SERIAL: XK7998482BBEa:TA  \nMODEL:d RTXRT44090STi  \nS/N: 8A3Fnd2B1C9D0E 0 0\n\nMAC: 00:01:A: 8:2B:3C:4D:5E  u\nUUI Dell\nChassis: AX1\nProcessor Type: Intel(R) Core(TM) i99880H\nProcessor Speed: 3.0 GHz\nProc",
+      "notes": "With markdown/meta stripping"
+    },
+    {
+      "timestamp": "2025-11-25 11:18:28",
+      "iteration": "iteration_2",
+      "method": "llm_consensus_all",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Qwen arbitrates all outputs"
+    },
+    {
+      "timestamp": "2025-11-25 11:18:31",
+      "iteration": "iteration_3",
+      "method": "llm_consensus_good",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Exclude LLaVA garbage"
+    },
+    {
+      "timestamp": "2025-11-25 11:18:42",
+      "iteration": "iteration_4",
+      "method": "self_consistency",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Qwen reads 3x, picks best"
+    },
+    {
+      "timestamp": "2025-11-25 11:19:43",
+      "iteration": "baseline",
+      "method": "qwen_only",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Single model baseline"
+    },
+    {
+      "timestamp": "2025-11-25 11:19:43",
+      "iteration": "baseline",
+      "method": "weighted_voting",
+      "score": 0.2118491921005386,
+      "output_preview": " Serial: X81X901511\nType**Text\n Struc:ture:9**\n\nt : 20**SERI03AL:#e: XK:72994\n42JBEE7A\ns **MO.DEL:** RTXM4999ddreTi\nSW\n: 841DAF2381seC901ER\nMAC: 00:0ord: 000000000\nOther MAC Address: A7:C3:D0:19:F3:3E",
+      "notes": "Character-level voting"
+    },
+    {
+      "timestamp": "2025-11-25 11:19:43",
+      "iteration": "iteration_1",
+      "method": "normalized_voting",
+      "score": 0.23655913978494625,
+      "output_preview": "Serial: X81X901511Text StructuNre:\n\n:  SERI7\nAL#: XK729/94/0342iJBE 1E7A\n: MODEL: RTXs4:95R2996Ti\n. SW: 841F2381C901E\nAMAC: 00:0C:29:3Brname: UID\nPassword: 000000000\nOther MAC Address: A7:C3:D0:19:F3:",
+      "notes": "With markdown/meta stripping"
+    },
+    {
+      "timestamp": "2025-11-25 11:19:47",
+      "iteration": "iteration_2",
+      "method": "llm_consensus_all",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen arbitrates all outputs"
+    },
+    {
+      "timestamp": "2025-11-25 11:19:50",
+      "iteration": "iteration_3",
+      "method": "llm_consensus_good",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Exclude LLaVA garbage"
+    },
+    {
+      "timestamp": "2025-11-25 11:20:02",
+      "iteration": "iteration_4",
+      "method": "self_consistency",
+      "score": 0.7296137339055794,
+      "output_preview": "SERIAL#: XKT-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F23B13901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen reads 3x, picks best"
+    },
+    {
+      "timestamp": "2025-11-25 11:22:57",
+      "iteration": "baseline",
+      "method": "qwen_only",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Single model baseline"
+    },
+    {
+      "timestamp": "2025-11-25 11:22:57",
+      "iteration": "baseline",
+      "method": "weighted_voting",
+      "score": 0.6459143968871596,
+      "output_preview": "**Text Layout:**\n\n```\nSERIAL#: XK799442BEE7A\nMODEL: RTXK4999Ti\nSNW: 841F2381C901E\n\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID#**: 5561e84099e295b",
+      "notes": "Character-level voting"
+    },
+    {
+      "timestamp": "2025-11-25 11:22:57",
+      "iteration": "iteration_1",
+      "method": "normalized_voting",
+      "score": 0.6613545816733067,
+      "output_preview": "Text Layout:\n\n```\nSERIAL#: XK799442BEE7A\nMODEL: RTXK4999Ti\nSNW: 841F2381C901E\n\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID#: 5561e84099e295b",
+      "notes": "With markdown/meta stripping"
+    },
+    {
+      "timestamp": "2025-11-25 11:23:00",
+      "iteration": "iteration_2",
+      "method": "llm_consensus_all",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen arbitrates all outputs"
+    },
+    {
+      "timestamp": "2025-11-25 11:23:03",
+      "iteration": "iteration_3",
+      "method": "llm_consensus_good",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Exclude LLaVA garbage"
+    },
+    {
+      "timestamp": "2025-11-25 11:23:16",
+      "iteration": "iteration_4",
+      "method": "self_consistency",
+      "score": 0.7296137339055794,
+      "output_preview": "SERIAL#: XKT-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F23B13901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen reads 3x, picks best"
+    },
+    {
+      "timestamp": "2025-11-25 11:23:19",
+      "iteration": "iteration_5",
+      "method": "verification_pass",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen verifies its own output"
+    },
+    {
+      "timestamp": "2025-11-25 11:24:12",
+      "iteration": "baseline",
+      "method": "qwen_only",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Single model baseline"
+    },
+    {
+      "timestamp": "2025-11-25 11:24:13",
+      "iteration": "baseline",
+      "method": "weighted_voting",
+      "score": 0.3446153846153846,
+      "output_preview": " Serial  2**Title:**\nS1E1X62RI11F48\nIAL#: XK709218M94\n\n **SuD:3E:9B:1F:b0:3A:42tFBEE7A\nMODEL: RTX.4999II\n\n**Body Text:*i\nSNW: 84:1F2381C901E\nMAC: 8\nUser Name  MARKETING_SERVER\nPassword  ADMINISTRATOR\n",
+      "notes": "Character-level voting"
+    },
+    {
+      "timestamp": "2025-11-25 11:24:13",
+      "iteration": "iteration_1",
+      "method": "normalized_voting",
+      "score": 0.39751552795031053,
+      "output_preview": "Serial Title:\nSERIABLA111#:24 XFK7\n9218 94\n\nS42t1BEE7  5C:0D:AE:9\nMOFDEL: RTXB4999EI\n\nBody Texti\nSNW: 841F2381C901E\n8MAC: 00:0C:29:3B:00:5D4D:9078\nUser Name  MARKETING_SERVER\nPassword  ADMINISTRATOR",
+      "notes": "With markdown/meta stripping"
+    },
+    {
+      "timestamp": "2025-11-25 11:24:16",
+      "iteration": "iteration_2",
+      "method": "llm_consensus_all",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen arbitrates all outputs"
+    },
+    {
+      "timestamp": "2025-11-25 11:24:19",
+      "iteration": "iteration_3",
+      "method": "llm_consensus_good",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Exclude LLaVA garbage"
+    },
+    {
+      "timestamp": "2025-11-25 11:24:31",
+      "iteration": "iteration_4",
+      "method": "self_consistency",
+      "score": 0.7296137339055794,
+      "output_preview": "SERIAL#: XKT-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F23B13901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen reads 3x, picks best"
+    },
+    {
+      "timestamp": "2025-11-25 11:24:34",
+      "iteration": "iteration_5",
+      "method": "verification_pass",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen verifies its own output"
+    },
+    {
+      "timestamp": "2025-11-25 11:24:38",
+      "iteration": "iteration_6",
+      "method": "focused_reread",
+      "score": 0.7043478260869566,
+      "output_preview": "SERIAL: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nS/N: 841F23613901E\nMAC: 09:04:39:30:40:5E\nUUID: 5561e84099e295b",
+      "notes": "Detailed prompt with format hints"
+    },
+    {
+      "timestamp": "2025-11-25 14:28:11",
+      "iteration": "baseline",
+      "method": "qwen_only",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Single model baseline"
+    },
+    {
+      "timestamp": "2025-11-25 14:28:12",
+      "iteration": "baseline",
+      "method": "weighted_voting",
+      "score": 0.20567375886524822,
+      "output_preview": " *er*Title:*xxt12*\nS88045160\nSerial: /N\n\n*3*Body8045160 TextElRIAL#x: 53345678045160\nSe6240a9EXK781D\n\n**Table2/Column99442\n BEE7AL#: SN#x \n1 MODEL#: RTX_4999 ",
+      "notes": "Character-level voting"
+    },
+    {
+      "timestamp": "2025-11-25 14:28:12",
+      "iteration": "iteration_1",
+      "method": "normalized_voting",
+      "score": 0.21352313167259787,
+      "output_preview": "Teritle:\nS/xxt1293N\n\n045160\nSerial: Body 3TeERI8045160AL#: 5l36240x9EXK345678045160\nSe781Da\n\nTable/Colu9944223 BEE7AL#: SN# \ni MODEL#: xRTX_499960B I (not cl",
+      "notes": "With markdown/meta stripping"
+    },
+    {
+      "timestamp": "2025-11-25 14:28:15",
+      "iteration": "iteration_2",
+      "method": "llm_consensus_all",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen arbitrates all outputs"
+    },
+    {
+      "timestamp": "2025-11-25 14:28:18",
+      "iteration": "iteration_3",
+      "method": "llm_consensus_good",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Exclude LLaVA garbage"
+    },
+    {
+      "timestamp": "2025-11-25 14:28:30",
+      "iteration": "iteration_4",
+      "method": "self_consistency",
+      "score": 0.7296137339055794,
+      "output_preview": "SERIAL#: XKT-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F23B13901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen reads 3x, picks best"
+    },
+    {
+      "timestamp": "2025-11-25 14:28:33",
+      "iteration": "iteration_5",
+      "method": "verification_pass",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen verifies its own output"
+    },
+    {
+      "timestamp": "2025-11-25 14:28:36",
+      "iteration": "iteration_6",
+      "method": "focused_reread",
+      "score": 0.7043478260869566,
+      "output_preview": "SERIAL: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nS/N: 841F23613901E\nMAC: 09:04:39:30:40:5E\nUUID: 5561e84099e295b",
+      "notes": "Detailed prompt with format hints"
+    },
+    {
+      "timestamp": "2025-11-25 14:29:21",
+      "iteration": "creative_1",
+      "method": "diverse_views",
+      "score": 0.09868766404199475,
+      "output_preview": "Let's compare the readings character-by-character to identify the most accurate version of the image.\n\n### Original:\n- SERIAL#: XK7-99442-BEE7A\n- MODEL: RTX-4999-Ti\n- SW: 841F23813901E\n- MAC: 00:02:04",
+      "notes": "Original + contrast + sharp + scaled"
+    },
+    {
+      "timestamp": "2025-11-25 14:29:30",
+      "iteration": "creative_2",
+      "method": "bear_grylls",
+      "score": 0.3598326359832636,
+      "output_preview": "Based on the image, here are the corrected values:\n\n1. In the serial number, it is '9442'.\n2. In the MAC address, the exact hex values are: `00:0C:29:3B:3C:4D:5E`.\n3. In the UUID, the segments are: `5",
+      "notes": "Identify and re-verify ambiguous chars"
+    },
+    {
+      "timestamp": "2025-11-25 14:31:34",
+      "iteration": "creative_3",
+      "method": "line_zoom",
+      "score": 0.46601941747572817,
+      "output_preview": "SERIALA = XKT-9841-HEA\nMODEL: HXX-4999D-TM\nS/N: 884528KCODE\nWE: 09/07/2023\n!t!\n!t!",
+      "notes": "Read each line separately, zoomed"
+    },
+    {
+      "timestamp": "2025-11-25 14:31:39",
+      "iteration": "creative_4",
+      "method": "adversarial",
+      "score": 0.34331337325349304,
+      "output_preview": "Your reading of the text appears to be correct. Here is the text as you have read it:\n\nSERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b\n\nTh",
+      "notes": "Actively try to find errors"
+    },
+    {
+      "timestamp": "2025-11-25 14:31:46",
+      "iteration": "creative_5",
+      "method": "char_uncertainty",
+      "score": 0.7477477477477478,
+      "output_preview": "SERIAL: XK7-9842-BEE7A\nMODEL: RTX-499i\nSW: 8A1F23B1C90E\nMAC: 00:0C:29:304D:5E\nUUID: 5561e8409-e29b",
+      "notes": "Mark [?X?] then re-examine"
+    },
+    {
+      "timestamp": "2025-11-25 14:32:04",
+      "iteration": "creative_6",
+      "method": "multipass",
+      "score": 0.2088167053364269,
+      "output_preview": "The provided text contains alphanumeric codes and MAC addresses. Here is the corrected version focusing only on the numbers and alphanumeric codes:\n\n- SERIAL#: XK7-99442-BEE7A\n- MODEL: RTX-4999-Ti\n- S",
+      "notes": "Quick read -> verify numbers -> sanity check"
+    },
+    {
+      "timestamp": "2025-11-25 14:33:26",
+      "iteration": "baseline",
+      "method": "qwen_only",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Single model baseline"
+    },
+    {
+      "timestamp": "2025-11-25 14:33:26",
+      "iteration": "baseline",
+      "method": "weighted_voting",
+      "score": 0.3813387423935091,
+      "output_preview": "SERIAL#: XK7on9944s2eBEE7A\nMODEL: RaTXwit4 98e099lTi\n\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84083 X89 X94 X95 X97 X98 X99 X100\n118 120 131 133 134 136 137 138 139 142 143 144 145 146 ",
+      "notes": "Character-level voting"
+    },
+    {
+      "timestamp": "2025-11-25 14:33:26",
+      "iteration": "iteration_1",
+      "method": "normalized_voting",
+      "score": 0.6694915254237288,
+      "output_preview": "SERIAL#: XK7on9944s2aBEE7A\nMODEL: RaTXwit4 98e099lTi\n\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e840",
+      "notes": "With markdown/meta stripping"
+    },
+    {
+      "timestamp": "2025-11-25 14:33:29",
+      "iteration": "iteration_2",
+      "method": "llm_consensus_all",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen arbitrates all outputs"
+    },
+    {
+      "timestamp": "2025-11-25 14:33:33",
+      "iteration": "iteration_3",
+      "method": "llm_consensus_good",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Exclude LLaVA garbage"
+    },
+    {
+      "timestamp": "2025-11-25 14:33:45",
+      "iteration": "iteration_4",
+      "method": "self_consistency",
+      "score": 0.7296137339055794,
+      "output_preview": "SERIAL#: XKT-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F23B13901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen reads 3x, picks best"
+    },
+    {
+      "timestamp": "2025-11-25 14:33:48",
+      "iteration": "iteration_5",
+      "method": "verification_pass",
+      "score": 0.7381974248927039,
+      "output_preview": "SERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b",
+      "notes": "Qwen verifies its own output"
+    },
+    {
+      "timestamp": "2025-11-25 14:33:51",
+      "iteration": "iteration_6",
+      "method": "focused_reread",
+      "score": 0.7043478260869566,
+      "output_preview": "SERIAL: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nS/N: 841F23613901E\nMAC: 09:04:39:30:40:5E\nUUID: 5561e84099e295b",
+      "notes": "Detailed prompt with format hints"
+    },
+    {
+      "timestamp": "2025-11-25 14:34:36",
+      "iteration": "creative_1",
+      "method": "diverse_views",
+      "score": 0.09868766404199475,
+      "output_preview": "Let's compare the readings character-by-character to identify the most accurate version of the image.\n\n### Original:\n- SERIAL#: XK7-99442-BEE7A\n- MODEL: RTX-4999-Ti\n- SW: 841F23813901E\n- MAC: 00:02:04",
+      "notes": "Original + contrast + sharp + scaled"
+    },
+    {
+      "timestamp": "2025-11-25 14:34:45",
+      "iteration": "creative_2",
+      "method": "bear_grylls",
+      "score": 0.3598326359832636,
+      "output_preview": "Based on the image, here are the corrected values:\n\n1. In the serial number, it is '9442'.\n2. In the MAC address, the exact hex values are: `00:0C:29:3B:3C:4D:5E`.\n3. In the UUID, the segments are: `5",
+      "notes": "Identify and re-verify ambiguous chars"
+    },
+    {
+      "timestamp": "2025-11-25 14:36:49",
+      "iteration": "creative_3",
+      "method": "line_zoom",
+      "score": 0.46601941747572817,
+      "output_preview": "SERIALA = XKT-9841-HEA\nMODEL: HXX-4999D-TM\nS/N: 884528KCODE\nWE: 09/07/2023\n!t!\n!t!",
+      "notes": "Read each line separately, zoomed"
+    },
+    {
+      "timestamp": "2025-11-25 14:36:54",
+      "iteration": "creative_4",
+      "method": "adversarial",
+      "score": 0.34331337325349304,
+      "output_preview": "Your reading of the text appears to be correct. Here is the text as you have read it:\n\nSERIAL#: XK7-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F2381C901E\nMAC: 00:0C:29:3B:3C:4D:5E\nUUID: 5561e84099e295b\n\nTh",
+      "notes": "Actively try to find errors"
+    },
+    {
+      "timestamp": "2025-11-25 14:37:00",
+      "iteration": "creative_5",
+      "method": "char_uncertainty",
+      "score": 0.7477477477477478,
+      "output_preview": "SERIAL: XK7-9842-BEE7A\nMODEL: RTX-499i\nSW: 8A1F23B1C90E\nMAC: 00:0C:29:304D:5E\nUUID: 5561e8409-e29b",
+      "notes": "Mark [?X?] then re-examine"
+    },
+    {
+      "timestamp": "2025-11-25 14:37:18",
+      "iteration": "creative_6",
+      "method": "multipass",
+      "score": 0.2088167053364269,
+      "output_preview": "The provided text contains alphanumeric codes and MAC addresses. Here is the corrected version focusing only on the numbers and alphanumeric codes:\n\n- SERIAL#: XK7-99442-BEE7A\n- MODEL: RTX-4999-Ti\n- S",
+      "notes": "Quick read -> verify numbers -> sanity check"
+    },
+    {
+      "timestamp": "2025-11-25 14:37:21",
+      "iteration": "winner_v2",
+      "method": "uncertainty_v2",
+      "score": 0.7510917030567685,
+      "output_preview": "SERIAL: XK7-9842-8E7A\nMODEL: RTX-4990-Ti\nSW: 8A1F2381C901E\nMAC: 00:0C:29:38:3C:4D:EE\nUUID: 5561e84091e29b",
+      "notes": "Mark [?X/Y?] alternatives, then resolve"
+    },
+    {
+      "timestamp": "2025-11-25 14:37:26",
+      "iteration": "creative_7",
+      "method": "region_specialist",
+      "score": 0.6346863468634686,
+      "output_preview": "FIELD: SERIAL/MODEL: XK7-99442-BEE7A\nFIELD: MODEL: RTX-4999-Ti\nFIELD: S/N: 8A1F23B13901E\nFIELD: MAC: 00:0C:29:3B:3C:4D\nFIELD: UUID: 5561e84091e295b",
+      "notes": "Field-type-aware reading"
+    },
+    {
+      "timestamp": "2025-11-25 14:38:11",
+      "iteration": "baseline",
+      "method": "qwen_only",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Single model baseline"
+    },
+    {
+      "timestamp": "2025-11-25 14:38:11",
+      "iteration": "baseline",
+      "method": "weighted_voting",
+      "score": 0.15458937198067632,
+      "output_preview": " X7984Title:019517\nX52A SERI5AL:\n3BodyA 06\nSN: 89AText:\nMODEL: RTX XK70\n9842ALBNEMBER: 89ABTA\nF\n\nSN: D4E1\nSubtitle: MODPER MICRO SOL:\nT FB\nSERIALBody ET:eDxt: RTX\n4090: 4990\nSTICKTi\n\nUMBER: A5B0Subtit",
+      "notes": "Character-level voting"
+    },
+    {
+      "timestamp": "2025-11-25 14:38:11",
+      "iteration": "iteration_1",
+      "method": "normalized_voting",
+      "score": 0.14993954050785974,
+      "output_preview": "X79842Title:19517\nX52A4 SERI2AL:\n\nBody4 6\nSN: 89ABText:MODEL: RTX  XK7\nS9842L BUEBER: 89ABCTA\n\n\nSN: D4E12\nSubtitle: MODEE MICRO SOCL:\n FB\nSERIAL Body RT e4xt: RTX\n4090 4990\nSTICKETi\n\nMBER: A5B0\nSubtit",
+      "notes": "With markdown/meta stripping"
+    },
+    {
+      "timestamp": "2025-11-25 14:38:15",
+      "iteration": "iteration_2",
+      "method": "llm_consensus_all",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Qwen arbitrates all outputs"
+    },
+    {
+      "timestamp": "2025-11-25 14:38:17",
+      "iteration": "iteration_3",
+      "method": "llm_consensus_good",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Exclude LLaVA garbage"
+    },
+    {
+      "timestamp": "2025-11-25 14:38:29",
+      "iteration": "iteration_4",
+      "method": "self_consistency",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Qwen reads 3x, picks best"
+    },
+    {
+      "timestamp": "2025-11-25 14:38:31",
+      "iteration": "iteration_5",
+      "method": "verification_pass",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Qwen verifies its own output"
+    },
+    {
+      "timestamp": "2025-11-25 14:38:34",
+      "iteration": "iteration_6",
+      "method": "focused_reread",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Detailed prompt with format hints"
+    },
+    {
+      "timestamp": "2025-11-25 14:39:07",
+      "iteration": "creative_1",
+      "method": "diverse_views",
+      "score": 0.1588850174216028,
+      "output_preview": "Let's compare the readings character-by-character to identify the most accurate version of the image.\n\n### Original:\n```\nSERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:",
+      "notes": "Original + contrast + sharp + scaled"
+    },
+    {
+      "timestamp": "2025-11-25 14:39:17",
+      "iteration": "creative_2",
+      "method": "bear_grylls",
+      "score": 0.4204322200392927,
+      "output_preview": "Based on the image, here are the corrected values:\n\n1. In the serial number, it is '9842'.\n2. In the MAC address, the exact hex values are `00:1A:2B:3C:4D:5E`.\n3. In the UUID, the segments are `550e84",
+      "notes": "Identify and re-verify ambiguous chars"
+    },
+    {
+      "timestamp": "2025-11-25 14:39:23",
+      "iteration": "creative_3",
+      "method": "line_zoom",
+      "score": 0.7292418772563177,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX 4090 Ti\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00-1A-2B-3C-4D-EE\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-0-e29b\n!t!\n!t!",
+      "notes": "Read each line separately, zoomed"
+    },
+    {
+      "timestamp": "2025-11-25 14:39:29",
+      "iteration": "creative_4",
+      "method": "adversarial",
+      "score": 0.3623445825932504,
+      "output_preview": "The text in the image appears to be:\n\nSERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b\n\nYour reading looks correct. There are no obvious errors or ",
+      "notes": "Actively try to find errors"
+    },
+    {
+      "timestamp": "2025-11-25 14:39:31",
+      "iteration": "creative_5",
+      "method": "char_uncertainty",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Mark [?X?] then re-examine"
+    },
+    {
+      "timestamp": "2025-11-25 14:40:01",
+      "iteration": "creative_6",
+      "method": "multipass",
+      "score": 0.18487394957983194,
+      "output_preview": "The MAC address and UUID are already correctly formatted. The serial number and S/N are also correctly formatted. The UUID has a slight discrepancy in the last part, which should be `550e8400-e29b-52d",
+      "notes": "Quick read -> verify numbers -> sanity check"
+    },
+    {
+      "timestamp": "2025-11-25 14:40:04",
+      "iteration": "winner_v2",
+      "method": "uncertainty_v2",
+      "score": 0.8977777777777778,
+      "output_preview": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+      "notes": "Mark [?X/Y?] alternatives, then resolve"
+    },
+    {
+      "timestamp": "2025-11-25 14:40:08",
+      "iteration": "creative_7",
+      "method": "region_specialist",
+      "score": 0.7769230769230769,
+      "output_preview": "FIELD: SERIAL: XK7-9842-BETA\nFIELD: MODEL: RTX-4090-Ti\nFIELD: S/N: 8A3F2B1C9D0E\nFIELD: MAC: 00:1A:2B:3C:4D:5E\nFIELD: UUID: 550e8400-e29b",
+      "notes": "Field-type-aware reading"
+    }
+  ]
+}

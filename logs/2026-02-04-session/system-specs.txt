@@ -1,0 +1,94 @@
+# System Specifications - dsthink
+**Analyzed:** February 4, 2026
+
+## Hardware
+
+### CPU
+Model: Intel Core i9-12950HX (12th Gen, Alder Lake)
+Cores: 16 cores / 24 threads (Hyper-Threading)
+Clock: 800 MHz - 5000 MHz (base/boost)
+Cache:
+  - L1d: 640 KiB
+  - L1i: 768 KiB
+  - L2: 14 MiB
+  - L3: 30 MiB
+Features: VT-x, AVX2, AES-NI, SHA-NI
+
+### GPU
+Primary: NVIDIA RTX A2000 8GB Laptop GPU
+  - VRAM: 8192 MiB (8 GB GDDR6)
+  - Driver: 580.95.05
+  - Compute Capability: 8.6
+  - Architecture: Ampere (GA107GLM)
+
+Integrated: Intel UHD Graphics 770 (Alder Lake-HX GT1)
+
+### Memory
+Total RAM: 32 GB DDR4
+Swap: 17 GB
+Current usage: ~12-13 GB used, 18 GB available
+
+### Storage
+Drive: 954 GB NVMe SSD (nvme0n1)
+Partitions:
+  - /boot/efi: 260 MB (EFI boot)
+  - /dev/nvme0n1p5: 47 GB (root /) - ext4
+  - /dev/nvme0n1p6: 130 GB (/home) - ext4
+  - /dev/nvme0n1p7: 17 GB (swap)
+  - Windows: 756 GB (BitLocker encrypted)
+
+### Networking
+WiFi: Intel Alder Lake-S PCH CNVi WiFi
+
+### Firmware
+BIOS: N3FET45W (1.69)
+Date: September 10, 2025
+
+## Software Environment
+
+### Operating System
+Distribution: Ubuntu 24.04.3 LTS
+Kernel: Linux 6.14.0-35-generic
+Architecture: x86-64
+Hostname: dsthink
+
+### AI Infrastructure
+Ollama: Installed and configured
+Models location: /home/djshanklin/ollama-models
+Ollama user: ollama
+
+### Disk Usage (After Cleanup)
+Root partition (/):
+  - Total: 47 GB
+  - Used: 21 GB (48%)
+  - Free: 24 GB
+  - Critical space recovered: 23 GB
+
+Home partition (/home):
+  - Total: 130 GB
+  - Used: 40 GB (34%)
+  - Free: 81 GB
+  - Model storage: 23 GB
+
+## Performance Characteristics
+
+### Expected Inference Performance
+Vision (single model): 10-20 req/hour (3-5s latency)
+Text (single model): 100-200 req/hour (1-2s latency)
+Mixed workload: 30-60 req/hour
+
+### VRAM Constraints
+- Can load one 7-8B model at a time
+- Q4 quantization: 4.5-6.2 GB per model
+- MoE 30B (Nemotron-3-Nano): 6-8 GB
+- Model swap cooldown: 5 seconds
+
+### Thermal Considerations
+- 24/7 operation: Laptop cooling pad recommended
+- Alert threshold: 80°C GPU temp
+- Monitor: nvidia-smi
+
+## Cost Analysis
+Electricity: ~150W average, 8 hrs/day = $4.40/month
+Replacing: $180-600/month in cloud API costs
+ROI: Immediate

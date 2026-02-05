@@ -1,0 +1,1461 @@
+{
+  "metadata": {
+    "timestamp": "2025-11-25T02:38:54.173395",
+    "num_texts": 3,
+    "num_degradations": 18,
+    "individual_models": [
+      "qwen2.5vl:7b",
+      "minicpm-v:8b",
+      "llava:7b"
+    ],
+    "ensemble_techniques": [
+      "weighted_voting",
+      "escalation_chain",
+      "socratic_debate"
+    ]
+  },
+  "individual_results": {
+    "qwen2.5vl:7b": {
+      "receipt_clean": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\n\nLatte        $4.50\nCroissant    $3.25\nTip          $1.25\n-------------------\nTOTAL:       $9.00\n\nThank you!",
+        "time": 2.265071725996677,
+        "accuracy": {
+          "sequence_similarity": 0.992,
+          "word_recall": 0.9444444444444444,
+          "char_similarity": 0.9907407407407407,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9817962962962963
+        }
+      },
+      "invoice_clean": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "INVOICE #2847\nAcme\nAcme Corporation\nbilling\nbilling@acme.com.com\n\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\n\nDue: 12/15/2025",
+        "time": 3.5389935440034606,
+        "accuracy": {
+          "sequence_similarity": 0.9396825396825397,
+          "word_recall": 0.9545454545454546,
+          "char_similarity": 0.9407407407407408,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9587421837421838
+        }
+      },
+      "serial_number_clean": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+        "time": 2.9690486890031025,
+        "accuracy": {
+          "sequence_similarity": 1.0,
+          "word_recall": 1.0,
+          "char_similarity": 1.0,
+          "number_accuracy": 1.0,
+          "combined_score": 1.0
+        }
+      },
+      "receipt_motion_blur_heavy": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2015\nLattie: $4.50\nCroissant: $3.25\nTip: $1.25\nTOTAL: $9.00\nThank you!",
+        "time": 2.6564995190055924,
+        "accuracy": {
+          "sequence_similarity": 0.8974358974358975,
+          "word_recall": 0.7222222222222222,
+          "char_similarity": 0.8855721393034826,
+          "number_accuracy": 0.875,
+          "combined_score": 0.8450575647404006
+        }
+      },
+      "receipt_thermal_fade": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "COFFEE SHOP\n123 Main Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\n-------------------------\nTOTAL: $9.00\nThank you!",
+        "time": 2.57155882200459,
+        "accuracy": {
+          "sequence_similarity": 0.9501915708812261,
+          "word_recall": 0.9444444444444444,
+          "char_similarity": 0.9469026548672567,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9603846675482318
+        }
+      },
+      "receipt_phone_photo_bad": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.51\nCroissant $3.21\nTip $1.21\nTOTAL: $9.01\nThank you!",
+        "time": 2.6422230410025804,
+        "accuracy": {
+          "sequence_similarity": 0.8869565217391304,
+          "word_recall": 0.7222222222222222,
+          "char_similarity": 0.8730964467005076,
+          "number_accuracy": 0.5,
+          "combined_score": 0.745568797665465
+        }
+      },
+      "receipt_ultimate_stress": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "COFFEE SHOP\n123 Main Street\nDate: 11/26/2013\nLatte\n$4.51\nCrescent\n$3.21\nTip\n$1.29\nTotal:\n$9.01\nThank you!",
+        "time": 2.671446988999378,
+        "accuracy": {
+          "sequence_similarity": 0.8296943231441049,
+          "word_recall": 0.6111111111111112,
+          "char_similarity": 0.8061224489795918,
+          "number_accuracy": 0.25,
+          "combined_score": 0.624231970808702
+        }
+      },
+      "invoice_motion_blur_heavy": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "INVOICE #2847\nAcme Corporation\nbilling@acme.com\nItem: Widget Pro\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2023",
+        "time": 3.28496248099691,
+        "accuracy": {
+          "sequence_similarity": 0.9863945578231292,
+          "word_recall": 0.9090909090909091,
+          "char_similarity": 0.9881422924901185,
+          "number_accuracy": 0.9,
+          "combined_score": 0.9459069398510392
+        }
+      },
+      "invoice_thermal_fade": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "INVOICE #2847\nAcme Corporation\nbilling@acme.com\n\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\n\nDue: 12/15/2025",
+        "time": 3.3297916630035616,
+        "accuracy": {
+          "sequence_similarity": 0.9932885906040269,
+          "word_recall": 1.0,
+          "char_similarity": 0.996078431372549,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9973417554941439
+        }
+      },
+      "invoice_phone_photo_bad": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "INVOICE #2847\nAcme Corporation\nbilling@acme.com\nItem: Widget Pro X\nItem: 5 @ $29.99\nQty: 5\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+        "time": 3.51313617300184,
+        "accuracy": {
+          "sequence_similarity": 0.9605263157894737,
+          "word_recall": 1.0,
+          "char_similarity": 0.9615384615384616,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9805161943319838
+        }
+      },
+      "invoice_ultimate_stress": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "INVOICE #2947\nArma Corporation\nBilling@arma.com\nItem: Widget Pro X\nQty: 5\nSubtotal: $29.99\nTax (10%): $1.99\nTotal: $31.98\nDue: 12/15/2025",
+        "time": 3.181520518002799,
+        "accuracy": {
+          "sequence_similarity": 0.8701754385964913,
+          "word_recall": 0.6363636363636364,
+          "char_similarity": 0.8571428571428571,
+          "number_accuracy": 0.5,
+          "combined_score": 0.7159204830257462
+        }
+      },
+      "serial_number_motion_blur_heavy": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "SERIAL#: XKT-99442-BEE7A\nMODEL: RTX-4999-Ti\nSW: 841F23813901E\nMAC: 00:02:04:39:30:40:55\nUUID: 5561e84099-e29b",
+        "time": 3.238467163995665,
+        "accuracy": {
+          "sequence_similarity": 0.7619047619047619,
+          "word_recall": 0.3,
+          "char_similarity": 0.7395833333333334,
+          "number_accuracy": 0.2,
+          "combined_score": 0.5003720238095238
+        }
+      },
+      "serial_number_thermal_fade": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+        "time": 2.9794464919978054,
+        "accuracy": {
+          "sequence_similarity": 1.0,
+          "word_recall": 1.0,
+          "char_similarity": 1.0,
+          "number_accuracy": 1.0,
+          "combined_score": 1.0
+        }
+      },
+      "serial_number_phone_photo_bad": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "S.P.S.M. = 147 + 3862 + 2874\nM.O.S.M. = 473 + 4686 + 24\nS.M. = 5840 + 5840 + 3088\nM.S. = 44 + 12 + 5 + 40 + 38\nM.S.M. = 550 + 402 + 679",
+        "time": 3.977935474998958,
+        "accuracy": {
+          "sequence_similarity": 0.2033898305084746,
+          "word_recall": 0.0,
+          "char_similarity": 0.17989417989417988,
+          "number_accuracy": 0.13333333333333333,
+          "combined_score": 0.12915433593399694
+        }
+      },
+      "serial_number_ultimate_stress": {
+        "success": true,
+        "model": "qwen2.5vl:7b",
+        "text": "S/N: MT-5802-38024\nMODEL: 871-58024-73\nS/N: MT-5802-38024\nMODEL: 871-58024-73",
+        "time": 2.5368171090012765,
+        "accuracy": {
+          "sequence_similarity": 0.38202247191011235,
+          "word_recall": 0.2,
+          "char_similarity": 0.32098765432098764,
+          "number_accuracy": 0.0,
+          "combined_score": 0.225752531557775
+        }
+      }
+    },
+    "minicpm-v:8b": {
+      "receipt_clean": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "Title: COFFEE SHOP\n\nAddress:\n123 Main Street  \nDate: 11/24/2025  \n\nMenu Items with Prices:\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.25\n\nTotal Amount Displayed: TOTAL: $9.00  \nThank you!",
+        "time": 1.835439780006709,
+        "accuracy": {
+          "sequence_similarity": 0.7133333333333334,
+          "word_recall": 0.9444444444444444,
+          "char_similarity": 0.7058823529411765,
+          "number_accuracy": 1.0,
+          "combined_score": 0.8409150326797385
+        }
+      },
+      "invoice_clean": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "**Title:**\nINVOICE #2847\n\n**Company Information:**\nAcme Corporation  \nbilling@acme.com  \n\n**Item Details:**\n- Item: Widget Pro X  \n- Qty: 5 @ $29.99  \n- Subtotal: $149.95  \n- Tax (8%): $12.00  \n- TOTAL: $161.95\n\n**Due Date:**\nDue: 12/15/2025",
+        "time": 2.84900442900107,
+        "accuracy": {
+          "sequence_similarity": 0.7914438502673797,
+          "word_recall": 1.0,
+          "char_similarity": 0.79375,
+          "number_accuracy": 1.0,
+          "combined_score": 0.8962984625668449
+        }
+      },
+      "serial_number_clean": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "Here is the transcription of the text from the provided image, structured to reflect its layout:\n\n```\nSERIAL:  XK7-9842-BETA  \nMODEL:   RTX-4090-Ti    \nS/N:     8A3F2B1C9D0E\nMAC:     00:1A:2B:3C:4D:5E\nUUID:    550e8400-e29b\n```",
+        "time": 2.823363365001569,
+        "accuracy": {
+          "sequence_similarity": 0.6579804560260586,
+          "word_recall": 1.0,
+          "char_similarity": 0.6789667896678967,
+          "number_accuracy": 1.0,
+          "combined_score": 0.8342368114234888
+        }
+      },
+      "receipt_motion_blur_heavy": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "Title: COFFEE SHOP\n\nBody Text:\nMB Main Street.\nDate: 1/024 PM.\n\nSubtitle: Estimate $95.30\n\nBody Text:\nCondition $83.20\nTip $71.20\nTotal $61.10-$<box>510 603 555 626</box>$59.90\nThank you!",
+        "time": 2.438375425997947,
+        "accuracy": {
+          "sequence_similarity": 0.551948051948052,
+          "word_recall": 0.3888888888888889,
+          "char_similarity": 0.5207547169811321,
+          "number_accuracy": 0.0,
+          "combined_score": 0.3653979144545182
+        }
+      },
+      "receipt_thermal_fade": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "**Title:**\nCOFFEE SHOP\n\n**Address:**\n123 Main Street\n\n**Date:**\n11/24/2025\n\n---\n\n**Menu Items with Prices:**\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.25\n\n**Total:**\nTOTAL: $9.00\n\n**Closing Note:**\nThank you!",
+        "time": 2.4392524249997223,
+        "accuracy": {
+          "sequence_similarity": 0.6584615384615384,
+          "word_recall": 0.8888888888888888,
+          "char_similarity": 0.6451612903225806,
+          "number_accuracy": 1.0,
+          "combined_score": 0.798127929418252
+        }
+      },
+      "receipt_phone_photo_bad": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "Title: COFFEE SHOP\n\nAddress:\n123 Main Street\nDate: 11/24/2025\n\nItems Ordered:\n- Latte $4.51\n- Croissant $3.21\nTip $1.21\n\nSubtotal:\nTip $9.01\n\nTotal:\nTOTAL: $9.01\n\nClosing Message:\nThank you!",
+        "time": 2.952633747998334,
+        "accuracy": {
+          "sequence_similarity": 0.6666666666666666,
+          "word_recall": 0.7222222222222222,
+          "char_similarity": 0.6515151515151515,
+          "number_accuracy": 0.5,
+          "combined_score": 0.63510101010101
+        }
+      },
+      "receipt_ultimate_stress": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "**Title:**\nCOFFEE SHOP\n\n**Body Text:**\n123 Main Street  \nDate: 10/25/2029  \n\n**Table/List:**\n- Latte... $4.31\n- Espresso... $6.78\n- Iceberg Salads... $3.25\n- TOTALS... $30.65\n\n**Footer Note:**\nThank you!",
+        "time": 2.463488810004492,
+        "accuracy": {
+          "sequence_similarity": 0.525,
+          "word_recall": 0.5,
+          "char_similarity": 0.4927536231884058,
+          "number_accuracy": 0.25,
+          "combined_score": 0.4419384057971014
+        }
+      },
+      "invoice_motion_blur_heavy": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "**Title:**\nINVOICE #2347\n\n**Header Information:**\n- From:\n  - Company Corporation\n  - Address Not Clearly Visible (likely truncated for privacy)\n  \n- To:\n  - Billing@Corporation.com\n  - Phone Number Redacted\n  \n**Item Details:**\n- Item: Widget Pro X\n- Qty: [Redacted] / $[Redacted]\n- Subtotal: $[Redacted]\n- Tax (8%) = $[Redacted]\n\n**Total Amount:**\nTOTAL: $[Redacted]\n\n**Date:**\nDue: 12/30/2497",
+        "time": 3.4449172179956804,
+        "accuracy": {
+          "sequence_similarity": 0.3650190114068441,
+          "word_recall": 0.5,
+          "char_similarity": 0.3407079646017699,
+          "number_accuracy": 0.2,
+          "combined_score": 0.3514317440021535
+        }
+      },
+      "invoice_thermal_fade": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "Title: INVOICE #2847\n\nCompany Information:\nAcme Corporation\nbilling@acme.com\n\nItem Details:\n- Item: Widget Pro X\n- Qty: 5 @ $29.99\n- Subtotal: $149.95\n- Tax (8%): $12.00\n- TOTAL: $161.95\n\nDue Date:\nDue: 12/15/2025",
+        "time": 2.670819163999113,
+        "accuracy": {
+          "sequence_similarity": 0.8268156424581006,
+          "word_recall": 1.0,
+          "char_similarity": 0.8355263157894737,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9155854895618936
+        }
+      },
+      "invoice_phone_photo_bad": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "Title: INVOICE #2847\n\nCompany Information:\nAcme Corporation  \nbilling@acme.com  \n\nInvoice Details:\nItem: Widget Pro X\nQty: 5 @ $29.99  \nSubtotal: $149.95  \nTax (8%): $12.00  \nTOTAL: $161.95\n\nDue Date: Due: 12/15/2025",
+        "time": 2.563281737995567,
+        "accuracy": {
+          "sequence_similarity": 0.8433048433048433,
+          "word_recall": 1.0,
+          "char_similarity": 0.8410596026490066,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9210911114884625
+        }
+      },
+      "invoice_ultimate_stress": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "**Title:**\nINVOICE #2847\n\n**Header Information:**\nArce Corporation  \nbilling@arce.com\n\n**Invoice Details:**\n- Item: Widget Pro 3G \n- QTY: 16 @ $090 each, Subtotal: $1,526.80\n- Tax (1%): $47.56\n- TOTAL: $1,574.36\n\n**Footer Information:**\nDate: 12/11/2014",
+        "time": 3.636862724000821,
+        "accuracy": {
+          "sequence_similarity": 0.5164556962025316,
+          "word_recall": 0.5,
+          "char_similarity": 0.49266862170087977,
+          "number_accuracy": 0.2,
+          "combined_score": 0.42728107947585287
+        }
+      },
+      "serial_number_motion_blur_heavy": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "**Serial Number:** XT-2017-BT-W\n\n**Model:** RTX-4985-TI\n\n**Serial Number (SN/IMEI):** 3BFR19DE\n\n**MAC Address (MAC):** B6:FA:B1:A5:C3:B3\n\n**UIDe:** J5M32R0GJ=7NQ",
+        "time": 2.292493603003095,
+        "accuracy": {
+          "sequence_similarity": 0.4728682170542636,
+          "word_recall": 0.0,
+          "char_similarity": 0.4425531914893617,
+          "number_accuracy": 0.3333333333333333,
+          "combined_score": 0.3121886854692396
+        }
+      },
+      "serial_number_thermal_fade": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "Title: SERIAL:\nBody Text: XK7-9842--BETA\n\nSubtitle: MODEL:\nBody Text: RTX-4090-Ti\n\nSubtitle: S/N:\nBody Text: 8A3F2B1C9D0E\n\nSubtitle: MAC:\nBody Text: 00:1A:2B:3C:4D:5E\n\nSubtitle: UUID:\nBody Text: 550e8400-e29b",
+        "time": 2.785118596999382,
+        "accuracy": {
+          "sequence_similarity": 0.6098360655737705,
+          "word_recall": 0.9,
+          "char_similarity": 0.6764705882352942,
+          "number_accuracy": 1.0,
+          "combined_score": 0.7965766634522662
+        }
+      },
+      "serial_number_phone_photo_bad": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "**Body Text:**\n\"THESE ARE THE TERMS UNDER WHICH WE WILL BE WORKING WITH YOU\"\n\n**Subtitle or Menu Item (possibly):**\n\"SUPPORT SERVICES\"\n\n(Note: The text is presented with a watermark effect, making it difficult to read clearly.)",
+        "time": 1.6056046489975415,
+        "accuracy": {
+          "sequence_similarity": 0.018404907975460124,
+          "word_recall": 0.0,
+          "char_similarity": 0.15602836879432624,
+          "number_accuracy": 0.0,
+          "combined_score": 0.04360831919244659
+        }
+      },
+      "serial_number_ultimate_stress": {
+        "success": true,
+        "model": "minicpm-v:8b",
+        "text": "Body Text:\n- BLDG: 14302, GROUND FLOOR (1)\n- BLDG: 15796, GROUND FLOOR (1)\n\nTable/List with Subcategories and Items Under Each Category:\n\n* Subcategory 1 - Item List\n    * Item 1A\n    * Item 1B\n\n* Subcategory 2 - Item List\n    * Item 2A\n    * Item 2B",
+        "time": 2.6304989869968267,
+        "accuracy": {
+          "sequence_similarity": 0.024096385542168676,
+          "word_recall": 0.0,
+          "char_similarity": 0.1079136690647482,
+          "number_accuracy": 0.13333333333333333,
+          "combined_score": 0.06633584698506255
+        }
+      }
+    },
+    "llava:7b": {
+      "receipt_clean": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " The text in the image reads:\n\nCOFFEE SHOP\n\n123 MAIN STREET\n\nDate: 11/29/2025\nTime: 4:12 PM\n\nTIP: $1.50\nItem: Croissant\nTotal: $9.50\n\nThank you! ",
+        "time": 1.7846300279998104,
+        "accuracy": {
+          "sequence_similarity": 0.6412213740458015,
+          "word_recall": 0.5555555555555556,
+          "char_similarity": 0.6396396396396397,
+          "number_accuracy": 0.375,
+          "combined_score": 0.5528541423102492
+        }
+      },
+      "invoice_clean": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " ```\n\nInvoice#: 28947\nAce Corporation of Delaware\n1001 Ace Boulevard, Suite 500\nWilmington, DE 19806\n\nItem                                                              Price\n---------------------------------------------------------------------------\nWidget Pro                                                              $3.50\n\nSubtotal                                                                $3.50\nTax                                                                   $0.42\nTotal                                                                  $3.92\n\nPayment Due: December 16, 2021\n``` ",
+        "time": 3.699786318997212,
+        "accuracy": {
+          "sequence_similarity": 0.11848341232227488,
+          "word_recall": 0.22727272727272727,
+          "char_similarity": 0.11924119241192412,
+          "number_accuracy": 0.0,
+          "combined_score": 0.11624933300173157
+        }
+      },
+      "serial_number_clean": {
+        "success": false,
+        "model": "llava:7b",
+        "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
+        "time": 120.03178594700148,
+        "accuracy": {
+          "combined_score": 0
+        }
+      },
+      "receipt_motion_blur_heavy": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " The text in the image is not clearly legible due to its small size and quality, making it difficult to read and transcribe accurately. If you can provide a higher resolution or clearer image, I'd be happy to help with transcription! ",
+        "time": 1.8966933690026053,
+        "accuracy": {
+          "sequence_similarity": 0.02247191011235955,
+          "word_recall": 0.0,
+          "char_similarity": 0.13377926421404682,
+          "number_accuracy": 0.0,
+          "combined_score": 0.03906279358160159
+        }
+      },
+      "receipt_thermal_fade": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " COFFEE SHOP\n enormous main street\n2354624676\n\nSaturday, December 23, 2018\n\nTotal: $9.00\n\nThank you! ",
+        "time": 1.8015056369986269,
+        "accuracy": {
+          "sequence_similarity": 0.5205479452054794,
+          "word_recall": 0.4444444444444444,
+          "char_similarity": 0.4973544973544973,
+          "number_accuracy": 0.125,
+          "combined_score": 0.3968367217511053
+        }
+      },
+      "receipt_phone_photo_bad": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " The text in the image is a receipt from a coffee shop. Here's the transcription of the visible text:\n\n```\nCOFFEE SHOP\n\n123 Main Street\n\nDated 11/20/25\n\n4689\n\nLATTE\n\n$2.00\n\nTOTAL\n\n$3.75\n\nThank you\n```\n\nPlease note that the exact date is not fully visible, but it appears to be 11/20/25 based on what can be seen in the image. The receipt has been stylized with a watermark-like pattern over some parts of the text, so not all information is entirely legible. ",
+        "time": 4.314892155001871,
+        "accuracy": {
+          "sequence_similarity": 0.18213660245183888,
+          "word_recall": 0.3888888888888889,
+          "char_similarity": 0.1945031712473573,
+          "number_accuracy": 0.25,
+          "combined_score": 0.25388216564702126
+        }
+      },
+      "receipt_ultimate_stress": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " The text in the image reads:\n\n```\nCOFFEE SHOP\n123 MAIN STREET\nDATE: 04/27/2020\nTIME: 12:50 PM\n\nItem: LATTE $4.50\nSubtotal: $4.50\nTax: $0.50\nTotal: $5.00\n```\n\nPlease note that the text \"Thank You\" is not visible in the image, but it is implied as part of the thank you message at the bottom of the receipt. ",
+        "time": 3.569761313003255,
+        "accuracy": {
+          "sequence_similarity": 0.23943661971830985,
+          "word_recall": 0.5555555555555556,
+          "char_similarity": 0.2776203966005666,
+          "number_accuracy": 0.25,
+          "combined_score": 0.33065314296860804
+        }
+      },
+      "invoice_motion_blur_heavy": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " Here is the text extracted from the image:\n ",
+        "time": 0.9305679259996396,
+        "accuracy": {
+          "sequence_similarity": 0.16842105263157894,
+          "word_recall": 0.0,
+          "char_similarity": 0.16049382716049382,
+          "number_accuracy": 0.0,
+          "combined_score": 0.0822287199480182
+        }
+      },
+      "invoice_thermal_fade": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " INVOICE #29847\n\nAce Corporation\n555 EASTERN BLVD.\n\nItem: WIDGET PRO X\n\nSubtotal: $164.95\nTax: 9.30\nTotal: $174.25\n\nAce Hardware\n123 MAIN STREET\n\nDue: 1/12/2021\n\nWidget Pro X\n2 @ $82.45 each\nTotal: $164.90\nTax: 12.75\nSubtotal: $177.65\nDiscount: 2% Off\nAmount Due: $164.95\nDue Date: 1/12/2021\n\nThank you for shopping at Ace Hardware!\n\nPlease note that this is a screenshot of a digital image and the text in the image may not be fully legible due to the quality of the photo or the angle at which it was taken. Additionally, the text might not be fully visible as some words or parts of the image could be cut off or out of focus. ",
+        "time": 6.4744966399957775,
+        "accuracy": {
+          "sequence_similarity": 0.0625,
+          "word_recall": 0.45454545454545453,
+          "char_similarity": 0.11041009463722397,
+          "number_accuracy": 0.1,
+          "combined_score": 0.18186388729566963
+        }
+      },
+      "invoice_phone_photo_bad": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " INVOICE # 28467\n\nACME CORPORATION\n\nInvoice Date: December 1, 2021\n\nItem\n\nWidget Pro X\n5 @ $39.99 ea.\n$199.95\n\nSubtotal\n\nTax\n\nTotal\n\nDue Date: January 31, 2022\n\nPayments: $20.66\n\nNote: This is a sample image and not an actual invoice. ",
+        "time": 3.3027331630000845,
+        "accuracy": {
+          "sequence_similarity": 0.1940700808625337,
+          "word_recall": 0.4090909090909091,
+          "char_similarity": 0.5016077170418006,
+          "number_accuracy": 0.1,
+          "combined_score": 0.3011921767488109
+        }
+      },
+      "invoice_ultimate_stress": {
+        "success": false,
+        "model": "llava:7b",
+        "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
+        "time": 120.10096687600162,
+        "accuracy": {
+          "combined_score": 0
+        }
+      },
+      "serial_number_motion_blur_heavy": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " The image is too small to be read clearly. If you have a higher-resolution version of the image or more context, I could help with transcription! ",
+        "time": 1.507353740002145,
+        "accuracy": {
+          "sequence_similarity": 0.13821138211382114,
+          "word_recall": 0.0,
+          "char_similarity": 0.16981132075471697,
+          "number_accuracy": 0.0,
+          "combined_score": 0.07700567571713453
+        }
+      },
+      "serial_number_thermal_fade": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " XK7-9381 \n\nBeta ",
+        "time": 0.9928349550027633,
+        "accuracy": {
+          "sequence_similarity": 0.17543859649122806,
+          "word_recall": 0.0,
+          "char_similarity": 0.19230769230769232,
+          "number_accuracy": 0.06666666666666667,
+          "combined_score": 0.10860323886639675
+        }
+      },
+      "serial_number_phone_photo_bad": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " The text in the image is not clearly legible. ",
+        "time": 0.9524688559977221,
+        "accuracy": {
+          "sequence_similarity": 0.1643835616438356,
+          "word_recall": 0.0,
+          "char_similarity": 0.21705426356589147,
+          "number_accuracy": 0.0,
+          "combined_score": 0.09535945630243177
+        }
+      },
+      "serial_number_ultimate_stress": {
+        "success": true,
+        "model": "llava:7b",
+        "text": " The text in the image is not legible. Please provide a clearer image for accurate transcription. ",
+        "time": 1.1728898590008612,
+        "accuracy": {
+          "sequence_similarity": 0.07106598984771574,
+          "word_recall": 0.0,
+          "char_similarity": 0.13872832369942195,
+          "number_accuracy": 0.0,
+          "combined_score": 0.05244857838678442
+        }
+      }
+    }
+  },
+  "ensemble_results": {
+    "weighted_voting": {
+      "receipt_clean": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " **Title:**\nCOFFEE SHOP\n\n**Address:**\n123 Mai\nn Street  \nD75ate: 11/24/2025\n9\n\nOTA\n\n**Me74\n\nPaid with $nu:**\nLatte $due $ 1.02\nTha4.50  \nCroie: Thank you ",
+        "time": 21.793869146997167,
+        "accuracy": {
+          "sequence_similarity": 0.5373134328358209,
+          "word_recall": 0.3888888888888889,
+          "char_similarity": 0.5350877192982456,
+          "number_accuracy": 0.5,
+          "combined_score": 0.4903225102557388
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.4866883116883117
+      },
+      "invoice_clean": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " **Title:**\nIN7V\nACME CORPOROICON\n650 E #2847\n\n**Header InfAcmation:*e\nAcme Corpo1\n\nBiratto:\nAAROion\nbilling\nbilling@aLAcme.com  \n\n*.cody Text:m\n\nItem: Widg/2et Pro X  \nQty: 5et @ $29.99 X\nSubitn: Black and Silver Camotal: $149.95  \n\nPrice: $149.95\nSubtotal: $149.95\nTax (6%): $8.97\nTotal: $158.92\n\nInvoice Total: $158.92\n\nDue Date: 12/31/2021\n\nThank you for your business!\n\nNote: The total amount is $158.92, and there is a payment method selection dropdown in the image provided. However, I am not allowed to provide information on how to interpret or interact with images that contain buttons or selectors. ",
+        "time": 25.863544054998783,
+        "accuracy": {
+          "sequence_similarity": 0.21862348178137653,
+          "word_recall": 0.5909090909090909,
+          "char_similarity": 0.21904761904761905,
+          "number_accuracy": 0.5,
+          "combined_score": 0.38214504793452164
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.29688524590163934
+      },
+      "serial_number_clean": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " Serial: X79854132BETA\nM**Serial In4formyatioUID\nSN: 8ABE560500009104nMA:**\n5 SERIAL: XEAD\nP/N: 03020015161731\nUIDK 5555766698427BETA\n\n**Mod(R) Core(TM) i999e0\nl Information:**\n\n MOD NVIDIA GeFErcL: RTX14090TTiO\n\n**ac OS Catalina\n```scss\n     |             |                |                       |\n   12            |                |                |                       |\n     ++++\n    Serial Number        | Model          | Type           | SN              |\nX79854132BETA    | R7HXF450   | UID             | 8ABE56050009104    |\n                      |                |                | 8ABE56050009104    |\n                      |                |                | 8ABE56050009104    |\n```\nCPU               | GPU              | OS                |\nIntel(R) Core(TM) i99900   | NVIDIA GeForce GTX 1660 Ti| Mac OS Catalina   |\n                      |                |                |\n                      |                |                |\n                      |                |                |\n```scss\n     |             |                |                       |\n    CPU              | GPU              | OS                |\nIntel(R) Core(TM) i99900   | NVIDIA GeForce GTX 1660 Ti| Mac OS Catalina   |\n```\nUUID                            | MAC address           | S/N                |\n555555555566666567                         | F56C8BFE59DEAD                   | 03020015161731                       |\n```scss\n     |             |                |                       |\n    UUID               | MAC address           | S/N                |\n55555555556666567                         | F56C8BFE59DEAD                   | 03020015161731                       |\n``` ",
+        "time": 33.97947114999988,
+        "accuracy": {
+          "sequence_similarity": 0.06020066889632107,
+          "word_recall": 0.1,
+          "char_similarity": 0.05945945945945946,
+          "number_accuracy": 0.3333333333333333,
+          "combined_score": 0.13824836542227847
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.17110582639714625
+      },
+      "receipt_motion_blur_heavy": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " Title: COFFEE SHOP\n\nBody Te\nxt:\n123 Main Stre0e21 11:00 t,\n\nDateAT: 11/2400/20CROIS15NT \n$0.\n\nSSuBTbtiLtle: 00Last Nt ie:\n43\n $4.50\nP  $Cro00\nTOTA name list",
+        "time": 22.469269244000316,
+        "accuracy": {
+          "sequence_similarity": 0.48175182481751827,
+          "word_recall": 0.2777777777777778,
+          "char_similarity": 0.4721030042918455,
+          "number_accuracy": 0.375,
+          "combined_score": 0.4016581517217854
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.4589171974522293
+      },
+      "receipt_thermal_fade": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " Title: COFFE E SHOP N \nAdd123 Mai2dan Main Street  \nD 20a9\nte: 1te1/24/2025  \n\nM0enLattems Prices:\n5       $4.50\n$ Croi5ssant   : $3.25\nTip          $1u ",
+        "time": 20.816502743000456,
+        "accuracy": {
+          "sequence_similarity": 0.6324110671936759,
+          "word_recall": 0.3333333333333333,
+          "char_similarity": 0.6355140186915887,
+          "number_accuracy": 0.625,
+          "combined_score": 0.5565646048046495
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.5954545454545455
+      },
+      "receipt_phone_photo_bad": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " Title: COFFEE SHOP\n\nAddress\n1:\n123 Main Street24/2025\nTime:   \nDate: 11/E 24/2025  \n\nMenuNT Items witIP $h Prices:\nLatt $e $4.51  \nCNK YOU! ",
+        "time": 21.18861509099952,
+        "accuracy": {
+          "sequence_similarity": 0.5039370078740157,
+          "word_recall": 0.3333333333333333,
+          "char_similarity": 0.5,
+          "number_accuracy": 0.5,
+          "combined_score": 0.45931758530183725
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.5145390070921986
+      },
+      "receipt_ultimate_stress": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " The **Title:**\nCOFFEE SHOP\n\n**Atddress:**\n123 M0 \n\nLATTE $3.95\nVAaIin StreFRAPPUCCINet  .\nDa\nMtCe: 11/26/20.25\n\n\n**ALTabl.75\nGRANDE $3.75\n\ne:*\n$10.00\n*\n\n| IOTAte$m .         | Pr ",
+        "time": 22.202788702998077,
+        "accuracy": {
+          "sequence_similarity": 0.34265734265734266,
+          "word_recall": 0.2222222222222222,
+          "char_similarity": 0.36885245901639346,
+          "number_accuracy": 0.25,
+          "combined_score": 0.2959330059739896
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.3775
+      },
+      "invoice_motion_blur_heavy": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " **Title #231496:**\nINVRICOICE\n\n**Deta #ORPO2ATION8\nINDIA \n205407 4T7\nN FAcKS \n216 STREEme MUMBAI C 800007o\nrpLEPHONE: +or22334455 aEtion.com\na Invoitectee #: 3T24718\n19/202 biDlling Addre/ss: [reAYMENT TERMS: @at 60\n\nItem: WOODENcteO d]\n5  SEmaAil: $5[000.red.cteAL d]OUNT DUE\n\n**I00tom Details:**\n$3,570.95 \nTax: $1,429.05 ",
+        "time": 24.203677511999558,
+        "accuracy": {
+          "sequence_similarity": 0.13793103448275862,
+          "word_recall": 0.09090909090909091,
+          "char_similarity": 0.12437810945273632,
+          "number_accuracy": 0.2,
+          "combined_score": 0.13830455871114647
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.3
+      },
+      "invoice_thermal_fade": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " **INVOICE #2814\n7**\n\n*Acme Corponration*\nbilling@acm15e.com\n\n\n\n**Item:** WteiBidgetg: Pro X  \n**Qtyti:** 5 @ $ J29.99 X\nLSO*\nA*Subtotal23:** $14t, 9ny.95  \nSA\n**Tax (558%5):** $12.00  \n\njessie.wilson@acme.com\n\nItem Description: WidgetPro X\n\nQuantity: 5\nUnit Price: $49.00\nSubtotal: $245.00\nTax: $27.65\nTotal: $272.65\n\nDue Date: 1/31/2022\n\nThank you for your business! We appreciate the opportunity to serve you and look forward to your next order.\n\nSincerely,\nAceme Corporation Team ",
+        "time": 23.329749983997317,
+        "accuracy": {
+          "sequence_similarity": 0.22149837133550487,
+          "word_recall": 0.36363636363636365,
+          "char_similarity": 0.22727272727272727,
+          "number_accuracy": 0.3,
+          "combined_score": 0.27810186556114896
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.3389462809917355
+      },
+      "invoice_phone_photo_bad": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": "Title: INVOICE #2847\nAcompae Corpormation:\nAcme Corporation  \nbilling@acme.com  \n\nBody Text:\nItem: Widget Pro X  \nItem: 5 @ $29.99 X\nQty: 5\nSubtotal: $149.95  \nTax (8%): $12.00  \nTOTAL: $161.95  \n\nDue Date:\nDue: 12/15/2025",
+        "time": 138.30030157900183,
+        "accuracy": {
+          "sequence_similarity": 0.7808988764044944,
+          "word_recall": 1.0,
+          "char_similarity": 0.8223684210526315,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9008168243642815
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b"
+        ],
+        "confidence": 0.8288288288288288
+      },
+      "invoice_ultimate_stress": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " INVOICTitle: INVOICAFETY CONE #2947\n\nHeader:\nArma Corporation\nSBURG VIRGINBilling@arma.com\n\nBody T16\nDeTE: 0xt:\nItem: WidLget Pro X\nQty: 8 @AUST $20.95\nSubtoNtal: VA 22002 $129.99\nTax (10%\nEMAIL: arco@arcogroup.com\nWEB SITE: www.arcoinc.com\n\nTO:\nINVOICE TO:\nAMERICAN SAFE CONSULTING CO\nWILLIAMSBURG VA 23104\nTEL: 5712228888\nEMAIL: info@americansafetyconsulting.com\nWEB SITE: www.americansafetyconsulting.com\n\nITEM DESCRIPTION:\n\n1 WODGET 100\nSUB TOTAL $29.75\nTAX 0.00\nTOTAL $29.75\n\nAMERICAN SAFE CONSULTING CO\nWILLIAMSBURG VA 23104\nTEL: 5712228888\nEMAIL: info@americansafetyconsulting.com\nWEB SITE: www.americansafetyconsulting.com\n\nThe image does not contain any text that can be transcribed. It appears to be a screenshot of an invoice, but there is no visible text for me to transcribe. ",
+        "time": 28.208027417000267,
+        "accuracy": {
+          "sequence_similarity": 0.1442411194833154,
+          "word_recall": 0.3181818181818182,
+          "char_similarity": 0.14676616915422885,
+          "number_accuracy": 0.1,
+          "combined_score": 0.1772972767048406
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.24265822784810126
+      },
+      "serial_number_motion_blur_heavy": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": "SERIe: [Barcode]\n SHAL#: XK7590368A9442tBEE7A\nMODEL:\n NO.: RTX458TLI\n4999 Texti\nSNW: 841FBCSDE2381ght/Load Cap901tyE\nMAC): \n 00:0C:2 TONNE9:3,0Kg per box\nWidth/Height forB:3Cking:\n W/4D: \nBarcode / 5erialE\nUmberUID:\n 5561e84099e295b",
+        "time": 138.65910114399594,
+        "accuracy": {
+          "sequence_similarity": 0.2085889570552147,
+          "word_recall": 0.1,
+          "char_similarity": 0.19112627986348124,
+          "number_accuracy": 0.5333333333333333,
+          "combined_score": 0.25826214256300734
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b"
+        ],
+        "confidence": 0.5555273833671399
+      },
+      "serial_number_thermal_fade": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " **Title:**\nSERIAL: 1 XK7y9842RTB ETA  \nMODEL: RTX4090Ti  \nS/N: 8A3F2B1C9D0E  \nMAC: 00:1A:2B:3C:4Dta ",
+        "time": 19.992736929001694,
+        "accuracy": {
+          "sequence_similarity": 0.7628865979381443,
+          "word_recall": 0.5,
+          "char_similarity": 0.7657142857142857,
+          "number_accuracy": 0.7333333333333333,
+          "combined_score": 0.6904835542464408
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.700990099009901
+      },
+      "serial_number_phone_photo_bad": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": "! Picture 1:  S.P.S.M. = 147 + 3862 = 3979\nA.P.S.M. = 473 + 4686 = 5159\nS.A. = 5800 + 5800 + 3000 = 14600\nN.S. = 40 + 40 + 50 + 40 + 50 = 220\nN.S.M. = 220 + 3000 + 14600 = 17520p. ",
+        "time": 20.5851221970006,
+        "accuracy": {
+          "sequence_similarity": 0.16487455197132617,
+          "word_recall": 0.0,
+          "char_similarity": 0.16143497757847533,
+          "number_accuracy": 0.06666666666666667,
+          "combined_score": 0.09824404905411704
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.5563888888888889
+      },
+      "serial_number_ultimate_stress": {
+        "success": true,
+        "technique": "weighted_voting",
+        "text": " The text is no**Bleaody lTexble due to the lo:**\nsoluS/NA Mf the imE: MT.5e80NNYrov DR a AKEa\n r2im AGEo38mo02 YonEA4\nMOLr me to assisD\n\nou**Conranscribing it accurtEely. ",
+        "time": 19.79045033199509,
+        "accuracy": {
+          "sequence_similarity": 0.09665427509293681,
+          "word_recall": 0.0,
+          "char_similarity": 0.1794871794871795,
+          "number_accuracy": 0.2,
+          "combined_score": 0.11903536364502908
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.2651162790697674
+      }
+    },
+    "escalation_chain": {
+      "receipt_clean": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " Coffee Shop\n123 Main Street\nDate: 11/29/2015\nTime: 4:57 PM\nCashier: Unknown\nTotal $9.00\nTip $1.65\nSubtotal $9.00\nTax 0.50\nNet $9.50\nPayment received $9.50\nThank you ",
+        "time": 20.738669988000765,
+        "accuracy": {
+          "sequence_similarity": 0.5486111111111112,
+          "word_recall": 0.5,
+          "char_similarity": 0.563265306122449,
+          "number_accuracy": 0.375,
+          "combined_score": 0.49671910430839006
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.165
+      },
+      "invoice_clean": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": "INVOICE #2847\nAcme\nAcme Corporation\nbilling\nbilling@acme.com.com\n\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\n\nDue: 12/15/2025",
+        "time": 138.2180374669988,
+        "accuracy": {
+          "sequence_similarity": 0.9396825396825397,
+          "word_recall": 0.9545454545454546,
+          "char_similarity": 0.9407407407407408,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9587421837421838
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.55
+      },
+      "serial_number_clean": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " ```\nSERIAL NUMBER: X67-98421\nBETA: 13F\nMODEL: RJ-22107K-B\nSN: 8A2B6C\nMAC ADDRESS: 80:E8:5D:3B:F2:FE\nIP ADDRESS: 192.168.1.100\n``` ",
+        "time": 21.245519383999635,
+        "accuracy": {
+          "sequence_similarity": 0.43478260869565216,
+          "word_recall": 0.1,
+          "char_similarity": 0.4097560975609756,
+          "number_accuracy": 0.26666666666666666,
+          "combined_score": 0.3028013432308236
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.165
+      },
+      "receipt_motion_blur_heavy": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " COFFEE SMART STUDIOS $10.95\n721 MAIN STREET\nEATON, OHIO 43410\n11/18/2017\n\n- LATT\u00c9 - $2.75\n- PANCHITO - $6.45\n\nSubtotal: $9.20\nTax (8%): $0.72\nTotal: $10.92\nThank you! ",
+        "time": 22.090823318998446,
+        "accuracy": {
+          "sequence_similarity": 0.4861111111111111,
+          "word_recall": 0.3333333333333333,
+          "char_similarity": 0.5,
+          "number_accuracy": 0.125,
+          "combined_score": 0.3611111111111111
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.165
+      },
+      "receipt_thermal_fade": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " COFFEE SHOP\n123 MAIN STREET\n\nDATE: 12/24/2020\n\nTOTAL: $9.95\n\nThank you! ",
+        "time": 20.0199444319951,
+        "accuracy": {
+          "sequence_similarity": 0.6770833333333334,
+          "word_recall": 0.5,
+          "char_similarity": 0.6666666666666666,
+          "number_accuracy": 0.25,
+          "combined_score": 0.5234375
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.165
+      },
+      "receipt_phone_photo_bad": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " Coffee Shop\n301 Main Street\n215 Main St #1911\nCoffee City CROISSANT\nFriday 11/27\nDate: 11-27-2020\n11:52AM\nLatte 6.25\n$4.00\nTotal 6.25\nTip 1.25\nSubtotal 5.00\nTax .25\n1.25\nTOTAL 6.25\n\nThank you ",
+        "time": 22.572831804995076,
+        "accuracy": {
+          "sequence_similarity": 0.49044585987261147,
+          "word_recall": 0.5,
+          "char_similarity": 0.4679245283018868,
+          "number_accuracy": 0.125,
+          "combined_score": 0.39584259704362457
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.165
+      },
+      "receipt_ultimate_stress": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " coffee shop ",
+        "time": 18.42921201200079,
+        "accuracy": {
+          "sequence_similarity": 0.16296296296296298,
+          "word_recall": 0.1111111111111111,
+          "char_similarity": 0.17094017094017094,
+          "number_accuracy": 0.0,
+          "combined_score": 0.11125356125356126
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.15
+      },
+      "invoice_motion_blur_heavy": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " INVOICE #28417\nAMERICAN AIR COMPANY\nEMAIL: info@americanaircompany.com\nTIN 6917353\n\nTeam : WildHack X\n\nDear Customer,\n\nThank you for your purchase with us. Your transaction details are as follows:\n\nItem(s):\n- Wideband Pro - $984.99 (quantity 1)\n\nTotal = $984.99\nTax = $653.27\nSubtotal = $984.27\n\nTotal Price = $987.46\nPayment Method: PayPal\nTransaction Date: 03/15/2021\n\nThank you for your purchase and we hope you enjoy our product. If there are any issues, please don't hesitate to reach out to us. We value your satisfaction and look forward to hearing from you soon.\n\nBest regards,\nThe American Air Company Team ",
+        "time": 25.361155183003575,
+        "accuracy": {
+          "sequence_similarity": 0.10860927152317881,
+          "word_recall": 0.18181818181818182,
+          "char_similarity": 0.11006289308176101,
+          "number_accuracy": 0.1,
+          "combined_score": 0.1251225866057804
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.15
+      },
+      "invoice_thermal_fade": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": "Title: INVOICE #2847\n\nBody Text:\nAcme Corporation  \nbilling@acme.com  \n\nItem: Widget Pro X  \nQty: 5 @ $29.99  \nSubtotal: $149.95  \nTax (8%): $12.00  \nTOTAL: $161.95  \n\nDue: 12/15/2025",
+        "time": 13.031665440001234,
+        "accuracy": {
+          "sequence_similarity": 0.9426751592356688,
+          "word_recall": 1.0,
+          "char_similarity": 0.9442379182156134,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9717282693628205
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b"
+        ],
+        "confidence": 0.6050000000000001
+      },
+      "invoice_phone_photo_bad": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": "**INVOICE #2847**\n\nAcme Corporation  \nbilling@acme.com\n\n**Item:** Widget Pro X  \n\nQty: 5 @ $29.99  \n\nSubtotal: $149.95  \n\nTax (8%): $12.00  \n\nTOTAL: $161.95  \n\nDue: 12/15/2025",
+        "time": 13.536119033000432,
+        "accuracy": {
+          "sequence_similarity": 0.9736842105263158,
+          "word_recall": 0.8636363636363636,
+          "char_similarity": 0.9694656488549618,
+          "number_accuracy": 1.0,
+          "combined_score": 0.9516965557544104
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b"
+        ],
+        "confidence": 0.6050000000000001
+      },
+      "invoice_ultimate_stress": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " INVOICE\nInvoice # 20194\nDate: 01/06/2019\nBilling Address:\n[ARCORP US]\n[Company name and address omitted]\nTax ID: 9876512345\n\nSubtotal $98.00\nTax 9.80\nTotal $107.80\n\nItem\nDescription\nUnit Price\nQuantity\nPrice\nSubtotal\n\nItem\nDescription\nUnit Price\nQuantity\nPrice\nSubtotal\n\nService 1\n[Service name and description omitted]\n$25.00\n1\n$25.00\n\nShipping 1\n[Shipping method and cost omitted]\n7.50\n1\n$7.50\n\nTotal 1\nSubtotal $32.50\nTax 9.80\nTotal $42.30\n\nPayment Method:\nCredit Card # ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ***** ** ",
+        "time": 107.03352016700228,
+        "accuracy": {
+          "sequence_similarity": 0.017400075652502837,
+          "word_recall": 0.09090909090909091,
+          "char_similarity": 0.019633086578693275,
+          "number_accuracy": 0.0,
+          "combined_score": 0.03198556328507176
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.15
+      },
+      "serial_number_motion_blur_heavy": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " serial_number: 164281-0811\ndevice_type: SMART NON-VINES PROCESSOR\nmodel_number: X93500R\npart_number: 2003280\nsubsystem_code: 802.12.1\nchipset_code: 4069-0000-0000\nEAN: 5060496710298\nUDI: 002191013023030014\nserial_number: 164281-0811\nEAN: 5060496710298\nUDI: 002191013023030014\nserial_number: 164281-0811\ndevice_type: SMART NON-VINES PROCESSOR\nmodel_number: X93500R\npart_number: 2003280\nsubsystem_code: 802.12.1\nchipset_code: 4069-0000-0000\nEAN: 5060496710298\nUDI: 002191013023030014\nserial_number: 164281-0811\ndevice_type: SMART NON-VINES PROCESSOR\nmodel_number: X93500R\npart_number: 2003280\nsubsystem_code: 802.12.1\nchipset_code: 4069-0000-0000\nEAN: 5060496710298\nUDI: 002191013023030014 ",
+        "time": 32.23912121300236,
+        "accuracy": {
+          "sequence_similarity": 0.04568527918781726,
+          "word_recall": 0.0,
+          "char_similarity": 0.044444444444444446,
+          "number_accuracy": 0.06666666666666667,
+          "combined_score": 0.0391990975747321
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.15
+      },
+      "serial_number_thermal_fade": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " Serial: X7 K83-932 T BETA\nModel: TX81-4090\nSn: 86:F4:B5:09 D0E\nS/N: 86:F4:B5:09D0E\nMac: 00:00:0B:1A:23:C7\nRAM: 4GB\nCPU: i7-9700K\nGPU: GT1030 TI\nUuid: 86:F4:B5:09D0E\nVendor: 500\nChipset: 400",
+        "time": 25.403951665997738,
+        "accuracy": {
+          "sequence_similarity": 0.5172413793103449,
+          "word_recall": 0.5,
+          "char_similarity": 0.5333333333333333,
+          "number_accuracy": 0.4666666666666667,
+          "combined_score": 0.5043103448275862
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.165
+      },
+      "serial_number_phone_photo_bad": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " SEP 2 2021 ATTN: LT COL MERKEL CDR USMC SEABASES HQ MD 0934 ",
+        "time": 21.088121451997722,
+        "accuracy": {
+          "sequence_similarity": 0.2,
+          "word_recall": 0.0,
+          "char_similarity": 0.15827338129496402,
+          "number_accuracy": 0.06666666666666667,
+          "combined_score": 0.10623501199040766
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.165
+      },
+      "serial_number_ultimate_stress": {
+        "success": true,
+        "technique": "escalation_chain",
+        "text": " The image contains a white sticker with black text on it. However, I'm unable to provide an exact transcription of the text because there is no clear, legible text visible in the image. If you can provide the text in another format or clarify the image content, I would be happy to help. ",
+        "time": 21.314887902997725,
+        "accuracy": {
+          "sequence_similarity": 0.02577319587628866,
+          "word_recall": 0.0,
+          "char_similarity": 0.03058103975535168,
+          "number_accuracy": 0.0,
+          "combined_score": 0.014088558907910085
+        },
+        "models_used": [
+          "qwen2.5vl:7b",
+          "minicpm-v:8b",
+          "llava:7b"
+        ],
+        "confidence": 0.0495
+      }
+    },
+    "socratic_debate": {
+      "receipt_clean": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Based on the image and the provided OCR discrepancies, here is the final authoritative transcription with corrections:\n\n**Corrected Text:**\n\nCOFFEE SHOP\n123 MAIN STREET\nDATE: 11/24/2021\n\n| ITEM          | QUANTITY | PRICE   |\n|------------------|------------|----------|\n| LATTE              | 1         | $4.50   |\n| CROISSANT          | 1         | $3.25   |\n| TIP                | 1         | $1.25   |\n\nTOTAL:\n$9.00\n\nThank you!\n\n**Final Corrections:**\n\n1. **Position 7**: minicpm-v:8b=\"T\" -> llava:7b=\"m\" (Corrected to \"m\")\n2. **Position 30**: minicpm-v:8b=\"e\" -> llava:7b=\"y\" (Corrected to \"l\")\n3. **Position 143**: minicpm-v:8b=\"e\" -> llava:7b=\"l\" (Corrected to \"l\")\n4. **Position 6**: minicpm-v:8b=\"s\" -> llava:7b=\"B\" (Corrected to \"B\")\n5. **Position 12**: minicpm-v:8b=\"m\" -> llava:7b=\"s\" (Corrected to \"s\")\n6. **Position 16**: minicpm-v:8b=\"s\" -> llava:7b=\"d\" (Corrected to \"d\")\n7. **Position 28**: minicpm-v:8b=\"e\" -> llava:7b=\"h\" (Corrected to \"h\")\n8. **Position 32**: minicpm-v:8b=\"d\" -> llava:7b=\"v\" (Corrected to \"v\")\n9. **Position 37**: minicpm-v:8b=\"r\" -> llava:7b=\"s\" (Corrected to \"s\")\n10. **Position 38**: minicpm-v:8b=\"e\" -> llava:7b=\"u\" (Corrected to \"u\")\n11. **Position 39**: minicpm-v:8b=\"n\" -> llava:7b=\"a\" (Corrected to \"a\")\n12. **Position 40**: minicpm-v:8b=\"t\" -> llava:7b=\"l\" (Corrected to \"l\")\n13. **Position 43**: minicpm-v:8b=\"C\" -> llava:7b=\"e\" (Corrected to \"e\")\n\nThe final, authoritative transcription is now accurate and reflects the image content correctly.",
+        "time": 100.7629267079974,
+        "accuracy": {
+          "sequence_similarity": 0.11495754408883083,
+          "word_recall": 0.8888888888888888,
+          "char_similarity": 0.10876132930513595,
+          "number_accuracy": 0.875,
+          "combined_score": 0.4969019405707139
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "invoice_clean": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Based on the image and the candidate readings, here is the final authoritative transcription:\n\n**INVOICE #2847**\nAcme Corporation billing@acme.com\n\nItem: Widget Pro X\nQty: 5 @ $29.99  \nSubtotal: $149.95  \n\nTax (8%): $12.00  \nTOTAL: $161.95  \n\nDue: 12/15/2025\n\nNo further corrections are needed as the OCR systems' readings align with the image.",
+        "time": 125.47464544200193,
+        "accuracy": {
+          "sequence_similarity": 0.6179540709812108,
+          "word_recall": 0.9090909090909091,
+          "char_similarity": 0.6210268948655256,
+          "number_accuracy": 1.0,
+          "combined_score": 0.7870179687344114
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.55
+      },
+      "serial_number_clean": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Let's review the image and the discrepancies one by one to ensure the most accurate transcription.\n\nThe image shows the following text:\n\n```\nSERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b\n```\n\nNow, let's address the unresolved disagreements:\n\n1. **Position 3: minicpm-v:8b=H, llava:7b=t**\n   - The image shows 'T' in the third position.\n   - Final: minicpm-v:8b=T, llava:7b=t\n\n2. **Position 10: minicpm-v:8b= , llava:7b=m**\n   - The image shows a space in the tenth position.\n   - Final: minicpm-v:8b= , llava:7b=m\n\n3. **Position 13: minicpm-v:8b=s, llava:7b=i**\n   - The image shows 'i' in the thirteenth position.\n   - Final: minicpm-v:8b=i, llava:7b=i\n\n4. **Position 14: minicpm-v:8b= , llava:7b=n**\n   - The image shows a space in the fourteenth position.\n   - Final: minicpm-v:8b= , llava:7b=n\n\n5. **Position 15: minicpm-v:8b=a, llava:7b=g**\n   - The image shows 'g' in the fifteenth position.\n   - Final: minicpm-v:8b=g, llava:7b=g\n\n6. **Position 18: minicpm-v:8b=d, llava:7b=h**\n   - The image shows 'h' in the eighteenth position.\n   - Final: minicpm-v:8b=h, llava:7b=h\n\n7. **Position 21: minicpm-v:8b=t, llava:7b=i**\n   - The image shows 'i' in the twenty-first position.\n   - Final: minicpm-v:8b=i, llava:7b=i\n\n8. **Position 22: minicpm-v:8b=a, llava:7b=m**\n   - The image shows 'm' in the twenty-second position.\n   - Final: minicpm-v:8b=m, llava:7b=m\n\n9. **Position 23: minicpm-v:8b=i, llava:7b=a**\n   - The image shows 'a' in the twenty-third position.\n   - Final: minicpm-v:8b=a, llava:7b=a\n\n10. **Position 24: minicpm-v:8b=l, llava:7b=g**\n    - The image shows 'g' in the twenty-fourth position.\n    - Final: minicpm-v:8b=g, llava:7b=g\n\nAfter reviewing and correcting the discrepancies, the final authoritative transcription is:\n\n```\nSERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b\n```\n\nNo further corrections are needed.",
+        "time": 127.75912984599563,
+        "accuracy": {
+          "sequence_similarity": 0.10264227642276423,
+          "word_recall": 1.0,
+          "char_similarity": 0.10785463071512309,
+          "number_accuracy": 1.0,
+          "combined_score": 0.5526242267844719
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "receipt_motion_blur_heavy": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Based on the image and the detailed analysis from the OCR systems, here is the final, authoritative transcription with all disagreements resolved:\n\n**Title:** COLD & SHARP  \nSubtitle: 163 Main Street Date: 02/24/2019  \n\nBody Text:\n\u00a385.7 - \u00a381.2  \n\u00a369.3  \n\u00a369.2  \n\u00a359.7 \u00a359.1 -  \n\nTitle:\nTIP:\n\nBody Text: \n\u00a34.3  \n\nBody Text: \n\u00a394.0  \n\nClosing Note:\nThank you!\n\nThe final corrections are as follows:\n- [minicpm-v:8b=i, llava:7b=i] - Both systems have the same character.\n- [minicpm-v:8b=m, llava:7b=m] - Both systems have the same character.\n- [minicpm-v:8b=a, llava:7b=a] - Both systems have the same character.\n- [minicpm-v:8b=g, llava:7b=g] - Both systems have the same character.\n- [minicpm-v:8b=d, llava:7b=d] - Both systems have the same character.\n- [minicpm-v:8b= , llava:7b= ] - Both systems have the same character.\n- [minicpm-v:8b=t, llava:7b=t] - Both systems have the same character.\n- [minicpm-v:8b=h, llava:7b=h] - Both systems have the same character.\n- [minicpm-v:8b=e, llava:7b=e] - Both systems have the same character.\n- [minicpm-v:8b=l, llava:7b=l] - Both systems have the same character.\n\nThe final transcription is accurate and reflects the original image as closely as possible.",
+        "time": 84.49911289100419,
+        "accuracy": {
+          "sequence_similarity": 0.04468412942989214,
+          "word_recall": 0.2777777777777778,
+          "char_similarity": 0.045207956600361664,
+          "number_accuracy": 0.125,
+          "combined_score": 0.12316746595200789
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "receipt_thermal_fade": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Let's review the image and the discrepancies to ensure the final transcription is accurate.\n\nThe image shows a receipt from a coffee shop with the following details:\n\n- **Address:** 123 Main Street\n- **Date:** 11/24/2025\n- **Menu Items:**\n  - Latte: $4.50\n  - Croissant: $3.25\n- **Tip:** $1.25\n- **Total:** $9.00\n- **Thank you!**\n\nThe discrepancies are as follows:\n\n1. Position 10: minicpm-v:8b=T, llava:7b=t\n2. Position 81: minicpm-v:8b=g, llava:7b=e\n3. Position 83: minicpm-v:8b=f, llava:7b=c\n4. Position 97: minicpm-v:8b=t, llava:7b=g\n5. Position 98: minicpm-v:8b=h, llava:7b= \n6. Position 183: minicpm-v:8b=g, llava:7b=t\n7. Position 626: minicpm-v:8b=I, llava:7b=l\n8. Position 635: minicpm-v:8b=N, llava:7b= \n9. Position 769: minicpm-v:8b=C, llava:7b=5\n10. Position 770: minicpm-v:8b=O, llava:7b=0\n\nBased on the image, the correct transcription should be:\n\n```\nCOFFEE SHOP  \nAddress: 123 Main Street  \nDate: 11/24/2025  \n\nMenu Items:\n- Latte $4.50   \n- Croissant $3.25  \n\nTip:\n$1.25 Tip\n\nTotal:\nTOTAL: $9.00    \nThank you!\n```\n\nThe discrepancies can be resolved as follows:\n\n- Position 10: minicpm-v:8b=T, llava:7b=t \u2192 T (Correct)\n- Position 81: minicpm-v:8b=g, llava:7b=e \u2192 e (Correct)\n- Position 83: minicpm-v:8b=f, llava:7b=c \u2192 c (Correct)\n- Position 97: minicpm-v:8b=t, llava:7b=g \u2192 t (Correct)\n- Position 98: minicpm-v:8b=h, llava:7b= \u2192 h (Correct)\n- Position 183: minicpm-v:8b=g, llava:7b=t \u2192 t (Correct)\n- Position 626: minicpm-v:8b=I, llava:7b=l \u2192 l (Correct)\n- Position 635: minicpm-v:8b=N, llava:7b= \u2192 N (Correct)\n- Position 769: minicpm-v:8b=C, llava:7b=5 \u2192 C (Correct)\n- Position 770: minicpm-v:8b=O, llava:7b=0 \u2192 O (Correct)\n\nThe final, authoritative transcription is:\n\n```\nCOFFEE SHOP  \nAddress: 123 Main Street  \nDate: 11/24/2025  \n\nMenu Items:\n- Latte $4.50   \n- Croissant $3.25  \n\nTip:\n$1.25 Tip\n\nTotal:\nTOTAL: $9.00    \nThank you!\n```",
+        "time": 99.28193477600144,
+        "accuracy": {
+          "sequence_similarity": 0.08713692946058091,
+          "word_recall": 0.9444444444444444,
+          "char_similarity": 0.07631738340399757,
+          "number_accuracy": 1.0,
+          "combined_score": 0.5269746893272558
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "receipt_phone_photo_bad": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Let's review the image and the discrepancies found by the OCR systems:\n\n1. **Position 15**: minicpm-v:8b=T, llava:7b=t\n   - The correct reading should be \"TOTAL\" as it is a common word in receipts.\n\n2. **Position 25**: minicpm-v:8b=O, llava:7b=a\n   - The correct reading should be \"Date\" as it is a common word in receipts.\n\n3. **Position 26**: minicpm-v:8b=C, llava:7b=n\n   - The correct reading should be \"Date\" as it is a common word in receipts.\n\n4. **Position 27**: minicpm-v:8b=R, llava:7b=d\n   - The correct reading should be \"Date\" as it is a common word in receipts.\n\n5. **Position 32**: minicpm-v:8b=i, llava:7b=e\n   - The correct reading should be \"Tip\" as it is a common word in receipts.\n\n6. **Position 33**: minicpm-v:8b=s, llava:7b= \n   - The correct reading should be \"Tip\" as it is a common word in receipts.\n\n7. **Position 41**: minicpm-v:8b=p, llava:7b=i\n   - The correct reading should be \"Tip\" as it is a common word in receipts.\n\n8. **Position 42**: minicpm-v:8b=a, llava:7b=o\n   - The correct reading should be \"Tip\" as it is a common word in receipts.\n\n9. **Position 44**: minicpm-v:8b=c, llava:7b=s\n   - The correct reading should be \"Tip\" as it is a common word in receipts.\n\n10. **Position 45**: minicpm-v:8b=y, llava:7b= \n    - The correct reading should be \"Tip\" as it is a common word in receipts.\n\nBased on the analysis, the final authoritative transcription should be:\n\n```\nCOFFEE SHOP\nAddress: 123 Main Street\nDate: 11/24/2025\n\nMenu Items with Prices:\n- Latte $4.51\n- Croissant $3.21\n- Tip $1.21\n\nSubtotal: TOTAL: $9.81 (with a line indicating the subtotal)\n\nThank you!\n```\n\nFinal corrections:\n- Position 15: minicpm-v:8b=T -> TOTAL\n- Position 25: minicpm-v:8b=O -> Date\n- Position 26: minicpm-v:8b=C -> Date\n- Position 27: minicpm-v:8b=R -> Date\n- Position 32: minicpm-v:8b=i -> Tip\n- Position 33: minicpm-v:8b=s -> Tip\n- Position 41: minicpm-v:8b=p -> Tip\n- Position 42: minicpm-v:8b=a -> Tip\n- Position 44: minicpm-v:8b=c -> Tip\n- Position 45: minicpm-v:8b=y -> Tip",
+        "time": 133.30100039300305,
+        "accuracy": {
+          "sequence_similarity": 0.09730250481695568,
+          "word_recall": 0.7222222222222222,
+          "char_similarity": 0.09758897818599312,
+          "number_accuracy": 0.5,
+          "combined_score": 0.35427842630629275
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "receipt_ultimate_stress": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Let's review the image and the OCR results to resolve the remaining disagreements:\n\n1. **Position 6: minicpm-v:8b=c, llava:7b=H**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n2. **Position 7: minicpm-v:8b=a, llava:7b=e**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n3. **Position 23: minicpm-v:8b=n, llava:7b=r**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n4. **Position 24: minicpm-v:8b=g, llava:7b=e**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n5. **Position 70: minicpm-v:8b=l, llava:7b=c**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n6. **Position 79: minicpm-v:8b=d, llava:7b=o**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n7. **Position 80: minicpm-v:8b=e, llava:7b=n**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n8. **Position 81: minicpm-v:8b=d, llava:7b=s**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n9. **Position 93: minicpm-v:8b=m, llava:7b=a**\n   - Actual Image: The word appears as \"COFFEE SHOP\".\n   - Corrected Reading: COFFEE SHOP\n\n10. **Position 95: minicpm-v:8b=v, llava:7b=e**\n    - Actual Image: The word appears as \"COFFEE SHOP\".\n    - Corrected Reading: COFFEE SHOP\n\nAfter reviewing the image and the OCR results, the final authoritative transcription is:\n\n---\n\n**Title:** COFFEE SHOP\n\n**Address:** 139 Main Street  \nDate: **14/02/2025**\n\n---\n\n**Table:**\n- Latte - $4.25  \n- Caramel Macchiato - $6.80  \n- Tea - $3.25  \n- Tip - $1.20  \n- Total - $12.40\n\n---\n\nThank you!",
+        "time": 123.62189300500177,
+        "accuracy": {
+          "sequence_similarity": 0.04888888888888889,
+          "word_recall": 0.5555555555555556,
+          "char_similarity": 0.04569190600522193,
+          "number_accuracy": 0.375,
+          "combined_score": 0.2562840876124166
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "invoice_motion_blur_heavy": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Let's carefully examine the image and the discrepancies between the two OCR systems' readings. Here is the image again for reference:\n\n```\nINVOICE #2847\nAcme Corporation\nbilling@acme.com\nItem: Wildcat Pro\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025\n```\n\nNow, let's address the unresolved disagreements:\n\n1. **Position 6**: minicpm-v:8b=r, llava:7b=c\n   - The correct reading is likely 'r' because it is a common character in the OCR output and fits the context of the invoice number.\n\n2. **Position 9**: minicpm-v:8b=i, llava:7b=r\n   - The correct reading is likely 'i' because it is a common character and fits the context of the invoice number.\n\n3. **Position 10**: minicpm-v:8b=d, llava:7b=r\n   - The correct reading is likely 'd' because it is a common character and fits the context of the invoice number.\n\n4. **Position 12**: minicpm-v:8b=d, llava:7b=c\n   - The correct reading is likely 'd' because it is a common character and fits the context of the invoice number.\n\n5. **Position 13**: minicpm-v:8b= , llava:7b=t\n   - The correct reading is likely 't' because it is a common character and fits the context of the invoice number.\n\n6. **Position 19**: minicpm-v:8b= , llava:7b=o\n   - The correct reading is likely 'o' because it is a common character and fits the context of the invoice number.\n\n7. **Position 20**: minicpm-v:8b=i, llava:7b=n\n   - The correct reading is likely 'i' because it is a common character and fits the context of the invoice number.\n\n8. **Position 29**: minicpm-v:8b=t, llava:7b=b\n   - The correct reading is likely 't' because it is a common character and fits the context of the invoice number.\n\n9. **Position 43**: minicpm-v:8b=t, llava:7b=d\n   - The correct reading is likely 't' because it is a common character and fits the context of the invoice number.\n\n10. **Position 44**: minicpm-v:8b=i, llava:7b= \n    - The correct reading is likely 'i' because it is a common character and fits the context of the invoice number.\n\nBased on the above analysis, the final, authoritative transcription is:\n\n```\nINVOICE #2847\nAcme Corporation\nbilling@acme.com\nItem: Wildcat Pro\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025\n```\n\nNo further corrections are needed for the numbers and codes.",
+        "time": 136.65187219100335,
+        "accuracy": {
+          "sequence_similarity": 0.11543287327478043,
+          "word_recall": 0.9090909090909091,
+          "char_similarity": 0.11829025844930417,
+          "number_accuracy": 1.0,
+          "combined_score": 0.5357035102037484
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "invoice_thermal_fade": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Based on the image and the provided candidate readings, the final authoritative transcription is as follows:\n\nINVOICE #2847\n\nAcme Corporation  \nbilling@acme.com  \n\nItem #: Widget Pro X  \nPrice: $69.99 (Corrected)  \nQty: 5 @ $29.99 = Total price corrected to $349.95 for the new item  \n\nTax: $39.95 (Corr...\n\nThe discrepancy in the price and the total amount has been corrected based on the candidate readings. The final total amount should be $349.95, not $161.95 as shown in the original image. The tax amount is also corrected to $39.95.",
+        "time": 126.47360162399855,
+        "accuracy": {
+          "sequence_similarity": 0.3005952380952381,
+          "word_recall": 0.6363636363636364,
+          "char_similarity": 0.3003533568904594,
+          "number_accuracy": 0.4,
+          "combined_score": 0.4093280578373334
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "invoice_phone_photo_bad": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "```markdown\nINVOICE #2847\nAcme Corporation\nbilling@acme.com\n\nItem: Widget Pro X\nItem: 5 @ $29.99\nQty: 5\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025\n\n[FINAL: 2847 -> 28476, reason: The invoice number appears to be 28476 based on the image.]\n```",
+        "time": 102.7508735510055,
+        "accuracy": {
+          "sequence_similarity": 0.6763990267639902,
+          "word_recall": 1.0,
+          "char_similarity": 0.6876790830945558,
+          "number_accuracy": 1.0,
+          "combined_score": 0.8410195274646365
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.55
+      },
+      "invoice_ultimate_stress": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "To resolve the remaining disagreements, let's carefully examine the image and the candidate readings provided by both systems. Here is the final transcription with corrections:\n\n**Original Image:**\n```\nINVOICE #2947\nAcme Corporation\nBilling@acme.com\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (10%): $14.95\nTOTAL: $164.90\nDate: 12/15/2025\n```\n\n**Candidate Readings:**\n[minicpm-v:8b]: The correct readings for each position are as follows:\nPosition 2: minicpm-v:8b=t, llava:7b=I (Correction of 'm' to 'I')\nPosition 3: minicpm-v:8b=l, llava:7b=I \nPosition 4: minicpm-v:8b=e, llava:7b='\nPosition 5: minicpm-v:8b:=, llava:7b=m (Correction of ':')\nPosition 7: minicpm-v:8b=U, llava:7b=u \n...\n\n[llava:7b]: The image you've provided appears to be a photograph of a printed receipt. Here are the corrections based on visual evidence and semantic plausibility:\n1. [minicpm-v:8b]: I -> Acme Corporation\n2. [minicpm-v:8b]: I -> 7\n3. [minicpm-v:8b]: I -> 19\n4. [minicpm-v:8b]: I -> $\n5. [minicpm-v:8b]: I -> Su...\n\n**Unresolved Disagreements:**\nPosition 11: minicpm-v:8b=c, llava:7b=y\nPosition 33: minicpm-v:8b=e, llava:7b=s\nPosition 34: minicpm-v:8b=c, llava:7b= \nPosition 38: minicpm-v:8b=r, llava:7b=b\nPosition 45: minicpm-v:8b=d, llava:7b=o\nPosition 46: minicpm-v:8b=i, llava:7b=t\nPosition 47: minicpm-v:8b=n, llava:7b=o\nPosition 52: minicpm-v:8b=s, llava:7b=h\nPosition 66: minicpm-v:8b=o, llava:7b= \nPosition 85: minicpm-v:8b=c, llava:7b=t\n\n**Final Transcription:**\n```\nINVOICE #2947\nAcme Corporation\nBilling@acme.com\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (10%): $14.95\nTOTAL: $164.90\nDate: 12/15/2025\n```\n\n**Corrections:**\n- Position 11: minicpm-v:8b=c, llava:7b=y -> minicpm-v:8b=c, llava:7b=y (No change needed)\n- Position 33: minicpm-v:8b=e, llava:7b=s -> minicpm-v:8b=e, llava:7b=s (No change needed)\n- Position 34: minicpm-v:8b=c, llava:7b= -> minicpm-v:8b=c, llava:7b= (No change needed)\n- Position 38: minicpm-v:8b=r, llava:7b=b -> minicpm-v:8b=r, llava:7b=b (No change needed)\n- Position 45: minicpm-v:8b=d, llava:7b=o -> minicpm-v:8b=d, llava:7b=o (No change needed)\n- Position 46: minicpm-v:8b=i, llava:7b=t -> minicpm-v:8b=i, llava:7b=t (No change needed)\n- Position 47: minicpm-v:8b=n, llava:7b=o -> minicpm-v:8b=n, llava:7b=o (No change needed)\n- Position 52: minicpm-v:8b=s, llava:7b=h -> minicpm-v:8b=s, llava:7b=h (No change needed)\n- Position 66: minicpm-v:8b=o, llava:7b= -> minicpm-v:8b=o, llava:7b= (No change needed)\n- Position 85: minicpm-v:8b=c, llava:7b=t -> minicpm-v:8b=c, llava:7b=t (No change needed)\n\nThe final, authoritative transcription is:\n```\nINVOICE #2947\nAcme Corporation\nBilling@acme.com\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (10%): $14.95\nTOTAL: $164.90\nDate: 12/15/2025\n```",
+        "time": 125.55555809400539,
+        "accuracy": {
+          "sequence_similarity": 0.09533678756476684,
+          "word_recall": 0.7727272727272727,
+          "char_similarity": 0.09112519809825674,
+          "number_accuracy": 0.7,
+          "combined_score": 0.4147973145975741
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "serial_number_motion_blur_heavy": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "To resolve the remaining disagreements, let's carefully examine the image and the OCR outputs provided by both systems. Here is the image again for reference:\n\n```\nSERIAL: XT-2017-D4\nMODEL: RTA-4999-Ti\nSN#: BAFTBCD0E\nMAC: 6C-FB-BF-CF-AF-E1\nUID: 5561e8409...\n```\n\n### Analysis and Resolution:\n\n1. **Position 0: minicpm-v:8b=A, llava:7b=**\n   - The image shows an 'A' at this position.\n\n2. **Position 1: minicpm-v:8b=f, llava:7b=T**\n   - The image shows an 'f' at this position.\n\n3. **Position 2: minicpm-v:8b=t, llava:7b=h**\n   - The image shows an 't' at this position.\n\n4. **Position 4: minicpm-v:8b=r, llava:7b=**\n   - The image shows an 'r' at this position.\n\n5. **Position 5: minicpm-v:8b= , llava:7b=i**\n   - The image shows a space at this position.\n\n6. **Position 6: minicpm-v:8b=c, llava:7b=m**\n   - The image shows a 'c' at this position.\n\n7. **Position 8: minicpm-v:8b=r, llava:7b=g**\n   - The image shows an 'r' at this position.\n\n8. **Position 11: minicpm-v:8b=u, llava:7b=**\n   - The image shows an 'u' at this position.\n\n9. **Position 12: minicpm-v:8b=l, llava:7b=s**\n   - The image shows an 'l' at this position.\n\n10. **Position 13: minicpm-v:8b=l, llava:7b=h**\n    - The image shows an 'l' at this position.\n\n### Final Transcription:\n\n```plaintext\nSERIAL: XT-2017-D4\nMODEL: RTA-4999-Ti\nSN#: BAFTBCD0E\nMAC: 6C-FB-BF-CF-AF-E1\nUID: 5561e8409...\n```\n\n### Corrections:\n\n- **Position 1: minicpm-v:8b=f, llava:7b=T**\n  - The correct character is 'f'.\n\n- **Position 2: minicpm-v:8b=t, llava:7b=h**\n  - The correct character is 't'.\n\n- **Position 4: minicpm-v:8b=r, llava:7b=**\n  - The correct character is 'r'.\n\n- **Position 5: minicpm-v:8b= , llava:7b=i**\n  - The correct character is a space.\n\n- **Position 6: minicpm-v:8b=c, llava:7b=m**\n  - The correct character is 'c'.\n\n- **Position 8: minicpm-v:8b=r, llava:7b=g**\n  - The correct character is 'r'.\n\n- **Position 11: minicpm-v:8b=u, llava:7b=**\n  - The correct character is 'u'.\n\n- **Position 12: minicpm-v:8b=l, llava:7b=s**\n  - The correct character is 'l'.\n\n- **Position 13: minicpm-v:8b=l, llava:7b=h**\n  - The correct character is 'l'.\n\n### Final, Authoritative Transcription:\n\n```plaintext\nSERIAL: XT-2017-D4\nMODEL: RTA-4999-Ti\nSN#: BAFTBCD0E\nMAC: 6C-FB-BF-CF-AF-E1\nUID: 5561e8409...\n```\n\nNo further corrections are needed for the numbers and codes.",
+        "time": 95.12899614799971,
+        "accuracy": {
+          "sequence_similarity": 0.030716723549488054,
+          "word_recall": 0.3,
+          "char_similarity": 0.023880597014925373,
+          "number_accuracy": 0.4666666666666667,
+          "combined_score": 0.20531599680777002
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "serial_number_thermal_fade": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Let's carefully review the image and the discrepancies between the two OCR systems to resolve the remaining disagreements.\n\n### Image Analysis:\nThe image contains the following text:\n```\nSERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b\n```\n\n### Resolving Disagreements:\n\n1. **Position 6: minicpm-v:8b=o, llava:7b=I**\n   - The correct character is `o` because it is a number and not `I`.\n\n2. **Position 7: minicpm-v:8b=n, llava:7b='**\n   - The correct character is `n` because it is a number and not an apostrophe.\n\n3. **Position 8: minicpm-v:8b= , llava:7b=v**\n   - The correct character is a space because it is a number and not `v`.\n\n4. **Position 9: minicpm-v:8b=a, llava:7b=e**\n   - The correct character is `a` because it is a number and not `e`.\n\n5. **Position 26: minicpm-v:8b=t, llava:7b=v**\n   - The correct character is `t` because it is a number and not `v`.\n\n6. **Position 29: minicpm-v:8b=n, llava:7b=e**\n   - The correct character is `n` because it is a number and not `e`.\n\n7. **Position 30: minicpm-v:8b= , llava:7b=w**\n   - The correct character is a space because it is a number and not `w`.\n\n8. **Position 31: minicpm-v:8b=o, llava:7b=e**\n   - The correct character is `o` because it is a number and not `e`.\n\n9. **Position 32: minicpm-v:8b=f, llava:7b=d**\n   - The correct character is `f` because it is a number and not `d`.\n\n10. **Position 46: minicpm-v:8b=d, llava:7b=c**\n    - The correct character is `d` because it is a number and not `c`.\n\n### Final Transcription:\n```\nSERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b\n```\n\n### Corrections:\n- Position 6: minicpm-v:8b=o, llava:7b=I -> minicpm-v:8b=o, llava:7b=I\n- Position 7: minicpm-v:8b=n, llava:7b=' -> minicpm-v:8b=n, llava:7b='\n- Position 8: minicpm-v:8b= , llava:7b=v -> minicpm-v:8b= , llava:7b=v\n- Position 9: minicpm-v:8b=a, llava:7b=e -> minicpm-v:8b=a, llava:7b=e\n- Position 26: minicpm-v:8b=t, llava:7b=v -> minicpm-v:8b=t, llava:7b=v\n- Position 29: minicpm-v:8b=n, llava:7b=e -> minicpm-v:8b=n, llava:7b=e\n- Position 30: minicpm-v:8b= , llava:7b=w -> minicpm-v:8b= , llava:7b=w\n- Position 31: minicpm-v:8b=o, llava:7b=e -> minicpm-v:8b=o, llava:7b=e\n- Position 32: minicpm-v:8b=f, llava:7b=d -> minicpm-v:8b=f, llava:7b=d\n- Position 46: minicpm-v:8b=d, llava:7b=c -> minicpm-v:8b=d, llava:7b=c\n\nThe final, authoritative transcription is:\n```\nSERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b\n```",
+        "time": 131.00333773100283,
+        "accuracy": {
+          "sequence_similarity": 0.0777820562187139,
+          "word_recall": 1.0,
+          "char_similarity": 0.08236347358997315,
+          "number_accuracy": 1.0,
+          "combined_score": 0.5400363824521718
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "serial_number_phone_photo_bad": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "Let's carefully analyze the image and resolve the discrepancies between the two OCR systems, minicpm-v:8b and llava:7b.\n\n### Analysis of the Image:\nThe image appears to be a document with text that is quite blurred and distorted. The OCR systems have provided their interpretations, and we need to compare and reconcile the differences.\n\n### Resolved Differences:\n1. **Position 15: minicpm-v:8b=i, llava:7b=q**\n   - The correct character is likely \"i\" based on the context and the other OCR interpretations.\n\n2. **Position 16: minicpm-v:8b=g, llava:7b=u**\n   - The correct character is likely \"u\" based on the context and the other OCR interpretations.\n\n3. **Position 17: minicpm-v:8b=h, llava:7b=i**\n   - The correct character is likely \"i\" based on the context and the other OCR interpretations.\n\n4. **Position 18: minicpm-v:8b=l, llava:7b=t**\n   - The correct character is likely \"t\" based on the context and the other OCR interpretations.\n\n5. **Position 19: minicpm-v:8b=y, llava:7b=e**\n   - The correct character is likely \"e\" based on the context and the other OCR interpretations.\n\n6. **Position 27: minicpm-v:8b=d, llava:7b=y**\n   - The correct character is likely \"y\" based on the context and the other OCR interpretations.\n\n7. **Position 33: minicpm-v:8b=c, llava:7b=l**\n   - The correct character is likely \"l\" based on the context and the other OCR interpretations.\n\n8. **Position 36: minicpm-v:8b=t, llava:7b=w**\n   - The correct character is likely \"w\" based on the context and the other OCR interpretations.\n\n9. **Position 38: minicpm-v:8b=i, llava:7b=r**\n   - The correct character is likely \"r\" based on the context and the other OCR interpretations.\n\n10. **Position 39: minicpm-v:8b=n, llava:7b=e**\n    - The correct character is likely \"e\" based on the context and the other OCR interpretations.\n\n### Final Transcription:\n**Title:** OCCUPATION AS IN GENERAL\n\n**Body Text (fragments):**\n- AT THE END OF A YEAR\n- BUT NOT IN EVERYONE'S\n- THE WOR...\n\n### Final Call:\nBased on the analysis and the context, the final authoritative transcription is:\n\n**Title:** OCCUPATION AS IN GENERAL\n\n**Body Text (fragments):**\n- AT THE END OF A YEAR\n- BUT NOT IN EVERYONE'S\n- THE WOR...\n\nIf there are any other positions with unresolved discrepancies, please provide the image again for further analysis.",
+        "time": 89.6713224069972,
+        "accuracy": {
+          "sequence_similarity": 0.01102629346904156,
+          "word_recall": 0.0,
+          "char_similarity": 0.013979031452820768,
+          "number_accuracy": 0.13333333333333333,
+          "combined_score": 0.039584664563798916
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      },
+      "serial_number_ultimate_stress": {
+        "success": true,
+        "technique": "socratic_debate",
+        "text": "The image is quite blurry, making it challenging to discern the exact characters. However, based on the context and common OCR errors, here are the final calls for the unresolved disagreements:\n\n1. Position 32: minicpm-v:8b=t, llava:7b=T\n2. Position 45: minicpm-v:8b= , llava:7b=p\n3. Position 46: minicpm-v:8b=c, llava:7b=r\n4. Position 49: minicpm-v:8b=s, llava:7b=v\n5. Position 53: minicpm-v:8b=r, llava:7b=d\n6. Position 54: minicpm-v:8b=i, llava:7b= \n7. Position 55: minicpm-v:8b=n, llava:7b=i\n8. Position 56: minicpm-v:8b=g, llava:7b=s\n9. Position 58: minicpm-v:8b=c, llava:7b=t\n10. Position 68: minicpm-v:8b= , llava:7b=b\n\nGiven the context and the fact that the image is blurry, the most likely final transcription is:\n\n```\nKING'S\n(SCH.)\nHOTEL\nTHE ROYAL HOTEL\nDOWNTOWN WASHINGTON D.C.\n```\n\nThis transcription is based on the most common OCR errors and the context provided.",
+        "time": 77.6252067280002,
+        "accuracy": {
+          "sequence_similarity": 0.014373716632443531,
+          "word_recall": 0.0,
+          "char_similarity": 0.014268727705112961,
+          "number_accuracy": 0.13333333333333333,
+          "combined_score": 0.04049394441772246
+        },
+        "models_used": [
+          "minicpm-v:8b",
+          "llava:7b",
+          "qwen2.5vl:7b"
+        ],
+        "confidence": 0.5
+      }
+    }
+  }
+}

@@ -1,0 +1,3901 @@
+{
+  "metadata": {
+    "timestamp": "2025-11-25T00:43:18.288295",
+    "num_texts": 5,
+    "num_degradations": 16,
+    "total_tests": 320,
+    "models": [
+      "minicpm-v:8b",
+      "llava:7b",
+      "qwen2.5vl:7b",
+      "gemma3n:latest"
+    ]
+  },
+  "test_texts": {
+    "receipt": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\n\nLatte          $4.50\nCroissant      $3.25\nTip            $1.25\n-----------------\nTOTAL:         $9.00\n\nThank you!",
+    "invoice": "INVOICE #2847\nAcme Corporation\nbilling@acme.com\n\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\n\nDue: 12/15/2025",
+    "handwritten_style": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by EOD\n- Follow up with HR\nPhone: 555-0123",
+    "serial_number": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+    "address_label": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3B\nSpringfield, IL 62701\nUSA\n\nPRIORITY MAIL"
+  },
+  "degradations": {
+    "clean": "No degradation (baseline)",
+    "rotate_5": "5\u00b0 rotation",
+    "rotate_15": "15\u00b0 rotation",
+    "rotate_30": "30\u00b0 rotation (severe)",
+    "blur_light": "Light Gaussian blur",
+    "blur_heavy": "Heavy Gaussian blur",
+    "noise_light": "Light noise (5%)",
+    "noise_heavy": "Heavy noise (15%)",
+    "dark": "Underexposed (dark)",
+    "bright": "Overexposed (washed out)",
+    "low_contrast": "Low contrast",
+    "jpeg_artifacts": "Heavy JPEG compression",
+    "perspective_skew": "Perspective skew (photo angle)",
+    "combo_mild": "Mild combo (5\u00b0 + light blur + light noise)",
+    "combo_severe": "Severe combo (15\u00b0 + blur + noise + dark)",
+    "crumpled": "Simulated crumple/fold lines"
+  },
+  "results": {
+    "minicpm-v:8b": {
+      "receipt": {
+        "clean": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP  \nAddress: 123 Main Street  \nDate: 11/24/2025  \n\nMenu Items with Prices:\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.25\n\nTotal: $9.00  \n\nClosing Message: Thank you!",
+          "time": 1.8252514479972888,
+          "accuracy": {
+            "sequence_similarity": 0.7235494880546075,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.7228915662650602,
+            "number_accuracy": 1.0,
+            "combined_score": 0.847721374691028
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP\n\nAddress:\n123 Main Street  \nDate: 11/24/2025  \n\nMenu Items with Prices:\n- Latte $4.5 \n- Croissant $3.2! \n- Tip $1.2!\n\nTotal Amount Due (with an error in the price): TOTAL: $9.01\n\nNote at Bottom: Thank you!",
+          "time": 2.3389399430016056,
+          "accuracy": {
+            "sequence_similarity": 0.39644970414201186,
+            "word_recall": 0.7222222222222222,
+            "char_similarity": 0.6056338028169014,
+            "number_accuracy": 0.5,
+            "combined_score": 0.5560764322952839
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "**Title:**\nCOFFEE SHOP\n\n**Address:**\n123 Main Street  \nDate: 11/24/2025\n\n**Menu Items with Prices:**\n- Latte $4.5l\n- Croissant $3.2!\n- Tip $1.2!\n\n**Total Amount:**\nTOTAL: $9.0l",
+          "time": 2.8125864609974087,
+          "accuracy": {
+            "sequence_similarity": 0.6237288135593221,
+            "word_recall": 0.6111111111111112,
+            "char_similarity": 0.6086956521739131,
+            "number_accuracy": 0.5,
+            "combined_score": 0.5858838942110866
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "**Title:**\nCOFFEE SHOP\n\n**Address:**\n123 Main Street  \nDate: 11/24/2025  \n\n**Menu Items with Prices:**\n- Latte Croissant $4.51\n- Tip $3.21\n- TOTAL: $9.01",
+          "time": 2.5931621130002895,
+          "accuracy": {
+            "sequence_similarity": 0.6346863468634686,
+            "word_recall": 0.6111111111111112,
+            "char_similarity": 0.6206896551724138,
+            "number_accuracy": 0.5,
+            "combined_score": 0.5916217782867483
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP  \nAddress: 123 Main Street  \nDate: 11/24/2025  \n\nMenu Items:\n- Latte $4.56  \n- Croissant $3.25  \nTip: $1.25  \n\nTotal Cost: TOTAL: $9.00\n\nThank you!",
+          "time": 2.0851094350000494,
+          "accuracy": {
+            "sequence_similarity": 0.7709090909090909,
+            "word_recall": 0.8333333333333334,
+            "char_similarity": 0.7606837606837606,
+            "number_accuracy": 0.875,
+            "combined_score": 0.8099815462315463
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP\n\nAddress:\n123 Main Street\nDate: 11/24/2025\n\nMenu Items and Prices:\n- Latte $4.98\n- Cremissant $3.25\n- Tip $1.25\n\nTotal Amount:\nTOTAL: $6.98\n\nThank you!",
+          "time": 2.1431651940001757,
+          "accuracy": {
+            "sequence_similarity": 0.696551724137931,
+            "word_recall": 0.7777777777777778,
+            "char_similarity": 0.6829268292682927,
+            "number_accuracy": 0.75,
+            "combined_score": 0.7268140827960003
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP\n\nAddress:\n123 Main Street\n\nDate: 11/24/2025\n\nMenu Items with Prices:\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.25\n\nTotal Payment:\nTOTAL: $9.00\n\nClosing Message:\nThank you!",
+          "time": 2.1787986070048646,
+          "accuracy": {
+            "sequence_similarity": 0.6948051948051948,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.6870229007633588,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8315681350032496
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "The image displays a blurred receipt from \"COFFEE SHOP\" with various items listed along with their prices.\nTop Left: COFFEE SHOP 123 Main Street Date: 1/04/2025\n\nLeft Side Menu:\n- Latte $1.59\n- Croissant $3.29\n- Tip $1.28\n\nRight Side Total Cost Area:\nTOTAL: $3.06\n\nBottom Right Thank you!",
+          "time": 2.6589761349969194,
+          "accuracy": {
+            "sequence_similarity": 0.28361858190709044,
+            "word_recall": 0.6666666666666666,
+            "char_similarity": 0.28488372093023256,
+            "number_accuracy": 0.25,
+            "combined_score": 0.3712922423759974
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP  \nAddress: 123 Main Street  \nDate: 11/24/2025  \n\nMenu Items with Prices:\n- Latte $4.50  \n- Croissant $3.25  \nTip: $1.25\n\nTotal Cost: TOTAL: $9.00  \nThank you!",
+          "time": 2.129446908002137,
+          "accuracy": {
+            "sequence_similarity": 0.7456445993031359,
+            "word_recall": 0.8888888888888888,
+            "char_similarity": 0.7377049180327869,
+            "number_accuracy": 1.0,
+            "combined_score": 0.843059601556203
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "**Title:**\nCOFFEE SHOP\n\n**Address:**\n123 Main Street  \nDate: 11/24/2025  \n\n---\n\n**Menu Items with Prices:**\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.25\n\n**Total Calculation:**\nTOTAL: $9.00\n\n**Closing Remark:**\nThank you!",
+          "time": 2.4288889300005394,
+          "accuracy": {
+            "sequence_similarity": 0.6388059701492538,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.625,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8020626036484245
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP  \nAddress: 123 Main Street  \nDate: 11/24/2025  \n\nMenu Items with Prices:\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.25\n\nFooter Text:\nTOTAL: $9.00  \nThank you!",
+          "time": 2.129561253997963,
+          "accuracy": {
+            "sequence_similarity": 0.740484429065744,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.7346938775510204,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8549056877653022
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP\n\nAddress:\n123 Main Street\nDate: 11/24/2025\n\nMenu Items with Prices:\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.25\n\nSubtotal Text:\nTOTAL: $9.00\n\nClosing Message:\nThank you!",
+          "time": 2.21235633300239,
+          "accuracy": {
+            "sequence_similarity": 0.6948051948051948,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.6870229007633588,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8315681350032496
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP\n\nAddress:\n123 Main Street  \nDate: 11/24/2025  \n\nMenu Items with Prices:\n- Latte $4.5( \n- Croissant $3.2( \n- Tip $1.2! \n\nSummary Line:\nTOTAL: ___________ $9.0( \n\nClosing Message:\nThank you!",
+          "time": 2.2514386099937838,
+          "accuracy": {
+            "sequence_similarity": 0.64576802507837,
+            "word_recall": 0.7222222222222222,
+            "char_similarity": 0.6323529411764706,
+            "number_accuracy": 0.5,
+            "combined_score": 0.6250857971192657
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP\n\nAddress: 123 Main Street\n\nDate: 11/24/2025\n\nMenu:\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.20\n\nTotal: $9,00\n\nBody Text: Thank you!",
+          "time": 2.0773760820011375,
+          "accuracy": {
+            "sequence_similarity": 0.7732342007434945,
+            "word_recall": 0.8333333333333334,
+            "char_similarity": 0.7719298245614035,
+            "number_accuracy": 0.75,
+            "combined_score": 0.7821243396595579
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "The provided image is very pixelated and does not contain clear enough text to be accurately transcribed or identified with high confidence. The content appears to include a distorted mixture of letters and numbers that are difficult to discern.\n\nIf you have another clearer version of this image or more specific details, please provide it so we can attempt the transcription again.",
+          "time": 2.633881667999958,
+          "accuracy": {
+            "sequence_similarity": 0.011857707509881422,
+            "word_recall": 0.0,
+            "char_similarity": 0.014018691588785047,
+            "number_accuracy": 0.0,
+            "combined_score": 0.006469099774666617
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "Title: COFFEE SHOP\n\nAddress: 123 Main Street\n\nDate: 11/24/2025\n\nMenu:\n- Latte $4.50\n- Croissant $3.25\n- Tip $1.25\n\nBody Text:\nTOTAL: $9.00\n\nClosing Message: Thank you!",
+          "time": 2.142867250004201,
+          "accuracy": {
+            "sequence_similarity": 0.7482517482517482,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.7407407407407407,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8583592333592334
+          }
+        }
+      },
+      "invoice": {
+        "clean": {
+          "success": true,
+          "extracted_text": "**INVOICE #2847**\n\nAcme Corporation  \nbilling@acme.com\n\nItem: Widget Pro X  \nQty: 5 @ $29.99  \nSubtotal: $149.95  \n\nTax (8%): $12.00  \n\nTOTAL: $161.95  \n\nDue: 12/15/2025",
+          "time": 2.322256859995832,
+          "accuracy": {
+            "sequence_similarity": 0.9866666666666667,
+            "word_recall": 0.9090909090909091,
+            "char_similarity": 0.9844961240310077,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9700634249471458
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "**Title:**\nINVOICE #2847\n\n**Body Text:**\nAcme Corporation  \nbilling@acme.com  \n\n**Item Details:**  \nItem: Widget Pro X  \nQty: 5 @ $29.99  \nSubtotal: $149.95  \nTax (8%): $12.00  \nTOTAL: $161.95\n\n**Due Date:**  \nDue: 12/15/2025",
+          "time": 2.744554283999605,
+          "accuracy": {
+            "sequence_similarity": 0.8361581920903954,
+            "word_recall": 1.0,
+            "char_similarity": 0.8327868852459016,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9172362693340742
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "**Title:**\nINVOICE #2847\n\n**Header Information:**\nAcme Corporation  \nbilling@acme.com  \n\n**Body Text:**\nItem: Widget Pro X  \nQty: 5 @ $29.99  \nSubtotal: $149.05  \nTax (8%): $12.00  \nTOTAL: $161.95  \n\nDue: 12/15/2025\n\n**Footer Information:**\nInvoice #2847  \nAcme Corporation  \nbilling@acme.com",
+          "time": 3.8238767910006572,
+          "accuracy": {
+            "sequence_similarity": 0.7033492822966507,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.6923076923076923,
+            "number_accuracy": 0.9,
+            "combined_score": 0.8125506072874494
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "**Title:**\nINVOICE #2847\n\n**Body Text:**\nAcme Corporation  \nbilling@acme.com  \n\nItem: Widget Pro X  \nQty: 5 @ $29.99  \nSubtotal: $149.95  \nTax (8%): $12.00  \nTOTAL: $161.95\n\nDue: 12/15/2025",
+          "time": 3.190193670001463,
+          "accuracy": {
+            "sequence_similarity": 0.9192546583850931,
+            "word_recall": 1.0,
+            "char_similarity": 0.9169675090252708,
+            "number_accuracy": 1.0,
+            "combined_score": 0.959055541852591
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "**INVOICE #2847**\nAcme Corporation  \nbilling@acme.com\n\n**Item:** Widget Pro X  \n\n**Qty:** 5 @ $29.99  \nSubtotal: $149.95  \nTax (8%): $12.00  \nTOTAL: $161.95  \n\n**Due:** 12/15/2025",
+          "time": 2.396134317998076,
+          "accuracy": {
+            "sequence_similarity": 0.9487179487179487,
+            "word_recall": 0.7727272727272727,
+            "char_similarity": 0.9407407407407408,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9155464905464905
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "**Title:** INVOICE #2847\n\n**Header:**\n- Acme Corporation\n  billing@acme.com\n\n**Billing Details:**\n- Billing@acme.com\n\n**Product Information:**\n- Item: Widget Pro X \n- Qty: 5 @ $19.00\n- Subtotal: $134.26\n- Tax (8%): $12.75\n- Total: $147.00\n\n**Total Cost:**\n- TOTAL: $147.00\n\n**Date:**\n- Due: 1/23/2029",
+          "time": 3.4992190659977496,
+          "accuracy": {
+            "sequence_similarity": 0.4909090909090909,
+            "word_recall": 0.7727272727272727,
+            "char_similarity": 0.4827586206896552,
+            "number_accuracy": 0.3,
+            "combined_score": 0.5115987460815047
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "**INVOICE #2847**\n\nAcme Corporation  \nbilling@acmec.com\n\n**Item:** Widget Pro X\n\nQty: 5 @ $29.99  \nSubtotal: $149.95  \n\nTax (8%): $12.00  \nTotal: $161.95  \n\nDue: 12/15/2025",
+          "time": 2.3731922970036976,
+          "accuracy": {
+            "sequence_similarity": 0.9704918032786886,
+            "word_recall": 0.8181818181818182,
+            "char_similarity": 0.9657794676806084,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9386132722852788
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "**Title:**\nINVOICE #2847\n\n**Header Information:**\nAcme Corporation  \nbling@acme.com  \n\n**Body Text:**\nItem: Widget Pro X  \nQty: 5 @ $20.98  \nSubtotal: $103.60  \nTax (Excl): $12.00  \nTotal: $174.13\n\n**Footer Information:**\nDue: **12/15/2025",
+          "time": 2.752207425997767,
+          "accuracy": {
+            "sequence_similarity": 0.5752688172043011,
+            "word_recall": 0.7272727272727273,
+            "char_similarity": 0.6996904024767802,
+            "number_accuracy": 0.6,
+            "combined_score": 0.6505579867384522
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "INVOICE #2847  \nAcme Corporation billing@acme.com  \nItem: Widget Pro X  \nQty: 5 @ $29.99  \nSubtotal: $149.95  \n\nTax (8%): $12.00  \n\nTOTAL: $161.95  \n\nDue: 12/15/2025",
+          "time": 2.289109304001613,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "**INVOICE #2847**\n\n**Acme Corporation**\n**billing@acme.com**\n\n**Item: Widget Pro X**\n- Qty: 5 @ $29.99  \n   Subtotal: $149.95\n\nTax (8%): $12.00  \n\nTOTAL: $161.95  \n\nDue: 12/15/2025",
+          "time": 2.4417519609996816,
+          "accuracy": {
+            "sequence_similarity": 0.9426751592356688,
+            "word_recall": 0.6818181818181818,
+            "char_similarity": 0.9372693726937269,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8904406784368943
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "**INVOICE #2847**\n\n*Acme Corporation*\n*billing@acme.com*\n\n**Item:** Widget Pro X  \n**Qty:** 5 @ $29.99  \n\n**Subtotal:** $149.95\n\nTax (8%): $12.00  \n\nTOTAL: $161.95  \n\nDue: 12/15/2025",
+          "time": 2.4365445419971365,
+          "accuracy": {
+            "sequence_similarity": 0.9367088607594937,
+            "word_recall": 0.6363636363636364,
+            "char_similarity": 0.927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8750199490983007
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "Title: INVOICE #2847\n\nCompany Information:\n- Acme Corporation\n- Email: billing@acme.com\n\nItem Details:\n- Item: Widget Pro X\n- Qty: 5 @ $29.99\n- Subtotal: $149.95\n- Tax (8%): $12.00\n- Total: $161.95\n\nDue Date:\n- Due: 12/15/2025",
+          "time": 2.7911573000019416,
+          "accuracy": {
+            "sequence_similarity": 0.7169811320754716,
+            "word_recall": 1.0,
+            "char_similarity": 0.8115015974440895,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8821206823798903
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "**INVOICE #2847**\nAcme Corporation  \nbilling@acme.com  \n\n**Item:** Widget Pro X  \nQty: 5 @ $29.99\n\nSubtotal: $149.95  \nTax (8%): $12.00\n\nTOTAL: $161.95  \n\nDue: 12/15/2025",
+          "time": 2.3661283920009737,
+          "accuracy": {
+            "sequence_similarity": 0.9736842105263158,
+            "word_recall": 0.8636363636363636,
+            "char_similarity": 0.9694656488549618,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9516965557544104
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "**INVOICE #2847**\n\nAcme Corporation  \nbilling@acme.com  \n\n**Item:** Widget Pro X  \nQty: 5 @ $29.99\n\nSubtotal: $149.95  \nTax (8%): $12.00\n\nTOTAL: $161.95  \n\nDue: 12/15/2025",
+          "time": 2.354852746000688,
+          "accuracy": {
+            "sequence_similarity": 0.9736842105263158,
+            "word_recall": 0.8636363636363636,
+            "char_similarity": 0.9694656488549618,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9516965557544104
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "The text is not clear enough to accurately determine its content or structure from the provided image. If you can provide a clearer version of the same page or another image with legible text, I'd be happy to assist further!",
+          "time": 2.0479947029962204,
+          "accuracy": {
+            "sequence_similarity": 0.021505376344086023,
+            "word_recall": 0.0,
+            "char_similarity": 0.1987179487179487,
+            "number_accuracy": 0.0,
+            "combined_score": 0.055055831265508684
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "**Title:**\nINVOICE #2847\n\n**Header Information:**\nAcme Corporation  \nbilling@acme.com  \n\n**Item Details:**  \nItem: Widget Pro X  \nQty.: 5 @ $29.99  \nSubtotal: $149.95  \n\n**Tax (8%):**  \n$12.00  \n\n**Total Cost:**  \nTOTAL: $161.95\n\n**Due Date:**  \nDue: 12/15/2025",
+          "time": 2.9474546919955174,
+          "accuracy": {
+            "sequence_similarity": 0.7708333333333334,
+            "word_recall": 0.8636363636363636,
+            "char_similarity": 0.7627627627627628,
+            "number_accuracy": 1.0,
+            "combined_score": 0.849308114933115
+          }
+        }
+      },
+      "handwritten_style": {
+        "clean": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by HR\n- Follow up with HR\nPhone: 555-0123",
+          "time": 1.4631941150000785,
+          "accuracy": {
+            "sequence_similarity": 0.8764940239043825,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8640776699029126,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9219850287149817
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday.\n- Review Q4 budget.\n- Send proposal by __\\|\n- Follow up with HR.\n\n**Contact Information:**\nPhone: 555-0123",
+          "time": 1.6033912799975951,
+          "accuracy": {
+            "sequence_similarity": 0.7829181494661922,
+            "word_recall": 0.7894736842105263,
+            "char_similarity": 0.7606837606837606,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8332688985901198
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "Title: Meeting Notes\n\nBody Text:\n- Call client Tuesday.\n- Review Q4 budget.\n- Send proposal by [illegible].\n- Follow up with HR.\n\nContact Information:\nPhone: 555-0123",
+          "time": 1.5077062279960955,
+          "accuracy": {
+            "sequence_similarity": 0.8014440433212996,
+            "word_recall": 0.7894736842105263,
+            "char_similarity": 0.782608695652174,
+            "number_accuracy": 1.0,
+            "combined_score": 0.843381605796
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes Tuesd\n\n**Body Text:**\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by Friday\n- Follow up with HR on project status (Phone: 556-0123)",
+          "time": 1.6076925029992708,
+          "accuracy": {
+            "sequence_similarity": 0.7829181494661922,
+            "word_recall": 0.8421052631578947,
+            "char_similarity": 0.7672413793103449,
+            "number_accuracy": 0.6666666666666666,
+            "combined_score": 0.7647328646502746
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday.\n- Review Q4 budget.\n- Send proposal by Monday.\n- Follow up with HR.\n\n**Contact Information:**\nPhone: 555-0123",
+          "time": 1.577595028997166,
+          "accuracy": {
+            "sequence_similarity": 0.7887323943661971,
+            "word_recall": 0.7894736842105263,
+            "char_similarity": 0.7679324894514767,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8365346420070501
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday.\n- Review Q4 budget.\n- Send proposal by...\n- Follow up with HR.\n\n**Contact Information:**\nPhone: 555-0123",
+          "time": 1.5539169719995698,
+          "accuracy": {
+            "sequence_similarity": 0.7813620071684588,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.7639484978540773,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8205381525714235
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by [date]\n- Follow up with HR\n  Phone: **555-0123**",
+          "time": 1.5379004319984233,
+          "accuracy": {
+            "sequence_similarity": 0.8571428571428571,
+            "word_recall": 0.8947368421052632,
+            "char_similarity": 0.8411214953271028,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8982502986438058
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\nCall client Tuesday.\nReview 04 budget.\nSend proposal by...\nFollow up with HR.\n\n**Contact Information:**\nPhone: 555-0123",
+          "time": 1.4845819900001516,
+          "accuracy": {
+            "sequence_similarity": 0.7453874538745388,
+            "word_recall": 0.631578947368421,
+            "char_similarity": 0.7336244541484717,
+            "number_accuracy": 0.6666666666666666,
+            "combined_score": 0.6943143805145244
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by [date]\n- Follow up with HR\nPhone: 555-0123",
+          "time": 1.4870336050007609,
+          "accuracy": {
+            "sequence_similarity": 0.8705882352941177,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8571428571428571,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9187748783724016
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday.\n- Review Q4 budget.\n- Send proposal by [date not specified].\n- Follow up with HR.\n\n**Contact Information:**\nPhone: 555-0123",
+          "time": 1.6431871820022934,
+          "accuracy": {
+            "sequence_similarity": 0.7583892617449665,
+            "word_recall": 0.7894736842105263,
+            "char_similarity": 0.7389558232931727,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8217046923121664
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday  \n- Review Q4 budget  \n- Send proposal by Friday  \n\nFollow up with HR  \n\nPhone: 555-0123",
+          "time": 1.4346770369957085,
+          "accuracy": {
+            "sequence_similarity": 0.8616600790513834,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8516746411483254,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9151757853130851
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "Title: Meeting Notes\n\n- Call client Tuesday\n  - Review Q4 budget\n  - Send proposal by [date]\n  - Follow up with HR\nPhone: 555-0123",
+          "time": 1.3936304330054554,
+          "accuracy": {
+            "sequence_similarity": 0.940677966101695,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.9326424870466321,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9551722185502396
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by [date]\n- Follow up with HR  \nPhone: 555-0123",
+          "time": 1.4866922110013547,
+          "accuracy": {
+            "sequence_similarity": 0.8705882352941177,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8571428571428571,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9187748783724016
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesd  \n- Review Q4 budget  \n- Send proposal by 2nd  \n- Follow up with HR  \n\n**Contact Information:**\nPhone: 555-0123",
+          "time": 1.6540837729990017,
+          "accuracy": {
+            "sequence_similarity": 0.7927272727272727,
+            "word_recall": 0.8947368421052632,
+            "char_similarity": 0.7719298245614035,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8648484848484848
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "The image contains a blurred text that is difficult to read clearly due to corruption or compression artifacts. However, some recognizable fragments of letters can be identified. Here's what appears to be readable:\n\n---\n\n**[Corrupted/Blurred Text]**\n\n---\nPlease note that the quality and clarity of the original content are significantly compromised, making it challenging to transcribe all details accurately from this image as provided.",
+          "time": 2.2606328569963807,
+          "accuracy": {
+            "sequence_similarity": 0.032846715328467155,
+            "word_recall": 0.0,
+            "char_similarity": 0.017241379310344827,
+            "number_accuracy": 0.0,
+            "combined_score": 0.012522023659702996
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "**Title:**\nMeeting Notes\n\n**Body Text:**\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by [date]\n- Follow up with HR\nPhone: 555-0123",
+          "time": 1.4835810730000958,
+          "accuracy": {
+            "sequence_similarity": 0.8705882352941177,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8571428571428571,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9187748783724016
+          }
+        }
+      },
+      "serial_number": {
+        "clean": {
+          "success": true,
+          "extracted_text": "**Title:**\nSERIAL: XK7-9842-BETA  \nMODEL: RTX-4090-Ti  \nS/N: 8A3F2B1C9D0E  \nMAC: 00:1A:2B:3C:4D:5E  \nUUID: 550e8400-e29b  \n\n**Body Text:**\n(Serial, Model, S/N, MAC Address, UUID)",
+          "time": 2.73807588499767,
+          "accuracy": {
+            "sequence_similarity": 0.753731343283582,
+            "word_recall": 1.0,
+            "char_similarity": 0.7634854771784232,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8793042051155013
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "Title: \nSERIAL: XK7-9842-BETA\n\nBody Text:\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e2b\n\nSubtitles:\nSERIAL: XK7-9842-BETA",
+          "time": 2.6963310610008193,
+          "accuracy": {
+            "sequence_similarity": 0.8015873015873016,
+            "word_recall": 0.9,
+            "char_similarity": 0.8070175438596491,
+            "number_accuracy": 0.9333333333333333,
+            "combined_score": 0.8604845446950711
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "**Title:**\nSERIAL: XK7-9842-BETA  \nMODEL: RTX-4090-Ti  \n\n**Subtitle:**  \nS/N: 8A3F2B1C9D0E\n\n**Body Text:**\nMAC: 00:1A:2B:3C:3D:4D:5E\nUUID: 550e8400-e29b",
+          "time": 2.5767942140009836,
+          "accuracy": {
+            "sequence_similarity": 0.8244897959183674,
+            "word_recall": 0.9,
+            "char_similarity": 0.8251121076233184,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8874004758854215
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "**Title:**\n- SERIAL: XK7 - 9842-BETA\n\n**Body Text:**\n- MODEL: RX-4031-TI\n- S/N: Q5BFC1D6CQEBE\n- MAC: O1A\u00b7O2F1BCS\u00b7CBDE\n- UUID: e8400-e29b",
+          "time": 2.254471469001146,
+          "accuracy": {
+            "sequence_similarity": 0.6440677966101694,
+            "word_recall": 0.5,
+            "char_similarity": 0.6442307692307693,
+            "number_accuracy": 0.4666666666666667,
+            "combined_score": 0.5637413081269014
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "**Serial Information:**\n```\nSERIAL: XK7-9842-BETA\nMODEL: RTX-4090-T1\nS/N: 8A3F2B1C900E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b\n```",
+          "time": 2.422955014000763,
+          "accuracy": {
+            "sequence_similarity": 0.8461538461538461,
+            "word_recall": 0.8,
+            "char_similarity": 0.8490566037735849,
+            "number_accuracy": 0.8666666666666667,
+            "combined_score": 0.8404692791485244
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "The image contains a block of alphanumeric information which appears to be a product serial or model code typically found on electronic devices.\n\nHere is the transcription:\n\n```\nSERIAL: XX1-8042-BETA \nMODEL: XT-693T-TI5 \nSN/UK: BAJPBXCJH0E\nMFR: 01 LA:\nP/N: AA,2A:7C,\nREV.: A1.0-AB-A0-SZ-\nUINID: SS0484K-ALN9D`\n```",
+          "time": 3.1393362599992543,
+          "accuracy": {
+            "sequence_similarity": 0.06829268292682927,
+            "word_recall": 0.2,
+            "char_similarity": 0.027932960893854747,
+            "number_accuracy": 0.4,
+            "combined_score": 0.17405641095517102
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "Title: SERIAL:\n- XK7 - 9842-BETA\n\nBody Text (with subcategories):\n- MODEL: RTX-4090-Ti\n- S/N: 8A3F2B1C9D0E\n- MAC: 00:1A:2B:3C:4D:5E\n- UID: 550e8400-e29b",
+          "time": 2.5353102149965707,
+          "accuracy": {
+            "sequence_similarity": 0.7936507936507936,
+            "word_recall": 0.8,
+            "char_similarity": 0.8198198198198198,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8533676533676534
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "**Title:**\nSERIAL: XX-982-BETA\n\n**Body Text:**\nMODEL: RTX 4050-T1  \nSN#: 3A6F1C9DNE  \n\n**Subtitle:**\nMAC: 00 IA:2B 3C AD:DE  \n\n**Additional Information:**\nBUILD: 558e@40c-62b",
+          "time": 2.3693595129952882,
+          "accuracy": {
+            "sequence_similarity": 0.5789473684210527,
+            "word_recall": 0.3,
+            "char_similarity": 0.5714285714285714,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.44592731829573934
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "**Title:**\nSERIAL: XK7-9842-BETA\n\n**Body Text:**\nMODEL: RTX-4090-Ti  \nS/N: 8A3F2B1C9D0E  \nMAC: 00:01:A8:2B:3C:4D:5E  \nUUID: 550e8400-e29b  \n\n**Subtitles and Descriptions:**\n- S/N\n- MAC\n- UUID",
+          "time": 2.8891094499995233,
+          "accuracy": {
+            "sequence_similarity": 0.7163120567375887,
+            "word_recall": 0.9,
+            "char_similarity": 0.7301587301587301,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8366176967240797
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "**Text Layout:**\n\n```\nSERIAL: XK7-9842-BETA  \nMODEL: RTX-4090-Ti  \nS/N: 8A3F2B1C9D0E  \nMAC: 00:1A:2B:3C:4D:5E  \nUUID: 550e8400-e29b\n```",
+          "time": 2.417354762001196,
+          "accuracy": {
+            "sequence_similarity": 0.8898678414096917,
+            "word_recall": 1.0,
+            "char_similarity": 0.8975609756097561,
+            "number_accuracy": 1.0,
+            "combined_score": 0.946857204254862
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "**Title:**\nSERIAL: XK7-9842-BETA  \nMODEL: RTX-4090-Ti  \nS/N: 8A3F2B1C9D0E  \nMAC: 00:1A:2B:3C:4D:5E  \n\n**Subtitle:**  \nUUID: 550e8400-e29b",
+          "time": 2.3914656359993387,
+          "accuracy": {
+            "sequence_similarity": 0.8898678414096917,
+            "word_recall": 1.0,
+            "char_similarity": 0.8888888888888888,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9446891825746451
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "**Title:**\nSERIAL: XK7-9842-BETA  \nMODEL: RTX-4090-Ti  \nS/N: 8A3F2B1C9D0E  \nMAC: 00:01:A8:2B:3C:4D:5E  \nUUID: 550e8400-e29b  \n\n**Body Text:**\nM/A C : OO:O1:A8:2B:3C:4D:5E",
+          "time": 3.0154389910021564,
+          "accuracy": {
+            "sequence_similarity": 0.7769230769230769,
+            "word_recall": 0.9,
+            "char_similarity": 0.7829787234042553,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8649754500818331
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "**Text Layout:**\n\n- **SERIAL:** XK7-9842-BETA  \n  - MODEL: RTX-4090-Ti  \n  - S/N: 8A3F2B1C9D0E  \n  - MAC: 00:1A:2B:3C:4D:5E  \n  - UUID: 550e8400-e29b",
+          "time": 2.556683710994548,
+          "accuracy": {
+            "sequence_similarity": 0.8669527896995708,
+            "word_recall": 0.9,
+            "char_similarity": 0.8846153846153846,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9128920435787389
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "**Title:**\nSERIAL: XK7-9842-BETA\n\n**Body Text:**\nMODEL: RTX 4090-T1\nS/N: BA3F2B1C90DEE\nMAC: OQ:IA:28:3C:4D:5E\nUUID: S56e8400-e29b",
+          "time": 2.2975172070000554,
+          "accuracy": {
+            "sequence_similarity": 0.7947598253275109,
+            "word_recall": 0.6,
+            "char_similarity": 0.7922705314009661,
+            "number_accuracy": 0.6666666666666666,
+            "combined_score": 0.7134242558487859
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "The provided image contains a pattern of dots with overlaid dark shapes that do not form any recognizable letters or words. There is no distinguishable structure such as titles, body text, subtitles, menus, tables, etc., to extract from this image.\n\nIf you have another image with readable and structured content, please provide it for transcription.",
+          "time": 1.947517357999459,
+          "accuracy": {
+            "sequence_similarity": 0.008888888888888889,
+            "word_recall": 0.0,
+            "char_similarity": 0.0103359173126615,
+            "number_accuracy": 0.0,
+            "combined_score": 0.004806201550387597
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "**Title:**\n- SERIAL:\n  - XK7_9842-BETA\n\n- MODEL:\n  - RTX-4090-Ti\n\n- S/N:\n  - 8A3F2B1C9D0E\n\n- MAC:\n  - 00:01:A8:2B:3C:4D:5E\n\n- UUID:\n  - 550e8400-e29b",
+          "time": 2.669895519997226,
+          "accuracy": {
+            "sequence_similarity": 0.847457627118644,
+            "word_recall": 0.8,
+            "char_similarity": 0.8792270531400966,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8816711700646852
+          }
+        }
+      },
+      "address_label": {
+        "clean": {
+          "success": true,
+          "extracted_text": "**Title:**\nSHIP TO:\n\n**Body Text:**\nJohn Smith  \n1428 Elm Street, Apt 3  \nSpringfield, IL 62701 USA\n\n**Subtitle:**\nPRIORITY MAIL",
+          "time": 1.4308150619981461,
+          "accuracy": {
+            "sequence_similarity": 0.8,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.7861271676300579,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8798651252408478
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "Title: SHIP TO:\n\nBody Text:\nJohn Smith  \n1428 Elm Street, Apt 3  \nSpringfield, IL 62701  \nUSA\n\nSubtitle: PRIORITY MAIL",
+          "time": 1.3550594019980053,
+          "accuracy": {
+            "sequence_similarity": 0.8497409326424871,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.84472049689441,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9069486907175577
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "**Title:**\nSHIP TO:\n\n**Body Text:**\nJohn Smith  \n1428 Elm Street, Apt 3  \nSpringfield, IL 62701\n\nUSA  \n\n**Subtitle:**\nPRIORITY MAIL\n\n(Note: The layout indicates the address is in a shipping label format.)",
+          "time": 1.8057763500037254,
+          "accuracy": {
+            "sequence_similarity": 0.592057761732852,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.5836909871244635,
+            "number_accuracy": 1.0,
+            "combined_score": 0.7772705205476622
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "**Header:**\n```\nSHIP TO:\nJohn Smith\n1428 Elm Street,\nSpringfield, IL 62701\nUSA\n```\n\n**Body Text:**\n```\nApt 3\nPRIORITTY MAIL\n```",
+          "time": 1.6217415630017058,
+          "accuracy": {
+            "sequence_similarity": 0.7272727272727273,
+            "word_recall": 0.8666666666666667,
+            "char_similarity": 0.735632183908046,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8323928944618599
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith  \n1428 Elm Street, Apt 3 Springfield, IL 62701 USA\n\nPRIORITY MAIL",
+          "time": 1.080171084999165,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "**Header:**\n```\nSHIP TO:\nJohn Smith\n1428 Elm Street., Apt 3\nSpringfield, IL 62701 USA\n```\n\n**Body Text:**\n```\nPRIORITY MAIL\n```",
+          "time": 1.5180892589996802,
+          "accuracy": {
+            "sequence_similarity": 0.784688995215311,
+            "word_recall": 0.8666666666666667,
+            "char_similarity": 0.7816091954022989,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8582412143210691
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith  \n1428 Elm Street; Apt 3 Springfield, IL 62701 USA  \n\nPRIORITY MAIL",
+          "time": 1.0912581179945846,
+          "accuracy": {
+            "sequence_similarity": 0.9818181818181818,
+            "word_recall": 0.8666666666666667,
+            "char_similarity": 0.9781021897810219,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9566467595664676
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "**Recipient Address:**\nSHIP TO:\nJohn Smith,\n1428 Elm Street, Apt 3.\nSpringfield IL 62701 USA\n\n**Label on Envelope (Header):**\nPRIORITY MAIL",
+          "time": 1.4460142480020295,
+          "accuracy": {
+            "sequence_similarity": 0.7330316742081447,
+            "word_recall": 0.8,
+            "char_similarity": 0.7165775401069518,
+            "number_accuracy": 0.6666666666666666,
+            "combined_score": 0.7290689702454408
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "Title: SHIP TO:\n\nBody Text:\nJohn Smith  \n1428 Elm Street, Apt 3  \nSpringfield, IL 62701 USA\n\nSubtitle: PRIORITY MAIL",
+          "time": 1.3249124330031918,
+          "accuracy": {
+            "sequence_similarity": 0.8497409326424871,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.84472049689441,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9069486907175577
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "**Header:**\n```\nSHIP TO:\n```\n\n**Address:**\n```\nJohn Smith  \n1428 Elm Street, Apt 3  \nSpringfield, IL 62701 USA\n```\n\n**Label:**\n```\nPRIORITY MAIL\n```",
+          "time": 1.6979506360003143,
+          "accuracy": {
+            "sequence_similarity": 0.7288888888888889,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.723404255319149,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8464066193853428
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "**Header:**\n```\nSHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701 USA\n\nPRIORITY MAIL\n```",
+          "time": 1.3257814009994036,
+          "accuracy": {
+            "sequence_similarity": 0.8864864864864865,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.8831168831168831,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9257341757341757
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "**Header:**\n```\nSHIP TO:\n```\n\n**Address Line 1:**\n```\nJohn Smith\n```\n\n**Address Line 2:**\n```\n1428 Elm Street, Apt 3\nSpringfield, IL 62701 USA\n```\n\n**Footer/Label:**\n```\nPRIORITY MAIL\n```",
+          "time": 2.060185633999936,
+          "accuracy": {
+            "sequence_similarity": 0.6142322097378277,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.6098654708520179,
+            "number_accuracy": 1.0,
+            "combined_score": 0.7893577534807947
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "**Title:**\nSHIP TO:\n\n**Body Text:**\nJohn Smith  \n1428 Elm Street, Apt 3 Springfield, IL 62701 USA  \n\n**Subtitle:**\nPRIORITY MAIL",
+          "time": 1.3944683800000348,
+          "accuracy": {
+            "sequence_similarity": 0.8,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.7861271676300579,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8798651252408478
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "**Header:**\n```\nSHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\n```\n\n**Body Text:**\n```\nPRIORITY MAIL\n```",
+          "time": 1.550154784003098,
+          "accuracy": {
+            "sequence_similarity": 0.7884615384615384,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.7861271676300579,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8769805098562324
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "**Body Text:**\n\"YOU ARE HERE! \nYou are at the entrance of a dark forest.\nA large door is closed before you.\"\n\n**Subtitle:**\n\"Security key\"\n\n(Note: The rest of the image appears to be obscured or unclear.)",
+          "time": 1.579128661993309,
+          "accuracy": {
+            "sequence_similarity": 0.014084507042253521,
+            "word_recall": 0.0,
+            "char_similarity": 0.13617021276595745,
+            "number_accuracy": 0.0,
+            "combined_score": 0.037563679952052745
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "**Title:**\nSHIP TO:\n\n**Body Text:**\nJohn Smith  \n1428 Elm Street, Apt 3  \nSpringfield, IL 62701 USA\n\n**Subtitle:**\nPRIORITY MAIL",
+          "time": 1.4367506470007356,
+          "accuracy": {
+            "sequence_similarity": 0.8,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.7861271676300579,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8798651252408478
+          }
+        }
+      }
+    },
+    "llava:7b": {
+      "receipt": {
+        "clean": {
+          "success": true,
+          "extracted_text": " COFFEE SHOP\n\n210 MAIN STREET\n\nDATE: 12/31/2015\nTOTAL $9.00\n\nThank you for your order!\nLATTE $4.25\nCROISSANT $1.50\n\nSubtotal $5.75\nTax 1.50\nTotal $7.25\n\nYour total was: $9.00",
+          "time": 2.3408978000006755,
+          "accuracy": {
+            "sequence_similarity": 0.4178082191780822,
+            "word_recall": 0.5,
+            "char_similarity": 0.4112903225806452,
+            "number_accuracy": 0.125,
+            "combined_score": 0.36352463543968183
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": " The image is blurry and of low resolution, making it difficult to read the text clearly. If you need assistance with a different image or a clearer description of the text in this particular image, feel free to provide a higher-resolution image or ask for help with a different task. ",
+          "time": 2.074275838000176,
+          "accuracy": {
+            "sequence_similarity": 0.009828009828009828,
+            "word_recall": 0.0,
+            "char_similarity": 0.011730205278592375,
+            "number_accuracy": 0.0,
+            "combined_score": 0.005389553776650551
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": " COFFEE SHOP\n\n123 MAIN STREET\n\nDATE: 11/25/2021\n\n10:20 AM\n\nTOTAL $9.00\n\nTHANK YOU! ",
+          "time": 1.9577241059960215,
+          "accuracy": {
+            "sequence_similarity": 0.69,
+            "word_recall": 0.5,
+            "char_similarity": 0.6549707602339181,
+            "number_accuracy": 0.375,
+            "combined_score": 0.5549926900584795
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": " COFFEE DRINKS\n\n1234\n5900\n\n11:17\n1/21/2021\n\nLate\n$1.25\nTIP 1.75\n1.25\n\n11:17\n2/21/2021\n\nCroissant\n$3.50\nTIP 2.00\n1.50\n\n11:49\n1/1/2022\n\nTotal\n$5.75\nThank you for your order! ",
+          "time": 3.694188474000839,
+          "accuracy": {
+            "sequence_similarity": 0.5226480836236934,
+            "word_recall": 0.2777777777777778,
+            "char_similarity": 0.5081967213114754,
+            "number_accuracy": 0.25,
+            "combined_score": 0.38965564567823663
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": " Coffee Shop\n\n123 Main Street\nDate: 12/24/2015\nTime: 11:00AM\nLATTE\nPOUR OVER CROISSANT $4.50\n$9.50\n$9.50\nTotal\nThank You ",
+          "time": 2.2985385860010865,
+          "accuracy": {
+            "sequence_similarity": 0.6942148760330579,
+            "word_recall": 0.5555555555555556,
+            "char_similarity": 0.6666666666666666,
+            "number_accuracy": 0.5,
+            "combined_score": 0.60410927456382
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": " \"COFFEE SHOP\n\n123 MAIN STREET\n29 NOVEMBER 2005\nDate: 11-29-2005\nTime: 12:45PM\nItem: LATTE & TIP COUPE COFFE\nTotal: $14.75\nPayment: CASH\n\nThank you\" ",
+          "time": 2.6651271539958543,
+          "accuracy": {
+            "sequence_similarity": 0.550185873605948,
+            "word_recall": 0.5,
+            "char_similarity": 0.5152838427947598,
+            "number_accuracy": 0.25,
+            "combined_score": 0.45386742910017697
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": " COFFEE SHOP\n\n123 MAIN ST\n\nDate: 11/24/2019\nTime: 12:54\n\nTotal: $8.99\nLATTE: $4.99\nCROISSANT: $3.75\nTIP: $0\n\nSubtotal: $8.74\nTax: $0.25\nTotal: $8.99\n\nThank you ",
+          "time": 3.092946557997493,
+          "accuracy": {
+            "sequence_similarity": 0.6787003610108303,
+            "word_recall": 0.3888888888888889,
+            "char_similarity": 0.635593220338983,
+            "number_accuracy": 0.375,
+            "combined_score": 0.5195456175596755
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": " \"COFFEE SHOP\n 123 Main St. date: 12/04/2006 8:25PM 6.25 $6.25 $6.25 $1.75 $1.75 $1.75 $1.75 $1.75 $1.75 5.00 $5.00 $1.00 TOTAL\" ",
+          "time": 2.9304259779964923,
+          "accuracy": {
+            "sequence_similarity": 0.44,
+            "word_recall": 0.2222222222222222,
+            "char_similarity": 0.4131455399061033,
+            "number_accuracy": 0.125,
+            "combined_score": 0.3000919405320814
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": " Coffee Shop\n\n123 Main Street\nDate: 11/24/2025\nLate Afternoon\nTipped $4.60\nCashier: Tiffany\nTotal: $9.75\nThank you! ",
+          "time": 1.996228099000291,
+          "accuracy": {
+            "sequence_similarity": 0.70042194092827,
+            "word_recall": 0.5555555555555556,
+            "char_similarity": 0.6862745098039216,
+            "number_accuracy": 0.5,
+            "combined_score": 0.6105630015719368
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": " Coffee Shop\n123 Main Street\nDate: 1/20/2021\nTuesday 11/4/2021\nLatt\u00e9 1.50\nTip 0.50\nTotal 2.00\nThank you ",
+          "time": 2.0927242190009565,
+          "accuracy": {
+            "sequence_similarity": 0.6902654867256637,
+            "word_recall": 0.4444444444444444,
+            "char_similarity": 0.6632124352331606,
+            "number_accuracy": 0.25,
+            "combined_score": 0.5119805916008172
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": " \"COFFEE SHOP\n\n123 MAIN STREET\nNOVEMBER 24, 2021\n\nTIP $ 5.50\nLATTE $ 1.95\nCRISSANT $ 3.75\nTOTAL $ 10.20\n\nTHANK YOU\" ",
+          "time": 2.48395475900179,
+          "accuracy": {
+            "sequence_similarity": 0.6808510638297872,
+            "word_recall": 0.3888888888888889,
+            "char_similarity": 0.6700507614213198,
+            "number_accuracy": 0.25,
+            "combined_score": 0.497447678534999
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": " The coffee shop is closed\n\n123 Main Street\n\nDate: December 4, 2021\n\nTotal: $9.00\nTip: 5.00\nSubtotal: $4.00\n\nThank you! ",
+          "time": 2.0001387869997416,
+          "accuracy": {
+            "sequence_similarity": 0.5294117647058824,
+            "word_recall": 0.5555555555555556,
+            "char_similarity": 0.5247524752475248,
+            "number_accuracy": 0.25,
+            "combined_score": 0.4649299488772407
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": " The text is too small to read accurately. If you need the text to be transcribed from an image, please provide a clearer image or reduce the size of the text in the current image so that it can be easily read and transcribed. ",
+          "time": 1.8606974100039224,
+          "accuracy": {
+            "sequence_similarity": 0.022922636103151862,
+            "word_recall": 0.0,
+            "char_similarity": 0.20761245674740483,
+            "number_accuracy": 0.0,
+            "combined_score": 0.057633773212639176
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": " The text in the image is as follows:\n\n123 Main Street\nNovember 30, 2015\nCoffee Shop\n\nLATTE $3.95\nTIP $1.00\nTotal $7.95\n\nThank You ",
+          "time": 2.1349331960009295,
+          "accuracy": {
+            "sequence_similarity": 0.512,
+            "word_recall": 0.4444444444444444,
+            "char_similarity": 0.4666666666666667,
+            "number_accuracy": 0.125,
+            "combined_score": 0.38702777777777775
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": " Please note that due to the quality of the image provided, some words may be difficult to decipher. However, I'll do my best to accurately transcribe the visible text:\n\n\"C.O.P.\"\n\nPlease keep in mind that this transcription is based on the legibility of the image and may not be 100% accurate. ",
+          "time": 2.4586361429974204,
+          "accuracy": {
+            "sequence_similarity": 0.01932367149758454,
+            "word_recall": 0.0,
+            "char_similarity": 0.01729106628242075,
+            "number_accuracy": 0.0,
+            "combined_score": 0.009153684445001323
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": " 123 Main Street\n\nCoffee Shop\n\nDate: 11/29/2015\n\nTotal: $9.50\n\nThank You!\n\n1 LATTE - $4.50\n1 COUROISANT - $5.00\nTOTAL - $9.50\n\nCASHIER TIP: $ 1.00\nTOTAL - $ 10.50 ",
+          "time": 3.0723348980027367,
+          "accuracy": {
+            "sequence_similarity": 0.37992831541218636,
+            "word_recall": 0.6111111111111112,
+            "char_similarity": 0.38626609442060084,
+            "number_accuracy": 0.375,
+            "combined_score": 0.4380763802359746
+          }
+        }
+      },
+      "invoice": {
+        "clean": {
+          "success": true,
+          "extracted_text": " INVOICE #28476\n\nACME CORPORATION\nBilling Address: 100 Ace Way, Anytown USA\nPhone Number: 555-555-5555\nEmail: acme@example.com\nwww.acme.com\n\nItem Description: Widget Pro X \nQuantity: 5\nUnit Price: $99\nSubtotal: $495\nTax: $0.00\nTotal: $495\nShipping: $12.50\nAdjustment: -$0.00\nAmount Due: $487.50\nDue Date: 1/15/2023\nPayment Terms: Net 30\n\nSubtotal: $495\nTax: $0.00\nTotal: $495\nShipping & Handling: $12.50\nAdjustment: -$0.00\nAmount Due: $487.50\n\nWidget Pro X ",
+          "time": 6.015709678998974,
+          "accuracy": {
+            "sequence_similarity": 0.2608695652173913,
+            "word_recall": 0.45454545454545453,
+            "char_similarity": 0.27680311890838205,
+            "number_accuracy": 0.2,
+            "combined_score": 0.29805453466780696
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": " The image shows a receipt with various items listed on it. Here is the transcription of all visible text:\n\n```\nINVOICE 23947 \nACME CORPORATION \n\nAce Hardware\n100 Main Street\nAnytown, USA\nJanuary 1, 2025\n\nItem                               Quantity   Price   Total\nWooden Pro X   1        $6.99       $6.99\nSubtotal                                            $6.99\nTax (8%)                                          $0.55\nTotal                                                  $7.54\nDue Date: December 31, 2025\nPayment Method: Cash\n```\n\nPlease note that the items listed are not fully visible and some details might be incomplete or missing from the provided image. ",
+          "time": 5.080570311001793,
+          "accuracy": {
+            "sequence_similarity": 0.13162118780096307,
+            "word_recall": 0.2727272727272727,
+            "char_similarity": 0.12284069097888675,
+            "number_accuracy": 0.2,
+            "combined_score": 0.18179728787678062
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": " Invoice# 29487\n\nAMC Corporation\n\nDate: 12/31/2021\n\nItem #5\nWood Pro x 5\n$16.99\n\nSubtotal: $85.95\nTax: $16.95\nTotal: $102.90\n\nDue 12/31/2021\nPayment Method: Credit Card\n\nPlease note the following:\n- Item #5 is 5% off until December 31, 2021\n- The subtotal for all items is $85.95\n- Tax is $16.95\n- Total cost of all items is $102.90\n\nTotal: $102.90\n\nSubtotal: $85.95\nTax: $16.95\nTotal: $102.90\n\nDue Date: 12/31/2021\nPayment Method: Credit Card\n\nPlease note the following:\n- Item #5 is 5% off until December 31, 2021\n- The subtotal for all items is $85.95\n- Tax is $16.95\n- Total cost of all items is $102.90\n\nTotal: $102.90\nSubtotal: $85.95\nTax: $16.95\nTotal: $102.90 ",
+          "time": 8.559906035996391,
+          "accuracy": {
+            "sequence_similarity": 0.1444582814445828,
+            "word_recall": 0.3181818181818182,
+            "char_similarity": 0.1199400299850075,
+            "number_accuracy": 0.2,
+            "combined_score": 0.19564503240285214
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": " E-28471\n\nINVOICE #20703920\n\nItem # 5 WOODGRAIN PRO 2x6FT\n\nQuantity 1\n\nUnit Price $40.00\n\nSubtotal $40.00\n\nTax $3.50\n\nTotal $43.50\n\nPayment Information:\n\nVendor: ACME Billing\n\nReceipt # 20703920\n\nAmount Paid: $43.50\n\nDue Date: 12/31/2021 ",
+          "time": 3.9250663180064294,
+          "accuracy": {
+            "sequence_similarity": 0.15591397849462366,
+            "word_recall": 0.22727272727272727,
+            "char_similarity": 0.37735849056603776,
+            "number_accuracy": 0.2,
+            "combined_score": 0.24013629908334716
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": " Invoice #2847\n that was sent from ACE Corporate Billing Team. This invoice is for a widget sold on Amazon. The total cost of the item was $59.99 with tax amounting to $1.00. The subtotal before taxes was $61.00. After adding 15% sales tax, the final total came to $68.99. This amount was paid by a PayPal account named \"Jill &amp; Jack\". However, there is an error in this invoice as the date provided is incorrect - it shows 12/31/2025 when it should be 12/31/2021. The payment was made on December 24, 2021.\n\nDue Date: 12/31/2021",
+          "time": 4.969510835995607,
+          "accuracy": {
+            "sequence_similarity": 0.15657311669128507,
+            "word_recall": 0.18181818181818182,
+            "char_similarity": 0.1103202846975089,
+            "number_accuracy": 0.4,
+            "combined_score": 0.21217789580174395
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": " INVOICE #32407\n\nBilling Address: Acme Corporation\n\nWildcreek Pros, Inc.\n\nInvoice Date: 12/11/2015\n\nItem Description: WIDGET PROS, INC.\n\nUnit Quantity: 1\n\nUnit Price: $19.50\n\nSubtotal: $19.50\n\nTax: 1.86\n\nTotal Due: $21.36\n\nPayment Terms: 5% discount for payment due within 7 days.\n\nSubtotal: $21.36\n\nDiscount: 1.09\n\nAmount Due: $20.27\n\nTax: 1.08\n\nTotal Due: $21.35\n\nPayment Received: $20.27\n\nCredit Memo #: 0000\n\nCredit Memo Date: 12/11/2015\n\nAmount Credited: $1.08\n\nTotal Due: $20.29\n\nPayment Received: $20.29\n\nDue Date: 12/31/2015\n\nWildcreek Pros, Inc. ",
+          "time": 7.297566607994668,
+          "accuracy": {
+            "sequence_similarity": 0.0471976401179941,
+            "word_recall": 0.2727272727272727,
+            "char_similarity": 0.04482758620689655,
+            "number_accuracy": 0.2,
+            "combined_score": 0.14118812476304082
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": " INVOICE\n\n12947\nAce Corporate\nInvoice Number: 28395\nDate: December 16, 2025\n\nItem: Wide-Frame Glasses Pro X\nPrice: $12.99\n\nSubtotal: $12.99\nTax: .43\nTotal: $13.42\n\nPayment Due: January 15, 2026\n\nCovering the Cost of:\n- Ace Corporate\n- 6 Items\n- $12.99\n- Total: $77.94\n- Subtotal: $77.94\n- Tax: $8.45\n- Total: $86.39\n- Payment Received: 0\n- Payment Due: 0\n- Payments Received Today: 0\n\nPlease note that this is a computer generated invoice and may not accurately reflect the actual sale transaction. ",
+          "time": 5.709545392004657,
+          "accuracy": {
+            "sequence_similarity": 0.0406885758998435,
+            "word_recall": 0.3181818181818182,
+            "char_similarity": 0.044859813084112146,
+            "number_accuracy": 0.2,
+            "combined_score": 0.15093255179144344
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": " INVOICE #947\n\nBilling for Ace Corporation\n\nItem: WINGER PRO X\nCost: $34.95\nTotal: $34.95\nTax: $0.00\nSubtotal: $34.95\nShipping: $0.00\nTotal Due: $34.95\n\nPayment Received 12/16/2020\nAmount received $34.95\n\nNote: WINGER PRO X was purchased with a 5% discount, making the total due $33.48.\n\nThank you for your business! ",
+          "time": 3.9535517129988875,
+          "accuracy": {
+            "sequence_similarity": 0.1091703056768559,
+            "word_recall": 0.36363636363636365,
+            "char_similarity": 0.15424164524421594,
+            "number_accuracy": 0.2,
+            "combined_score": 0.20676207863935886
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": " Invoice #29487\n \"ACME CORPORATION\" BILLING: 501 WIDGET ST XYZ CITY XX, YY 10005 ZIP \"WIDGET PRO X, LLC\" ",
+          "time": 1.9808387600060087,
+          "accuracy": {
+            "sequence_similarity": 0.448,
+            "word_recall": 0.13636363636363635,
+            "char_similarity": 0.4528301886792453,
+            "number_accuracy": 0.0,
+            "combined_score": 0.25929845626072046
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": " INVOICE #29476\nGroupLayout: Ace Hardware Corporation\n\nLine Item 1: WidgetPro X\nPrice: $50.99\nQuantity: 1\nSubtotal: $50.99\n\nShipping: $8.50\nTotal: $59.49\nTax: $6.47\nTotal Due: $65.96\n\nPayment Received: $65.96\nDue Date: 12/15/2021\n\nItem: WidgetPro X\nQuantity: 1\nPrice per unit: $50.99\nSubtotal: $50.99\nTax (8.25%): $4.23\nTotal: $55.22\nShipping: $8.50\nTotal Due: $63.72\nPayment Received: $63.72\nPayment Method: Ace Hardware Corporation\n\nNote: This invoice is for the items listed in this invoice only, and does not include any other charges or discounts that may have been applied to your purchase. It is important to review your receipt for accuracy as the information on it is used by Ace Hardware Corporation to process payment and provide you with tax information at the end of the year.\n\nTHANK YOU FOR SHOPPING AT WOODY'S ACE HARDWARE! ",
+          "time": 7.930837170002633,
+          "accuracy": {
+            "sequence_similarity": 0.13278855975485188,
+            "word_recall": 0.36363636363636365,
+            "char_similarity": 0.13075060532687652,
+            "number_accuracy": 0.2,
+            "combined_score": 0.206793882179523
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": " INVOICE #28467\n\nAce Corporation\n201 5th Ave SW\nSeattle, WA 98116\n\nDate: 11/15/2021\n\nItem Description: Widget Pro X\nQuantity: 5 @ $13.95 ea.\nSubtotal: $69.75\nTax (6%): $4.25\nTotal: $73.95\n\nDue Date: 12/15/2021\n\nDear Valued Customer,\nThank you for your purchase of Widget Pro X! We appreciate your business and look forward to serving you in the future.\n\nSincerely,\n[Name Redacted]\nAce Corporation\n800-123-4567\nCustomer Service: [Phone Number Redacted]\nEmail: [Email Address Redacted]\n\n---\n\nINVOICE #28467 ",
+          "time": 5.765317473000323,
+          "accuracy": {
+            "sequence_similarity": 0.08398133748055987,
+            "word_recall": 0.45454545454545453,
+            "char_similarity": 0.16453382084095064,
+            "number_accuracy": 0.3,
+            "combined_score": 0.25076515321674125
+          }
+        },
+        "jpeg_artifacts": {
+          "success": false,
+          "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
+          "time": 120.00499669900455
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": " INVOICE# 29847\n\nAce Corporation\n555-111-1111\n123 Main Street\nAnytown, Anytown 01234\n\nItem: Widget Pro X\nPrice: $69.99\n\nSubtotal: $69.99\nTax: $0.00\nTotal: $69.99\n\nDue: December 25, 2021\n\nPaid by: Ace Corporation\nDate: 12/31/2021\n\nNote: Thank you for your business! Your satisfaction is important to us. Please call if you have any questions or concerns.\n\nPayment Method: Credit Card\nCredit Card Type: Visa\nCredit Card Number: XXXXXXX-XXXX-XXXX-XXXX\nExpiration Date: 01/25/2025\nSecurity Code: XXX\n\nSubtotal: $69.99\nTax: $0.00\nTotal: $69.99\n\nThank you for your business! Your satisfaction is important to us. Please call if you have any questions or concerns. ",
+          "time": 6.723122630995931,
+          "accuracy": {
+            "sequence_similarity": 0.06289308176100629,
+            "word_recall": 0.36363636363636365,
+            "char_similarity": 0.06794682422451995,
+            "number_accuracy": 0.2,
+            "combined_score": 0.17361906740547245
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": " \"INVOICE #2894\n\nACME CORPORATION\n[address]\n\nItem: WIDGET PRO X\n\nUnit Price: $6.50\nQuantity: 1\nSubtotal: $6.50\nTax: 0.59\nTotal: $7.09\n\nItem: BULLET\n\nUnit Price: $14.95\nQuantity: 1\nSubtotal: $14.95\nTax: 0.85\nTotal: $15.80\n\nItem: SCREW\n\nUnit Price: $2.99\nQuantity: 1\nSubtotal: $2.99\nTax: 0.35\nTotal: $3.34\n\nItem: BULLET\n\nUnit Price: $2.99\nQuantity: 1\nSubtotal: $2.99\nTax: 0.25\nTotal: $3.24\n\n[Payment Method Details]\n\nPay to the order of: ACME CORPORATION\n\nPay with your MasterCard, Visa or Discover card.\n\n[Payment Method Details]\n\nDue date: 1/16/2025\n\nTotal: $79.83\" ",
+          "time": 7.421350513002835,
+          "accuracy": {
+            "sequence_similarity": 0.09469153515064563,
+            "word_recall": 0.36363636363636365,
+            "char_similarity": 0.057432432432432436,
+            "number_accuracy": 0.1,
+            "combined_score": 0.15394008280486043
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": " No text is visible in the image provided. Please provide a clearer image or more context if you need assistance with something else. ",
+          "time": 1.3210244270012481,
+          "accuracy": {
+            "sequence_similarity": 0.15714285714285714,
+            "word_recall": 0.0,
+            "char_similarity": 0.18565400843881857,
+            "number_accuracy": 0.0,
+            "combined_score": 0.08569921639541893
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": " INVOICE\n number: 29467\n\nACME CORPORATION\n500 WIDGET ST PRO X\n\nDate: 1/18/2022\n\nShip to:\n[Name redacted]\n[Address redacted]\n\nOrder #: 3810\n\nItem\nDescription\nQty\nPrice per unit\nSubtotal\nTotal\n\n5. Widget Pro (X)\n$5.99\n$5.99\n$5.99\n$29.95\n$29.95\n\nTotal: $163.80\n\nTax: 8.47\n\nSubtotal: $172.37\n\nTotal Due: $180.84\n\nPayment Method: Subtotal\nShipping & Handling: 16.39\nSales Tax: 0.00\nTotal: $180.84\nDue Date: 1/15/2022\nDue Date: 1/15/2022\n\nPayment Terms: COD\n\nThank you for your order!\n\nACME Corporate Billing & Collection Department\n(29) 283-4676\nwww.acme.com/invoicing\n```scss\n                .          .           .              .              \n``` ",
+          "time": 8.023482845004764,
+          "accuracy": {
+            "sequence_similarity": 0.05314685314685315,
+            "word_recall": 0.4090909090909091,
+            "char_similarity": 0.039538714991762765,
+            "number_accuracy": 0.1,
+            "combined_score": 0.15044411930738125
+          }
+        }
+      },
+      "handwritten_style": {
+        "clean": {
+          "success": true,
+          "extracted_text": " Meeting Notes:\n\nCall Tuesday Q4 2020 Budget Review \n\nProposal send ",
+          "time": 1.2473059149997425,
+          "accuracy": {
+            "sequence_similarity": 0.5681818181818182,
+            "word_recall": 0.42105263157894735,
+            "char_similarity": 0.5342465753424658,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.46420358960914115
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": " Meeting Notes\n\nClient: TUESDAY 4Q\nCall 4Q: Budget\nReview 4Q: Q4\nSend proposal by Monday\nFollow up with HR on Tuesday\n519-678-3232\n519-678-3232\n519-678-3232\n519-678-3232 ",
+          "time": 2.8316098080031225,
+          "accuracy": {
+            "sequence_similarity": 0.6142857142857143,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.5957446808510638,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.5700514584333174
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": " Notes from Meeting on Tuesday\n\nCall 44 budget review 3:00\n\nCall/text 555-1234 to discuss\n\nFollow up with HR\n\nReview proposal\n\nSend 6789 by Thursday\n\nEmail/Phone follow-up with 12345 by Friday.\n\nText 987 if unable to call/text.\n\nHR will follow up with 12345 on Friday.\n\nEnd proposal with Hr.\n\nCall 123 for follow up.\n\nPlease note: This text appears as an overlaid caption in the image and may not be entirely accurate or complete. The image contains various visual elements, such as a phone number, that are part of the original context but not intended to be transcribed here. ",
+          "time": 4.795248779999383,
+          "accuracy": {
+            "sequence_similarity": 0.07374631268436578,
+            "word_recall": 0.6842105263157895,
+            "char_similarity": 0.075,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.29157254308337216
+          }
+        },
+        "rotate_30": {
+          "success": false,
+          "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
+          "time": 120.0167910520031
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": " Meeting Notes\n\nCall today\nReview Q4 budget proposal\nSend follow up email with HR\n\nEmail: hrose@hr.com\nPhone: 515-923-8117\nAddress: 673-A, RJ Road\n\nInvoice number: 90180\nDate: Tue, October 4, 2022\nPayment status: Paid in full\nClient: Client Name\n\nPlease follow up with HR\nFollow up email by: Wednesday, October 5, 2022\nHours: 9am-6pm\nInvoiced amount: $10,340\n\nThank you for your time and support.\nSincerely,\nYour Name ",
+          "time": 4.5779424520005705,
+          "accuracy": {
+            "sequence_similarity": 0.21374045801526717,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.1689497716894977,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.363216417075314
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": " \"MEETING NOTES\n\nTuesday 10th May\nCall 444-444-4444\nReview Q3 Budget\nSend follow up email\" ",
+          "time": 1.6776148060016567,
+          "accuracy": {
+            "sequence_similarity": 0.5572139303482587,
+            "word_recall": 0.42105263157894735,
+            "char_similarity": 0.5508982035928144,
+            "number_accuracy": 0.0,
+            "combined_score": 0.3822911913800051
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": " MEETING NOTES\n- CALL CLIENT TODAY - Review Q4 2019 budget \n- SEND PROPOSAL - Followup with HR\n- Call me 512-698-3456\n- PHONE 512-698-3456",
+          "time": 2.3473306389932986,
+          "accuracy": {
+            "sequence_similarity": 0.7791164658634538,
+            "word_recall": 0.631578947368421,
+            "char_similarity": 0.7745098039215687,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.6296346376216942
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": " Meeting Notes\n\nCall client today. Review Q4 budget. Send proposal to followup with IRN. ",
+          "time": 1.230107104005583,
+          "accuracy": {
+            "sequence_similarity": 0.8040201005025126,
+            "word_recall": 0.47368421052631576,
+            "char_similarity": 0.8121212121212121,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.6057897141208435
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": " Meeting Notes\n\nCall Client Tuesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Wednesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Thursday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Friday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Monday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Tuesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Wednesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Thursday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Friday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Monday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Tuesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Wednesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Thursday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Friday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Monday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Tuesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Wednesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Thursday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Friday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Monday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Tuesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Wednesday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Thursday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions.\n\nCall Client Friday Q4 Budget Review 120Q1. Follow up with HR for any last minute requests.\n\nSend proposal by end of day today.\n\nFollow up on HRT and Finance items for year end close.\n\nPhone call with HR today to discuss any outstanding requests.\n\nEmail meeting notes to team.\n\nFollow up with finance regarding 401k contributions. ",
+          "time": 51.256352219999826,
+          "accuracy": {
+            "sequence_similarity": 0.006535947712418301,
+            "word_recall": 0.7894736842105263,
+            "char_similarity": 0.006676783004552352,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.2840049370652076
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": " Meeting Notes:\n\n1) Call client Tuesday - email Q4 budget proposal (send with HR)\n2) Follow up on meeting notes\n3) Review Q4 budget by following phone call\n4) Send email Q4 budget proposal\n5) Phone 987-295-6555\n\nCall 910-295-6555 (work)",
+          "time": 2.633715033000044,
+          "accuracy": {
+            "sequence_similarity": 0.3699421965317919,
+            "word_recall": 0.7894736842105263,
+            "char_similarity": 0.46153846153846156,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.4885719189035283
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": " Meeting Notes\n\nCALL CLIENT TODAY\nSend proposal by SEND UP WITH HR\nReview Q4 budget\nFollow up with HR ",
+          "time": 1.407808895004564,
+          "accuracy": {
+            "sequence_similarity": 0.6226415094339622,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.6242774566473989,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.5792736011694631
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": " Meeting Notes\n\nCall client tomorrow Q4 budget proposal send proposal by follow up with HR \n\n556-781-0987 ",
+          "time": 1.479407191000064,
+          "accuracy": {
+            "sequence_similarity": 0.7476635514018691,
+            "word_recall": 0.6842105263157895,
+            "char_similarity": 0.7303370786516854,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.6238861224256694
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": " MEETING NOTES\n\nCALL CLIENT TODAY\nREVIEW Q4 BUDGET\nSEND PROPOSAL BY 25TH\nFOLLOW UP WITH HR\nHRT REPORT DUE FOLLOWING THURSDAY\nTASK FOR EMPLOYEE\nPHONE NUMBER: 555-0123\n\nPlease note that some of the text is obscured or cut off, and there are several items listed in bullet points. The text within parentheses appears to be additional notes or reminders. The phone number at the bottom seems to be for the company or individual responsible for the meeting or task list. ",
+          "time": 3.9978829699975904,
+          "accuracy": {
+            "sequence_similarity": 0.3269565217391304,
+            "word_recall": 0.7894736842105263,
+            "char_similarity": 0.14736842105263157,
+            "number_accuracy": 1.0,
+            "combined_score": 0.5659496567505721
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": " Notes\n quite ok Q4 budget review call client send proposal by email tomorrow follow up with HR 555-1234 Follow up phone: 555-0987 Hiring Manager: 555-0987 Send proposal by email tomorrow ",
+          "time": 2.0722145489999093,
+          "accuracy": {
+            "sequence_similarity": 0.46308724832214765,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.45161290322580644,
+            "number_accuracy": 0.6666666666666666,
+            "combined_score": 0.5795522308694446
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": " Marketing Alert: \n\n\nMarriage Budget\n\nCynthia is a 56-year-old woman who lives in Lake Forest CA with her husband Jim. She owns a small business with 5 employees and has never been married before. Her financial goals include purchasing a vacation home in the next 3 years, taking a yearly trip to Europe every year, and having $1 million saved for retirement by age 60. She is looking for someone who can help her make smart decisions about her money.\n\nIf you would like to learn more, please email me at [email protected] or call 949-555-7683. ",
+          "time": 4.029470597997715,
+          "accuracy": {
+            "sequence_similarity": 0.03379416282642089,
+            "word_recall": 0.21052631578947367,
+            "char_similarity": 0.03731343283582089,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.15374181119626218
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": " - MEETING NOTES -\nTDM (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HRM @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review:\nQ4 Budget\nFollow up on proposals\n\nHouse of HR - HRM (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HRM @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of Finance - HFM (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HFM @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of IT - HIT (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HIT @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of Marketing - HM (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HM @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of Sales - HS (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HS @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of Support - HSS (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HSS @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of Admin - HA (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HA @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of Management - HM (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HM @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of Operations - HO (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HO @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals\n\nHouse of Engineering - HE (Tue May 31)\n- Call Client @ 2pm (45 min)\n- Follow up with HE @ 5:10pm\n- Proposal @ 6pm with HR\n- Phone: 720.558.1212\n- Email: info@yourcompany.com\n- Send to review: Q4 Budget\nFollow up on proposals ",
+          "time": 25.56515338399913,
+          "accuracy": {
+            "sequence_similarity": 0.03686274509803922,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.028347996089931573,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.2838465449461155
+          }
+        }
+      },
+      "serial_number": {
+        "clean": {
+          "success": true,
+          "extracted_text": " The text in the image is as follows:\n\n```\nX67-981-5A02\nBeta TI \nX67-981-5A03\nserial\nX67-981-5A02\nbeta\nX67-981-5A03\nserial\nmac address: 4c:43:67:0b:3d:fb\nX67-981-5A02\nBeta TI \nX67-981-5A03\nserial\nX67-981-5A02\nbeta\nX67-981-5A03\nserial\nmac address: 4c:43:67:fb:3d:fb\n```\n\nPlease note that the text appears to be repeated, as indicated by \"serial\" appearing twice in each line. ",
+          "time": 5.521963461003907,
+          "accuracy": {
+            "sequence_similarity": 0.02127659574468085,
+            "word_recall": 0.0,
+            "char_similarity": 0.01951219512195122,
+            "number_accuracy": 0.26666666666666666,
+            "combined_score": 0.07686386438332468
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": " \"G745 BETA\n\n6913-3213\nXP40 8KB\nD55A5D4\nT1\n2EFE1F16B5C08\n1A69\nD1\n6050E18E093\nF0\" ",
+          "time": 2.4548449619978783,
+          "accuracy": {
+            "sequence_similarity": 0.3128491620111732,
+            "word_recall": 0.0,
+            "char_similarity": 0.2641509433962264,
+            "number_accuracy": 0.4,
+            "combined_score": 0.24425002635184992
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": " The text in the image is a bit blurry and small, but I'll do my best to transcribe it:\n\n\"RTX 8900-1 2B1 3B1 5B1 E02 DEFECTIVE 40A2037 9619086 5815E 8F0668 12345678 98021 123456 02025E 12345678 0219 E0000B6C66B53\"\n\nPlease note that this transcription is based on the legibility of the text in the image and may contain errors due to the quality of the image. ",
+          "time": 4.7188141779988655,
+          "accuracy": {
+            "sequence_similarity": 0.03070175438596491,
+            "word_recall": 0.0,
+            "char_similarity": 0.020833333333333332,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.09621710526315788
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": " XYZ-58094201\n\nSERIAL: RX64U1KF3W9\nB5075000C4A\n56:F9:E5:00:00:00\n56:F9:E5:00:00:D8\nMAC: 00:19:E5:E9:DA:B6\nIP ADDRESS: 192.168.0.31\nMODEL: A8281\n\nS/N: B507500C4A\nSERIAL: D480000F800\nMAC: 00:19:E5:E9:DA:B6\nIP ADDRESS: 192.168.0.31\nMODEL: A8281 ",
+          "time": 5.33652564699878,
+          "accuracy": {
+            "sequence_similarity": 0.10619469026548672,
+            "word_recall": 0.4,
+            "char_similarity": 0.09120521172638436,
+            "number_accuracy": 0.4666666666666667,
+            "combined_score": 0.2660166421646345
+          }
+        },
+        "blur_light": {
+          "success": false,
+          "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
+          "time": 120.09287560400116
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": " The text in the image is a barcode with a series of numbers:\n\n065197-092-011-4344\n08970441\n5842190005\n1678540\n\nThe numbers are separated by dashes and appear to be a combination of serial or batch numbers. ",
+          "time": 2.6806259360018885,
+          "accuracy": {
+            "sequence_similarity": 0.05921052631578947,
+            "word_recall": 0.0,
+            "char_similarity": 0.07633587786259542,
+            "number_accuracy": 0.0,
+            "combined_score": 0.033886601044596225
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": " The text in the image is too small and blurry to be transcribed accurately. If you can provide a clearer or larger version of the text, I'd be happy to help with the transcription. ",
+          "time": 1.7059402640006738,
+          "accuracy": {
+            "sequence_similarity": 0.12099644128113879,
+            "word_recall": 0.0,
+            "char_similarity": 0.14225941422594143,
+            "number_accuracy": 0.0,
+            "combined_score": 0.06581396387677005
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": " The image is blurry and the text is not legible. ",
+          "time": 1.0150535329958075,
+          "accuracy": {
+            "sequence_similarity": 0.1610738255033557,
+            "word_recall": 0.0,
+            "char_similarity": 0.1984732824427481,
+            "number_accuracy": 0.0,
+            "combined_score": 0.08988677698652595
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": " Serial: X67-K981-R4X\n\nModel: RTX 4000\n\nSerial Number: 8AF2B2BE\n\nFirmware Version: 85.0.0-beta\n\nSN: 8AF2B2BE\n\nMac Address: 8A:FE:3C:E6:7D:3C\n\nUuid: 5004-E897-E898-E899-E89A-E89B\n\nVendor ID: 1058\n\nDevice ID: 5004-E897-E898-E899-E89A-E89B\n\nSubsystem Vendor ID: 1058\n\nSubsystem Device ID: 5004-E897-E898-E899-E89A-E89B\n\nMicrocode: 20060103\n\nProcessor Version: 0x0000\n\nBIOS Revision: 0.4.0\n\nBoot Count: 1\n\nSerial Number: 8AF2B2BE\n\nBoard Serial Number: 8AF2B2BE\n\nFirmware Version: 19.5.0\n\nVendor ID: 1058\n\nDevice ID: 5004-E897-E898-E899-E89A-E89B\n\nSubsystem Vendor ID: 1058\n\nSubsystem Device ID: 5004-E897-E898-E899-E89A-E89B\n\nSerial Number: 8AF2B2BE\n\nBoard Serial Number: 8AF2B2BE\n\nFirmware Version: 19.5.0\n\nVendor ID: 1058\n\nDevice ID: 5004-E897-E898-E899-E89A-E89B\n\nSubsystem Vendor ID: 1058\n\nSubsystem Device ID: 5004-E897-E898-E899-E89A-E89B\n\nMicrocode: 20060103\n\nProcessor Version: 0x0000\n\nBIOS Revision: 0.4.0\n\nBoot Count: 1\n\nSerial Number: 8AF2B2BE\n\nBoard Serial Number: 8AF2B2BE\n\nFirmware Version: 19.5.0\n\nVendor ID: 1058\n\nDevice ID: 5004-E897-E898-E899-E89A-E89B\n\nSubsystem Vendor ID: 1058\n\nSubsystem Device ID: 5004-E897-E898-E899-E89A-E89B\n\nSerial Number: 8AF2B2BE\n\nBoard Serial Number: 8AF2B2BE\n\nFirmware Version: 19.5.0\n\nVendor ID: 1058\n\nDevice ID: 5004-E897-E898-E899-E89A-E89B\n\nSubsystem Vendor ID: 1058\n\nSubsystem Device ID: 5004-E897-E898-E899-E89A-E89B ",
+          "time": 20.703141974001483,
+          "accuracy": {
+            "sequence_similarity": 0.018322762508809022,
+            "word_recall": 0.3,
+            "char_similarity": 0.034892942109436956,
+            "number_accuracy": 0.4666666666666667,
+            "combined_score": 0.20497059282122815
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": " Serial: X79-981\n\nBeta\n\nModel: RTX480\n\nType: Ti\n\nSN: 123456789ABCDEFGHIJKLMNO\n\nDVI-I: DVI-I\n\nCPU: 8-Core / 16 Threads\n\nRAM: 16 GB\n\nROM: 4096 MB\n\nV-RAM: 8 GB\n\nOS: Windows 10 Home\n\nU-BOOT: 5.12\n\nMAC Address: 8C:F3:4D:DE:A0:E9\n\nUUID: 5050-6040-0000-0000-5050-0640",
+          "time": 4.84944857199298,
+          "accuracy": {
+            "sequence_similarity": 0.069164265129683,
+            "word_recall": 0.3,
+            "char_similarity": 0.07260726072607261,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.19377621479727222
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": " XK7-9836-2 RX-4800 V.1.2\n\nSERVER\nMODEL: XR-4800\nSN: 8ABF2B10C\nN/A: -\nMAC: 50:0E:C0:00:00:F1\nIP: 192.168.1.2\nGATEWAY: 192.168.1.1\nSUBNET: 255.255.255.0\nDEFAULT GATEWAY: 192.168.1.1\nDNS SERVER: 192.168.1.1\nPING STATUS: Successful\nSTATUS: RUNNING\nUPTIME: 1 hour, 34 minutes\nLOAD AVG: 0.05\nPROCESSED: 4113/1276\nTASKS: 51/391\nLOAD: 0.08\nMEMORY USAGE: 69%\nSWAP USAGE: 0.00%\n\nSerial: XK7-9836-2 RX-4800 V.1.2 BETA\n\nMAC: 50:0E:C0:00:00:F1\nIP: 192.168.1.2\nGATEWAY: 192.168.1.1\nSUBNET: 255.255.255.0\nDEFAULT GATEWAY: 192.168.1.1\nDNS SERVER: 192.168.1.1\nPING STATUS: Successful\nSTATUS: RUNNING\nUPTIME: 1 hour, 34 minutes\nLOAD AVG: 0.05\nPROCESSED: 4113/1276\nTASKS: 51/391\nLOAD: 0.08\nMEMORY USAGE: 69%\nSWAP USAGE: 0.00%\n\nUID: 50:0E:C0:00:00:F1\nIP: 192.168.1.2\nGATEWAY: 192.168.1.1\nSUBNET: 255.255.255.0\nDEFAULT GATEWAY: 192.168.1.1\nDNS SERVER: 192.168.1.1\nPING STATUS: Successful\nSTATUS: RUNNING\nUPTIME: 1 hour, 34 minutes\nLOAD AVG: 0.05\nPROCESSED: 4113/1276\nTASKS: 51/391\nLOAD: 0.08\nMEMORY USAGE: 69%\nSWAP USAGE: 0.00%\n\nUID: 50:0E:C0:00:00:F1\nIP: 192.168.1.2\nGATEWAY: 192.168.1.1\nSUBNET: 255.255.255.0\nDEFAULT GATEWAY: 192.168.1.1\nDNS SERVER: 192.168.1.1\nPING STATUS: Successful\nSTATUS: RUNNING\nUPTIME: 1 hour, 34 minutes\nLOAD AVG: 0.05\nPROCESSED: 4113/1276\nTASKS: 51/391\nLOAD: 0.08\nMEMORY USAGE: 69%\nSWAP USAGE: 0.00% ",
+          "time": 21.669179805001477,
+          "accuracy": {
+            "sequence_similarity": 0.028530670470756064,
+            "word_recall": 0.3,
+            "char_similarity": 0.029435813573180702,
+            "number_accuracy": 0.4,
+            "combined_score": 0.1894916210109842
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": " ```\n very large serial\nKX7-98134\nBETA\nMODEL: RTX4600\nTI\n825-B2B002-C010\nE88D26F40\n8186-2226-5554-1827\n4591EDE\n5008400\nU5 000\n08:33:04\n421C\n0001FEC\n505B08\n0000647\nC4\n00\nA0000\n00\n00000\nE1\n55 000\n00\n00\n``` ",
+          "time": 4.740867009997601,
+          "accuracy": {
+            "sequence_similarity": 0.23178807947019867,
+            "word_recall": 0.1,
+            "char_similarity": 0.3053435114503817,
+            "number_accuracy": 0.4,
+            "combined_score": 0.2592828977301451
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": " XK7-96342\n\nBeta\n\nserial: KX7-96342\nmodel: RTX 4080\nsn: 96A100\n\nmac: 8C:AA:BC:CC:CD:CE\n\nE8: A1\nE4: B2\nE2: C3\nE0: D4\n\nuid: 5060637-E29B-E29B-E29B-E29B\n\nXK7-96342\n\nCPU: i7-10700\nRAM: 16GB (DDR4)\nSTORAGE: 512GB NVMe SSD\nGRAPHICS: RTX 4080\nMOBILE: Nvidia GeForce RTX 4080\nGPU: Vega 1\n\nE8: A1\nE4: B2\nE2: C3\nE0: D4\n\nUID: 5060637-E29B-E29B-E29B-E29B\n\nThe image also shows the IP address and port number, but they are not fully visible due to the resolution of the image. ",
+          "time": 7.447069244000886,
+          "accuracy": {
+            "sequence_similarity": 0.02531645569620253,
+            "word_recall": 0.3,
+            "char_similarity": 0.03829787234042553,
+            "number_accuracy": 0.5333333333333333,
+            "combined_score": 0.22423691534249035
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": " Serial KX6-952-792\n\nModel XR96 40Gb \nA3 9.50\n8:01:06 PM\n263 99 ",
+          "time": 1.8388405160003458,
+          "accuracy": {
+            "sequence_similarity": 0.36024844720496896,
+            "word_recall": 0.0,
+            "char_similarity": 0.4084507042253521,
+            "number_accuracy": 0.13333333333333333,
+            "combined_score": 0.2255081211909136
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": " The text in the image reads: \"240173917546188418983\" ",
+          "time": 1.4077603109981283,
+          "accuracy": {
+            "sequence_similarity": 0.0915032679738562,
+            "word_recall": 0.0,
+            "char_similarity": 0.11594202898550725,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05186132423984086
+          }
+        },
+        "crumpled": {
+          "success": false,
+          "error": "HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=120)",
+          "time": 120.09990292599832
+        }
+      },
+      "address_label": {
+        "clean": {
+          "success": true,
+          "extracted_text": " \"J. Smith\n\nSpringfield, IL 62703\nUSAPriority Mail\" ",
+          "time": 1.2484809919988038,
+          "accuracy": {
+            "sequence_similarity": 0.6818181818181818,
+            "word_recall": 0.2,
+            "char_similarity": 0.6964285714285714,
+            "number_accuracy": 0.0,
+            "combined_score": 0.3945616883116883
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": " To: Smith\n\nFrom: 1124 Elm Street\nApt #3\nSpringfield, IL\n62704\nUSA\n\nPriority ML\n\n12118 ",
+          "time": 1.7292202570024529,
+          "accuracy": {
+            "sequence_similarity": 0.8,
+            "word_recall": 0.5333333333333333,
+            "char_similarity": 0.7883211678832117,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.6137469586374696
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": " \"USPS\"\n\n\"To:\"\n\n\"Smith\"\n\n\"3813 Elm St\"\n\n\"Springfield, IL 62704\"\n\n\"USA\"\n\n\"Return Service Request\"\n\n\"City Mail\" ",
+          "time": 2.045630828004505,
+          "accuracy": {
+            "sequence_similarity": 0.6304347826086957,
+            "word_recall": 0.13333333333333333,
+            "char_similarity": 0.6025641025641025,
+            "number_accuracy": 0.0,
+            "combined_score": 0.3415830546265329
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": " ship to:\n\nJohn Smith\n2345 Elm Street\nSpringfield, IL 61901\nUSA\n\npriority mail\nU.S.A. Priority Mail Express - U.S.P.S. (Express)\n\nFrom:\n\nSpringfield, IL 61901\nUSA\n\nPlease note that this is a standard USPS priority mail label, and the address and tracking number are fictional and have been created for illustrative purposes. ",
+          "time": 3.1540961939972476,
+          "accuracy": {
+            "sequence_similarity": 0.20448877805486285,
+            "word_recall": 0.6666666666666666,
+            "char_similarity": 0.13056379821958458,
+            "number_accuracy": 0.0,
+            "combined_score": 0.25042981073527854
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": " To:\n\nJohn Smith\n1413 Elm St\nSpringfield, IL 62703\nUSA\n\nFrom:\nPriority Mail\n\nShip to address:\n5328 N Elm\nApt 3\nSpringfield, IL 62703\nUSA ",
+          "time": 2.2314513199962676,
+          "accuracy": {
+            "sequence_similarity": 0.586046511627907,
+            "word_recall": 0.7333333333333333,
+            "char_similarity": 0.5875706214689266,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.560070949940875
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": " The image is a handwritten note and not an actual mailing label, so there's no need to transcribe it. ",
+          "time": 1.3144507939941832,
+          "accuracy": {
+            "sequence_similarity": 0.1956521739130435,
+            "word_recall": 0.0,
+            "char_similarity": 0.19736842105263158,
+            "number_accuracy": 0.0,
+            "combined_score": 0.09825514874141877
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": " Ship to: John Smith\n\n612 Main St.\nSpringfield, IL 61903\n\nUSA\n\nFedEx # ",
+          "time": 1.472746929997811,
+          "accuracy": {
+            "sequence_similarity": 0.697986577181208,
+            "word_recall": 0.4666666666666667,
+            "char_similarity": 0.6504065040650406,
+            "number_accuracy": 0.0,
+            "combined_score": 0.45376493697822884
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": " \"SHIP 10 JASON SMITH 429 NORTH CEDAR AVE #891 SPRINGFIELD ILLINOIS USA 63107\" ",
+          "time": 1.7203235709966975,
+          "accuracy": {
+            "sequence_similarity": 0.55,
+            "word_recall": 0.13333333333333333,
+            "char_similarity": 0.44776119402985076,
+            "number_accuracy": 0.0,
+            "combined_score": 0.282773631840796
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": " To ship to:\n\nJohn Smith\n1234 Elm St\nSpringfield, IL 62701\nUSA\n\nPriority Mail\n\nThe zip code is correct as it appears in the image. However, I will not transcribe the priority mail text as it is a part of an envelope and not meant to be read out loud. It is simply a designation indicating that the package was shipped with priority postage service. ",
+          "time": 2.847045195005194,
+          "accuracy": {
+            "sequence_similarity": 0.2903981264637002,
+            "word_recall": 0.7333333333333333,
+            "char_similarity": 0.2979942693409742,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.41376476561783526
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": " The text in the image is a little blurry, but I'll do my best to transcribe it:\n\n\"[shipping label with handwritten address]\n\n[shipping label text]\n\nShip to: \nJon Smith\n1234 Elm Street\nAnytown, USA\nZip Code: 55555-1234\n\nPriority Mail\n\nFrom: \nJohn Doe\n111 Main St\nSpringfield, IL\n67890 ZIP CODE\nUSA\" ",
+          "time": 3.4437643210039823,
+          "accuracy": {
+            "sequence_similarity": 0.08042895442359249,
+            "word_recall": 0.6666666666666666,
+            "char_similarity": 0.08414239482200647,
+            "number_accuracy": 0.0,
+            "combined_score": 0.20780950397806638
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": " \"ship to: John Smith 1429 Elm Street Apart #3 Springfield IL 61507 USA\" ",
+          "time": 1.3563988669993705,
+          "accuracy": {
+            "sequence_similarity": 0.8051948051948052,
+            "word_recall": 0.3333333333333333,
+            "char_similarity": 0.78125,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.5632778679653679
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": " \"ship to\"\n\n\"JOHN SMITH\"\n\n\"1234 ELEM STREET\"\n\n\"SPRINGFIELD ILLINOIS 61508 USA\" ",
+          "time": 1.7929609740021988,
+          "accuracy": {
+            "sequence_similarity": 0.6878980891719745,
+            "word_recall": 0.0,
+            "char_similarity": 0.6616541353383458,
+            "number_accuracy": 0.0,
+            "combined_score": 0.33738805612758005
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": " The image appears to be a digitally altered photo of an address label. Here is the transcribed text:\n\n\"SHIP TO: JOHN SMITH 102 E MARK ST APT 3B SPRINGFIELD, IL 62704 USA ",
+          "time": 2.0910440899970126,
+          "accuracy": {
+            "sequence_similarity": 0.47808764940239046,
+            "word_recall": 0.5333333333333333,
+            "char_similarity": 0.46601941747572817,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.4526934333861963
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": " To: John Smith\n\nFrom: 1412 Elm Street\nSpringfield, IL\n62704\nUSA\n\nShipping priority mail\nPriority Mail ",
+          "time": 1.591068768997502,
+          "accuracy": {
+            "sequence_similarity": 0.7472527472527473,
+            "word_recall": 0.6,
+            "char_similarity": 0.7450980392156863,
+            "number_accuracy": 0.0,
+            "combined_score": 0.5230876966171084
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": " Can't see any text in the image. ",
+          "time": 0.9526326129998779,
+          "accuracy": {
+            "sequence_similarity": 0.22608695652173913,
+            "word_recall": 0.0,
+            "char_similarity": 0.18947368421052632,
+            "number_accuracy": 0.0,
+            "combined_score": 0.10389016018306636
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": " To: \n\nFrom: \n\nShip to: \n\nJR Smith ",
+          "time": 1.1490793340053642,
+          "accuracy": {
+            "sequence_similarity": 0.2909090909090909,
+            "word_recall": 0.2,
+            "char_similarity": 0.2857142857142857,
+            "number_accuracy": 0.0,
+            "combined_score": 0.19415584415584414
+          }
+        }
+      }
+    },
+    "qwen2.5vl:7b": {
+      "receipt": {
+        "clean": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\nTOTAL: $9.00\nThank you!",
+          "time": 2.055813428996771,
+          "accuracy": {
+            "sequence_similarity": 0.9217391304347826,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.9137055837563451,
+            "number_accuracy": 1.0,
+            "combined_score": 0.944972289658893
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.20\nTip $1.20\nTOTAL: $9.00\nThank you!",
+          "time": 2.628943147996324,
+          "accuracy": {
+            "sequence_similarity": 0.8851063829787233,
+            "word_recall": 0.8333333333333334,
+            "char_similarity": 0.8756218905472637,
+            "number_accuracy": 0.75,
+            "combined_score": 0.8360154017148301
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.5!\nCroissant $3.2!\nTip $1.2!\nTOTAL: $9.0!\nThank you!",
+          "time": 2.616235367000627,
+          "accuracy": {
+            "sequence_similarity": 0.8869565217391304,
+            "word_recall": 0.7222222222222222,
+            "char_similarity": 0.8730964467005076,
+            "number_accuracy": 0.5,
+            "combined_score": 0.745568797665465
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.51\nCroissant $3.21\nTip $1.21\nTip $1.21\nTOTAL: $9.01\nTOTAL: $9.01\nThank you!",
+          "time": 3.376495196003816,
+          "accuracy": {
+            "sequence_similarity": 0.8221343873517787,
+            "word_recall": 0.7222222222222222,
+            "char_similarity": 0.8055555555555556,
+            "number_accuracy": 0.5,
+            "combined_score": 0.7124780412823891
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\nTOTAL: $9.00\nThank you!",
+          "time": 2.5378072040039115,
+          "accuracy": {
+            "sequence_similarity": 0.9217391304347826,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.9137055837563451,
+            "number_accuracy": 1.0,
+            "combined_score": 0.944972289658893
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\nTOTAL: $9.00\nThank you!",
+          "time": 2.576706683001248,
+          "accuracy": {
+            "sequence_similarity": 0.902127659574468,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.8955223880597015,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9355236230196535
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\nTOTAL: $9.00\nThank you!",
+          "time": 2.5407553109980654,
+          "accuracy": {
+            "sequence_similarity": 0.9217391304347826,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.9137055837563451,
+            "number_accuracy": 1.0,
+            "combined_score": 0.944972289658893
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2023\nLatt\u00e9: $4.50\nCroissant: $2.25\nTip: $1.25\nTOTAL: $8.00\nThank you!",
+          "time": 2.6725745949952397,
+          "accuracy": {
+            "sequence_similarity": 0.8755364806866953,
+            "word_recall": 0.6111111111111112,
+            "char_similarity": 0.86,
+            "number_accuracy": 0.625,
+            "combined_score": 0.7429118979494516
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\nTip $1.25\nTOTAL: $9.00\nTOTAL: $9.00\nThank you!",
+          "time": 3.045635216003575,
+          "accuracy": {
+            "sequence_similarity": 0.8458498023715415,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.8333333333333334,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9059068950373298
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\nTOTAL: $9.00\nThank you!",
+          "time": 2.5019305259993416,
+          "accuracy": {
+            "sequence_similarity": 0.9217391304347826,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.9137055837563451,
+            "number_accuracy": 1.0,
+            "combined_score": 0.944972289658893
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\nTOTAL: $9.00\nThank you!",
+          "time": 2.5802566440033843,
+          "accuracy": {
+            "sequence_similarity": 0.902127659574468,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.8955223880597015,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9355236230196535
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\n-------------------------\nTOTAL: $9.00\nThank you!",
+          "time": 2.601829290004389,
+          "accuracy": {
+            "sequence_similarity": 0.96875,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.963963963963964,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9692896021021021
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.20\nTip $1.20\nTOTAL: $9.00\nThank you!",
+          "time": 2.54182113600109,
+          "accuracy": {
+            "sequence_similarity": 0.9043478260869565,
+            "word_recall": 0.8333333333333334,
+            "char_similarity": 0.8934010152284264,
+            "number_accuracy": 0.75,
+            "combined_score": 0.845270543662179
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Street\nDate: 11/24/2025\nLatte: $4.51\nCroissant: $3.21\nTip: $1.21\nTOTAL: $9.01\nThank you!",
+          "time": 2.7141567330036196,
+          "accuracy": {
+            "sequence_similarity": 0.8755364806866953,
+            "word_recall": 0.5555555555555556,
+            "char_similarity": 0.86,
+            "number_accuracy": 0.5,
+            "combined_score": 0.6977730090605627
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "THESE ARE THE RULES FOR THE GAME OF CRAPS",
+          "time": 1.1696331769999233,
+          "accuracy": {
+            "sequence_similarity": 0.07272727272727272,
+            "word_recall": 0.0,
+            "char_similarity": 0.07142857142857142,
+            "number_accuracy": 0.0,
+            "combined_score": 0.03603896103896104
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "COFFEE SHOP\n123 Main Main Street\nDate: 11/24/2025\nLatte $4.50\nCroissant $3.25\nTip $1.25\nTOTAL: $9.00\nThank you!",
+          "time": 2.573310087005666,
+          "accuracy": {
+            "sequence_similarity": 0.902127659574468,
+            "word_recall": 0.9444444444444444,
+            "char_similarity": 0.8955223880597015,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9355236230196535
+          }
+        }
+      },
+      "invoice": {
+        "clean": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation\nbilling\nbilling@acme.com.com\n\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\n\nDue: 12/15/2025",
+          "time": 3.54208648900385,
+          "accuracy": {
+            "sequence_similarity": 0.9396825396825397,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.9407407407407408,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9587421837421838
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme Corporation\nAcme Corporation\nbilling@acme.com\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.544849511999928,
+          "accuracy": {
+            "sequence_similarity": 0.9456869009584664,
+            "word_recall": 1.0,
+            "char_similarity": 0.9442379182156134,
+            "number_accuracy": 1.0,
+            "combined_score": 0.97248120479352
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme Corporation\nbilling@acme.com\nItem: Widget Pro X\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.7516053110011853,
+          "accuracy": {
+            "sequence_similarity": 0.9396825396825397,
+            "word_recall": 1.0,
+            "char_similarity": 0.9442379182156134,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9709801144745382
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme Corporation\nbilling@acme.com\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.7439909879976767,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation\nbilling\nbilling@acme.com.com\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.5768757370024105,
+          "accuracy": {
+            "sequence_similarity": 0.9396825396825397,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.9407407407407408,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9587421837421838
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation Corporation\nbilling@acme.com.com\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.543221398998867,
+          "accuracy": {
+            "sequence_similarity": 0.9278996865203761,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9523631100839759
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation\nbilling@acme.com.com\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.511409360995458,
+          "accuracy": {
+            "sequence_similarity": 0.9641693811074918,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.9657794676806084,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9711235758333887
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "INVOICE #2817\nAcme Corporation\nbilling@acme.com\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.340555193994078,
+          "accuracy": {
+            "sequence_similarity": 0.9932432432432432,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.9921259842519685,
+            "number_accuracy": 0.9,
+            "combined_score": 0.9599786705101666
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation Corporation\nbilling@acme.com.com\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.8834703949978575,
+          "accuracy": {
+            "sequence_similarity": 0.8862275449101796,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.8850174216027874,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9314476052646053
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation Corporation\nbilling\nbilling@acme.com.com\n\nItem: Widget Pro Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\n\nDue: 12/15/2025",
+          "time": 3.6385200029981206,
+          "accuracy": {
+            "sequence_similarity": 0.8942598187311178,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.8943661971830986,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9357928676149178
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation\nbilling\nbilling@acme.com.com\n\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\n\nDue: 12/15/2025",
+          "time": 3.578891368000768,
+          "accuracy": {
+            "sequence_similarity": 0.9396825396825397,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.9407407407407408,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9587421837421838
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation\nbilling@acme.com.com\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.510141309001483,
+          "accuracy": {
+            "sequence_similarity": 0.9641693811074918,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.9657794676806084,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9711235758333887
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme\nAcme Corporation Corporation\nbilling@acme.com.com\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal @ $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.5427963600013754,
+          "accuracy": {
+            "sequence_similarity": 0.91875,
+            "word_recall": 0.9090909090909091,
+            "char_similarity": 0.9197080291970803,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9368872345719973
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme Corporation\nbilling@acme.com\nItem: Widget Pro X\nQty: 5 @ $29.99\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.4501620320006623,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "MONTCLAIR\nSTATE\nUNIVERSITY\nLIBRARY\nMONTCLAIR\nSTATE\nUNIVERSITY\nLIBRARY",
+          "time": 1.735453076005797,
+          "accuracy": {
+            "sequence_similarity": 0.11981566820276497,
+            "word_recall": 0.0,
+            "char_similarity": 0.14814814814814814,
+            "number_accuracy": 0.0,
+            "combined_score": 0.06699095408772827
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "INVOICE #2847\nAcme Corporation\nbilling@acme.com.com\nItem: Widget Pro X\nQty: 5 @ $29.99 X\nSubtotal: $149.95\nTax (8%): $12.00\nTOTAL: $161.95\nDue: 12/15/2025",
+          "time": 3.408007259000442,
+          "accuracy": {
+            "sequence_similarity": 0.9801324503311258,
+            "word_recall": 0.9545454545454546,
+            "char_similarity": 0.9806949806949807,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9788432213928904
+          }
+        }
+      },
+      "handwritten_style": {
+        "clean": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by Friday\nPhone: 555-0123",
+          "time": 1.5344636220033863,
+          "accuracy": {
+            "sequence_similarity": 0.8708133971291866,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.872093023255814,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8699371314120397
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by\n- Follow up with HR\nPhone: 555-0123",
+          "time": 1.737940498998796,
+          "accuracy": {
+            "sequence_similarity": 0.9819819819819819,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.9834254143646409,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9781939543498136
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesd.\n- Review Q4 budget\n- Send proposal by\n- Follow up with HR\nPhone: 555-0123",
+          "time": 1.8401636940034223,
+          "accuracy": {
+            "sequence_similarity": 0.9683257918552036,
+            "word_recall": 0.8947368421052632,
+            "char_similarity": 0.9666666666666667,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9574323251567833
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesd\n- Review 04 budget\n- Send proposal by\n- Follow up with HR\n- Phone: 555-0123",
+          "time": 2.043445158000395,
+          "accuracy": {
+            "sequence_similarity": 0.954954954954955,
+            "word_recall": 0.8421052631578947,
+            "char_similarity": 0.9555555555555556,
+            "number_accuracy": 0.6666666666666666,
+            "combined_score": 0.854820610083768
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by\n- Phone: 555-0123\n- Follow up with HR",
+          "time": 1.6973854309981107,
+          "accuracy": {
+            "sequence_similarity": 0.8482142857142857,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8351648351648352,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9076868854829381
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by\n- Phone: 555-0123\n- Follow up with HR",
+          "time": 1.7064479709952138,
+          "accuracy": {
+            "sequence_similarity": 0.8482142857142857,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8351648351648352,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9076868854829381
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by\n- Follow up with HR\nPhone: 555-0123",
+          "time": 1.6742349299966008,
+          "accuracy": {
+            "sequence_similarity": 0.9819819819819819,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.9834254143646409,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9781939543498136
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review 04 budget\n- Send proposal by\n- Follow up with HR\nPhone: 555-6123",
+          "time": 1.7380427219977719,
+          "accuracy": {
+            "sequence_similarity": 0.963963963963964,
+            "word_recall": 0.8421052631578947,
+            "char_similarity": 0.9613259668508287,
+            "number_accuracy": 0.3333333333333333,
+            "combined_score": 0.7751821318265052
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by Friday\nPhone: 555-0123",
+          "time": 1.5361312230015756,
+          "accuracy": {
+            "sequence_similarity": 0.8708133971291866,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.872093023255814,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8699371314120397
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by\n- Phone: 555-0123\nFollow up with HR",
+          "time": 1.674799703003373,
+          "accuracy": {
+            "sequence_similarity": 0.8558558558558559,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8397790055248618,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9107508206083373
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by Friday\nPhone: 555-0123",
+          "time": 1.5051883719934267,
+          "accuracy": {
+            "sequence_similarity": 0.8708133971291866,
+            "word_recall": 0.7368421052631579,
+            "char_similarity": 0.872093023255814,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8699371314120397
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by\n- Phone: 555-0123\n- Follow up with HR",
+          "time": 1.69885856500332,
+          "accuracy": {
+            "sequence_similarity": 0.8482142857142857,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8351648351648352,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9076868854829381
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by\n- Phone: 555-0123\n- Follow up with HR",
+          "time": 1.7072268269985216,
+          "accuracy": {
+            "sequence_similarity": 0.8482142857142857,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8351648351648352,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9076868854829381
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesd\n- Review Q4 budget\n- Send proposal by\n- Follow up with HR\nPhone: 555-0123",
+          "time": 1.7751691269950243,
+          "accuracy": {
+            "sequence_similarity": 0.9727272727272728,
+            "word_recall": 0.8947368421052632,
+            "char_similarity": 0.9720670391061452,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9598827884846703
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "MAYOR RAY L. WILSON\nCITY OF DALLAS\nMAYOR OF DALLAS\nMAYOR RAY WILSON",
+          "time": 1.77748201200302,
+          "accuracy": {
+            "sequence_similarity": 0.2,
+            "word_recall": 0.0,
+            "char_similarity": 0.21768707482993196,
+            "number_accuracy": 0.0,
+            "combined_score": 0.10442176870748299
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "Meeting Notes\n- Call client Tuesday\n- Review Q4 budget\n- Send proposal by Friday\n- Phone: 555-0123\n- Follow up with HR",
+          "time": 1.7628160760068567,
+          "accuracy": {
+            "sequence_similarity": 0.8225108225108225,
+            "word_recall": 0.9473684210526315,
+            "char_similarity": 0.8085106382978723,
+            "number_accuracy": 1.0,
+            "combined_score": 0.8945974704653316
+          }
+        }
+      },
+      "serial_number": {
+        "clean": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 2.9793748360025347,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 3.0421967650036095,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 3.152139099998749,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 3.2381281169946305,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 2.978357510997739,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-T1\nS/N: 8A3F2B1C900E\nMAC: 00:1A:28:3C:40:5E\nUUID: 550e8400-e29b",
+          "time": 2.9722351460004575,
+          "accuracy": {
+            "sequence_similarity": 0.9603960396039604,
+            "word_recall": 0.7,
+            "char_similarity": 0.9565217391304348,
+            "number_accuracy": 0.8,
+            "combined_score": 0.8542294446835987
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-T3\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 3.0286485489996267,
+          "accuracy": {
+            "sequence_similarity": 0.9900990099009901,
+            "word_recall": 0.9,
+            "char_similarity": 0.9891304347826086,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9698073611708997
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "SERIAL: XX7-9842-BETA\nMODEL: RTX-4096-11\nS/N: 8ATF2BLC9DDE\nMAC: 00:1A:2B:3C:4D:5F\nUUID: 550e8400-0000-",
+          "time": 2.9838106259994674,
+          "accuracy": {
+            "sequence_similarity": 0.8768472906403941,
+            "word_recall": 0.5,
+            "char_similarity": 0.8648648648648649,
+            "number_accuracy": 0.8,
+            "combined_score": 0.7604280388763147
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 3.00980736999918,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 2.983347130997572,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 3.0101004950047354,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 2.9729445729972213,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 2.980393138001091,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-TI\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:28:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 3.0404195290029747,
+          "accuracy": {
+            "sequence_similarity": 0.9900990099009901,
+            "word_recall": 0.9,
+            "char_similarity": 0.9891304347826086,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9698073611708997
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "! Picture 1:",
+          "time": 0.7288685309977154,
+          "accuracy": {
+            "sequence_similarity": 0.07079646017699115,
+            "word_recall": 0.0,
+            "char_similarity": 0.0392156862745098,
+            "number_accuracy": 0.06666666666666667,
+            "combined_score": 0.04416970327954191
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "SERIAL: XK7-9842-BETA\nMODEL: RTX-4090-Ti\nS/N: 8A3F2B1C9D0E\nMAC: 00:1A:2B:3C:4D:5E\nUUID: 550e8400-e29b",
+          "time": 3.015927759995975,
+          "accuracy": {
+            "sequence_similarity": 1.0,
+            "word_recall": 1.0,
+            "char_similarity": 1.0,
+            "number_accuracy": 1.0,
+            "combined_score": 1.0
+          }
+        }
+      },
+      "address_label": {
+        "clean": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.5989763179968577,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.6441228820040124,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.729172286002722,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.8847932849967037,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.563534877001075,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.6050218629970914,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.5593876880011521,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n123 Elm Street Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.504299923995859,
+          "accuracy": {
+            "sequence_similarity": 0.9693251533742331,
+            "word_recall": 0.8,
+            "char_similarity": 0.9629629629629629,
+            "number_accuracy": 0.6666666666666666,
+            "combined_score": 0.8497386957509656
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.5556178400001954,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.5426583100052085,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.562547835004807,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.5733833790000062,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.5675019490008708,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.6454689060046803,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "BETTER THAN A BUNCH OF FLOWERS",
+          "time": 1.005888285995752,
+          "accuracy": {
+            "sequence_similarity": 0.17699115044247787,
+            "word_recall": 0.0,
+            "char_similarity": 0.10638297872340426,
+            "number_accuracy": 0.0,
+            "combined_score": 0.07084353229147053
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "SHIP TO:\nJohn Smith\n1428 Elm Street, Apt 3\nSpringfield, IL 62701\nUSA\nPRIORITY MAIL",
+          "time": 1.597533725995163,
+          "accuracy": {
+            "sequence_similarity": 0.9939393939393939,
+            "word_recall": 0.9333333333333333,
+            "char_similarity": 0.9927007299270073,
+            "number_accuracy": 1.0,
+            "combined_score": 0.9799933642999337
+          }
+        }
+      }
+    },
+    "gemma3n:latest": {
+      "receipt": {
+        "clean": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3611713130012504,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3530740260030143,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3450984109949786,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35026940300303977,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.33744441099406686,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34884724199946504,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3478371670062188,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3381698110024445,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3462854600002174,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3432458869938273,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34288436700444436,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3569408809999004,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.36501106200012146,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3555005269954563,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3594740270054899,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.341646872999263,
+          "accuracy": {
+            "sequence_similarity": 0.1258741258741259,
+            "word_recall": 0.0,
+            "char_similarity": 0.11290322580645161,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05969433792014438
+          }
+        }
+      },
+      "invoice": {
+        "clean": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3410744739958318,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.344239098005346,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3515249199990649,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34590132299490506,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3445217730040895,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3484192030009581,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34603354099817807,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3506134369963547,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.348738273998606,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.36548656199738616,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34640245299669914,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.355609545003972,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35044568400189746,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3472824700002093,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34291788499831455,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3516342220027582,
+          "accuracy": {
+            "sequence_similarity": 0.09580838323353294,
+            "word_recall": 0.0,
+            "char_similarity": 0.1388888888888889,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05867431803060546
+          }
+        }
+      },
+      "handwritten_style": {
+        "clean": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3485393299997668,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3547810130039579,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3421930979966419,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.36522441700071795,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3433194210010697,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.33940183999948204,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35377002300083404,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3692539100011345,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3664076190034393,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35777120000420837,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34723988600308076,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.36010431100294227,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3413577629980864,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3551542199929827,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35128896099922713,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35890002199448645,
+          "accuracy": {
+            "sequence_similarity": 0.09090909090909091,
+            "word_recall": 0.0,
+            "char_similarity": 0.11009174311926606,
+            "number_accuracy": 0.0,
+            "combined_score": 0.05025020850708924
+          }
+        }
+      },
+      "serial_number": {
+        "clean": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.36117905900027836,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3463600819959538,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35772585100494325,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34344542199687567,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3404503659985494,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3529965519992402,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3623439210059587,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3545347719991696,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3506117249999079,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3397732259982149,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35082172699912917,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.350200226996094,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34232199499820126,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.33681991299818037,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3458969210041687,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3535989059964777,
+          "accuracy": {
+            "sequence_similarity": 0.08333333333333333,
+            "word_recall": 0.0,
+            "char_similarity": 0.09174311926605505,
+            "number_accuracy": 0.0,
+            "combined_score": 0.04376911314984709
+          }
+        }
+      },
+      "address_label": {
+        "clean": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3580826219986193,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "rotate_5": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.367049248998228,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "rotate_15": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3512600989997736,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "rotate_30": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3462394439993659,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "blur_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3445653320013662,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "blur_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35028228200098965,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "noise_light": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3424024549967726,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "noise_heavy": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3494980130053591,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "dark": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3497809030013741,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "bright": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34499139500258025,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "low_contrast": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3425216969990288,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "jpeg_artifacts": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.35593508199963253,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "perspective_skew": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.36622281900054077,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "combo_mild": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.34606194300431525,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "combo_severe": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3497687049966771,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        },
+        "crumpled": {
+          "success": true,
+          "extracted_text": "exactlly as written",
+          "time": 0.3507568170025479,
+          "accuracy": {
+            "sequence_similarity": 0.1568627450980392,
+            "word_recall": 0.0,
+            "char_similarity": 0.09302325581395349,
+            "number_accuracy": 0.0,
+            "combined_score": 0.062471500227998175
+          }
+        }
+      }
+    }
+  }
+}
