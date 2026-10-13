@@ -3,7 +3,7 @@
 ## 🌐 Your Stable Endpoint
 
 ```
-https://dsthink.tail813f4e.ts.net
+https://dsthink.tail0ffb4a.ts.net
 ```
 
 ✅ **This is your durable, HTTPS-enabled endpoint**
@@ -15,17 +15,17 @@ https://dsthink.tail813f4e.ts.net
 
 ### Test Health
 ```bash
-curl https://dsthink.tail813f4e.ts.net/health
+curl https://dsthink.tail0ffb4a.ts.net/health
 ```
 
 ### List Models
 ```bash
-curl https://dsthink.tail813f4e.ts.net/v1/models
+curl https://dsthink.tail0ffb4a.ts.net/v1/models
 ```
 
 ### Chat Completion
 ```bash
-curl -X POST https://dsthink.tail813f4e.ts.net/v1/chat/completions \
+curl -X POST https://dsthink.tail0ffb4a.ts.net/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"messages": [{"role": "user", "content": "Hello!"}]}'
 ```
@@ -52,7 +52,7 @@ tailscale serve status
 import openai
 
 client = openai.OpenAI(
-    base_url="https://dsthink.tail813f4e.ts.net/v1",
+    base_url="https://dsthink.tail0ffb4a.ts.net/v1",
     api_key="not-needed"
 )
 

@@ -6,7 +6,7 @@ Your RheaRouter is now accessible via a stable DNS name with HTTPS:
 
 ### Primary Access (HTTPS, recommended)
 ```
-https://dsthink.tail813f4e.ts.net
+https://dsthink.tail0ffb4a.ts.net
 ```
 
 ✅ **Benefits:**
@@ -25,7 +25,7 @@ Works if MagicDNS is enabled on your devices
 
 **2. Full Tailscale DNS**
 ```
-http://dsthink.tail813f4e.ts.net:8000
+http://dsthink.tail0ffb4a.ts.net:8000
 ```
 Bypass Tailscale Serve proxy, direct to port 8000
 
@@ -39,13 +39,13 @@ Less durable, IP could change
 
 ```bash
 # HTTPS endpoint (recommended)
-curl https://dsthink.tail813f4e.ts.net/health
+curl https://dsthink.tail0ffb4a.ts.net/health
 
 # Get available models
-curl https://dsthink.tail813f4e.ts.net/v1/models
+curl https://dsthink.tail0ffb4a.ts.net/v1/models
 
 # Chat completion
-curl -X POST https://dsthink.tail813f4e.ts.net/v1/chat/completions \
+curl -X POST https://dsthink.tail0ffb4a.ts.net/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "messages": [{"role": "user", "content": "Hello!"}],
@@ -60,7 +60,7 @@ curl -X POST https://dsthink.tail813f4e.ts.net/v1/chat/completions \
 import openai
 
 client = openai.OpenAI(
-    base_url="https://dsthink.tail813f4e.ts.net/v1",
+    base_url="https://dsthink.tail0ffb4a.ts.net/v1",
     api_key="not-needed"  # Unless you enabled auth
 )
 
@@ -74,7 +74,7 @@ print(response.choices[0].message.content)
 
 ### curl (OpenAI-compatible)
 ```bash
-curl -X POST https://dsthink.tail813f4e.ts.net/v1/chat/completions \
+curl -X POST https://dsthink.tail0ffb4a.ts.net/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "llama3.1:8b",
@@ -89,7 +89,7 @@ curl -X POST https://dsthink.tail813f4e.ts.net/v1/chat/completions \
 
 ## Setting Up Custom Subdomain (Optional)
 
-If you want something like `rhearouter.tail813f4e.ts.net`:
+If you want something like `rhearouter.tail0ffb4a.ts.net`:
 
 ### Option 1: Tailscale Custom Hostname
 
@@ -100,7 +100,7 @@ Check your Tailscale admin console:
 4. Change to something like "rhearouter"
 
 Then your URLs become:
-- `https://rhearouter.tail813f4e.ts.net`
+- `https://rhearouter.tail0ffb4a.ts.net`
 
 ### Option 2: Custom Domain (Advanced)
 
@@ -165,7 +165,7 @@ http://dsthink:8000
 ### For Production/Sharing
 Use HTTPS via Tailscale Serve:
 ```
-https://dsthink.tail813f4e.ts.net
+https://dsthink.tail0ffb4a.ts.net
 ```
 - Encrypted traffic
 - No port numbers needed
@@ -175,14 +175,14 @@ https://dsthink.tail813f4e.ts.net
 
 ### Environment Variable
 ```bash
-export OPENAI_BASE_URL="https://dsthink.tail813f4e.ts.net/v1"
+export OPENAI_BASE_URL="https://dsthink.tail0ffb4a.ts.net/v1"
 export OPENAI_API_KEY="not-needed"
 ```
 
 ### Configuration File (~/.config/openai/config)
 ```ini
 [default]
-api_base = https://dsthink.tail813f4e.ts.net/v1
+api_base = https://dsthink.tail0ffb4a.ts.net/v1
 api_key = not-needed
 ```
 
@@ -193,14 +193,14 @@ api_key = not-needed
     "title": "RheaRouter",
     "provider": "openai",
     "model": "llama3.1:8b",
-    "apiBase": "https://dsthink.tail813f4e.ts.net/v1"
+    "apiBase": "https://dsthink.tail0ffb4a.ts.net/v1"
   }]
 }
 ```
 
 ## Troubleshooting
 
-### Can't resolve dsthink.tail813f4e.ts.net
+### Can't resolve dsthink.tail0ffb4a.ts.net
 
 **Check MagicDNS:**
 ```bash
@@ -255,13 +255,13 @@ Add to startup script if needed.
 ### Check DNS resolution
 ```bash
 # From any Tailscale device
-nslookup dsthink.tail813f4e.ts.net
-dig dsthink.tail813f4e.ts.net
+nslookup dsthink.tail0ffb4a.ts.net
+dig dsthink.tail0ffb4a.ts.net
 ```
 
 ### Check HTTPS certificate
 ```bash
-curl -v https://dsthink.tail813f4e.ts.net/health 2>&1 | grep "subject:"
+curl -v https://dsthink.tail0ffb4a.ts.net/health 2>&1 | grep "subject:"
 ```
 
 ### Monitor access logs
@@ -275,9 +275,9 @@ sudo journalctl -u rhearouter -f
 
 | Purpose | URL | Notes |
 |---------|-----|-------|
-| **Primary (HTTPS)** | `https://dsthink.tail813f4e.ts.net` | ✅ Recommended |
+| **Primary (HTTPS)** | `https://dsthink.tail0ffb4a.ts.net` | ✅ Recommended |
 | Development | `http://dsthink:8000` | Quick, MagicDNS |
-| Direct access | `http://dsthink.tail813f4e.ts.net:8000` | Bypasses proxy |
+| Direct access | `http://dsthink.tail0ffb4a.ts.net:8000` | Bypasses proxy |
 | IP fallback | `http://100.87.176.89:8000` | ❌ Not durable |
 
 **Use the HTTPS endpoint for:**
